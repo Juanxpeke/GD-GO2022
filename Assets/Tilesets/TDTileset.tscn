@@ -1,0 +1,2904 @@
+[gd_scene load_steps=581 format=2]
+
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverBridge_S.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_crystal_W.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverBridge_W.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_endRoundSpawn_N.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_hill_S.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_hill_W.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_crystal_N.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_crystal_S.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_endRoundSpawn_E.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_endRoundSpawn_S.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_endRound_S.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_end_S.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_end_W.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_end_N.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_crossing_S.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerSquare_W.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerSquare_E.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_crossing_E.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_endRound_W.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_hill_E.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_hill_N.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_crossing_N.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_endRound_N.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_end_E.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerRound_W.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerSquare_N.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverBridge_E.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_crossing_W.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_E.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_N.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerSquare_S.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_crystal_E.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverBridge_N.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_endRoundSpawn_W.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_endRound_E.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_spawn_E.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_spawn_N.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_spawn_S.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_slope_N.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_spawn_W.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_split_E.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_slope_W.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverTransition_E.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_split_N.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverSlope_S.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_S.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_split_S.png" type="Texture" id=47]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_split_W.png" type="Texture" id=48]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straightHillLarge_E.png" type="Texture" id=49]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_rock_E.png" type="Texture" id=50]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverStraight_N.png" type="Texture" id=51]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_slope_E.png" type="Texture" id=52]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverTransition_N.png" type="Texture" id=53]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_rock_W.png" type="Texture" id=54]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverSlopeLarge_W.png" type="Texture" id=55]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverSlope_N.png" type="Texture" id=56]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_slope_S.png" type="Texture" id=57]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_rock_S.png" type="Texture" id=58]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_spawnRound_E.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverStraight_W.png" type="Texture" id=60]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverTransition_W.png" type="Texture" id=61]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_spawnRound_N.png" type="Texture" id=62]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_rock_N.png" type="Texture" id=63]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_spawnRound_S.png" type="Texture" id=64]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverStraight_S.png" type="Texture" id=65]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverTransition_S.png" type="Texture" id=66]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverSlope_E.png" type="Texture" id=67]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverStraight_E.png" type="Texture" id=68]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_spawnRound_W.png" type="Texture" id=69]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverSlope_W.png" type="Texture" id=70]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomC_N.png" type="Texture" id=71]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_treeQuad_W.png" type="Texture" id=72]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straight_E.png" type="Texture" id=73]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straightHill_E.png" type="Texture" id=74]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideStraight_N.png" type="Texture" id=75]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomC_E.png" type="Texture" id=76]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomC_S.png" type="Texture" id=77]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straightHill_S.png" type="Texture" id=78]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomC_W.png" type="Texture" id=79]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomA_N.png" type="Texture" id=80]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straightHill_W.png" type="Texture" id=81]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_transition_E.png" type="Texture" id=82]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomB_N.png" type="Texture" id=83]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_crystals_E.png" type="Texture" id=84]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomA_W.png" type="Texture" id=85]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straight_S.png" type="Texture" id=86]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_crystals_N.png" type="Texture" id=87]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_crystals_S.png" type="Texture" id=88]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_crystals_W.png" type="Texture" id=89]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straightHillLarge_W.png" type="Texture" id=90]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_treeDouble_N.png" type="Texture" id=91]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_treeQuad_E.png" type="Texture" id=92]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_tree_N.png" type="Texture" id=93]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideTransition_S.png" type="Texture" id=94]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_base_S.png" type="Texture" id=95]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_tree_E.png" type="Texture" id=96]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_transition_W.png" type="Texture" id=97]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_tree_W.png" type="Texture" id=98]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_base_N.png" type="Texture" id=99]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_transition_N.png" type="Texture" id=100]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straight_N.png" type="Texture" id=101]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideCorner_W.png" type="Texture" id=102]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_treeDouble_E.png" type="Texture" id=103]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_W.png" type="Texture" id=104]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideCorner_N.png" type="Texture" id=105]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straightHill_N.png" type="Texture" id=106]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_treeDouble_W.png" type="Texture" id=107]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_treeQuad_S.png" type="Texture" id=108]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideSplit_E.png" type="Texture" id=109]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideSplit_N.png" type="Texture" id=110]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straightHillLarge_S.png" type="Texture" id=111]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideSplit_W.png" type="Texture" id=112]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straight_W.png" type="Texture" id=113]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideStraight_E.png" type="Texture" id=114]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideStraight_S.png" type="Texture" id=115]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideTransition_E.png" type="Texture" id=116]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideTransition_N.png" type="Texture" id=117]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideCorner_E.png" type="Texture" id=118]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideTransition_W.png" type="Texture" id=119]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_base_E.png" type="Texture" id=120]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideSplit_S.png" type="Texture" id=121]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_base_W.png" type="Texture" id=122]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomA_E.png" type="Texture" id=123]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_transition_S.png" type="Texture" id=124]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_straightHillLarge_N.png" type="Texture" id=125]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_treeQuad_N.png" type="Texture" id=126]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideStraight_W.png" type="Texture" id=127]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_wideCorner_S.png" type="Texture" id=128]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomA_S.png" type="Texture" id=129]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_tree_S.png" type="Texture" id=130]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomB_E.png" type="Texture" id=131]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_treeDouble_S.png" type="Texture" id=132]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomB_S.png" type="Texture" id=133]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_bottomB_W.png" type="Texture" id=134]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleA_E.png" type="Texture" id=135]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleA_N.png" type="Texture" id=136]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleA_S.png" type="Texture" id=137]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleA_W.png" type="Texture" id=138]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleB_N.png" type="Texture" id=139]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleB_E.png" type="Texture" id=140]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleA_N.png" type="Texture" id=141]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleF_N.png" type="Texture" id=142]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topA_N.png" type="Texture" id=143]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topA_S.png" type="Texture" id=144]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topA_W.png" type="Texture" id=145]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topB_N.png" type="Texture" id=146]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleA_S.png" type="Texture" id=147]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topC_S.png" type="Texture" id=148]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofC_N.png" type="Texture" id=149]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomA_W.png" type="Texture" id=150]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleC_W.png" type="Texture" id=151]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofB_N.png" type="Texture" id=152]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleE_E.png" type="Texture" id=153]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topB_E.png" type="Texture" id=154]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleB_S.png" type="Texture" id=155]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofA_E.png" type="Texture" id=156]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleD_E.png" type="Texture" id=157]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleA_W.png" type="Texture" id=158]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleD_S.png" type="Texture" id=159]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topB_W.png" type="Texture" id=160]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleA_E.png" type="Texture" id=161]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleF_S.png" type="Texture" id=162]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topC_E.png" type="Texture" id=163]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topC_N.png" type="Texture" id=164]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topC_W.png" type="Texture" id=165]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomA_E.png" type="Texture" id=166]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomA_N.png" type="Texture" id=167]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomA_S.png" type="Texture" id=168]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomB_E.png" type="Texture" id=169]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomB_N.png" type="Texture" id=170]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomB_S.png" type="Texture" id=171]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomB_W.png" type="Texture" id=172]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomC_E.png" type="Texture" id=173]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleF_W.png" type="Texture" id=174]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topB_S.png" type="Texture" id=175]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleD_N.png" type="Texture" id=176]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_topA_E.png" type="Texture" id=177]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomC_N.png" type="Texture" id=178]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleC_N.png" type="Texture" id=179]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofA_N.png" type="Texture" id=180]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofB_E.png" type="Texture" id=181]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofC_S.png" type="Texture" id=182]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleB_N.png" type="Texture" id=183]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleC_E.png" type="Texture" id=184]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofA_W.png" type="Texture" id=185]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofA_S.png" type="Texture" id=186]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleB_W.png" type="Texture" id=187]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofC_E.png" type="Texture" id=188]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleC_E.png" type="Texture" id=189]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofB_W.png" type="Texture" id=190]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleC_S.png" type="Texture" id=191]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleC_W.png" type="Texture" id=192]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleD_W.png" type="Texture" id=193]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleE_N.png" type="Texture" id=194]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofC_W.png" type="Texture" id=195]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleB_S.png" type="Texture" id=196]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_middleC_S.png" type="Texture" id=197]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleB_E.png" type="Texture" id=198]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_roofB_S.png" type="Texture" id=199]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleB_W.png" type="Texture" id=200]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleC_N.png" type="Texture" id=201]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleE_S.png" type="Texture" id=202]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleE_W.png" type="Texture" id=203]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerRound_sampleF_E.png" type="Texture" id=204]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleA_W.png" type="Texture" id=205]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleA_E.png" type="Texture" id=206]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleA_N.png" type="Texture" id=207]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomC_S.png" type="Texture" id=208]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_bottomC_W.png" type="Texture" id=209]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleA_S.png" type="Texture" id=210]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topA_N.png" type="Texture" id=211]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleD_E.png" type="Texture" id=212]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topC_W.png" type="Texture" id=213]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_ballista_E.png" type="Texture" id=214]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleB_E.png" type="Texture" id=215]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleB_S.png" type="Texture" id=216]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofA_E.png" type="Texture" id=217]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofA_S.png" type="Texture" id=218]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofB_N.png" type="Texture" id=219]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofC_E.png" type="Texture" id=220]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofC_W.png" type="Texture" id=221]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleC_E.png" type="Texture" id=222]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleF_W.png" type="Texture" id=223]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleF_E.png" type="Texture" id=224]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topC_N.png" type="Texture" id=225]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_ballista_N.png" type="Texture" id=226]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleC_S.png" type="Texture" id=227]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleA_W.png" type="Texture" id=228]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofB_E.png" type="Texture" id=229]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleB_E.png" type="Texture" id=230]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleE_S.png" type="Texture" id=231]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topA_W.png" type="Texture" id=232]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_ballista_S.png" type="Texture" id=233]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_ballista_W.png" type="Texture" id=234]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleB_S.png" type="Texture" id=235]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_blaster_E.png" type="Texture" id=236]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_blaster_N.png" type="Texture" id=237]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_blaster_S.png" type="Texture" id=238]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleD_S.png" type="Texture" id=239]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleE_E.png" type="Texture" id=240]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleE_W.png" type="Texture" id=241]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofA_W.png" type="Texture" id=242]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleC_N.png" type="Texture" id=243]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofB_W.png" type="Texture" id=244]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleA_E.png" type="Texture" id=245]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleB_W.png" type="Texture" id=246]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleB_N.png" type="Texture" id=247]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleD_N.png" type="Texture" id=248]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleD_W.png" type="Texture" id=249]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofC_N.png" type="Texture" id=250]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofC_S.png" type="Texture" id=251]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleA_N.png" type="Texture" id=252]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleC_E.png" type="Texture" id=253]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleB_N.png" type="Texture" id=254]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleB_W.png" type="Texture" id=255]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleC_S.png" type="Texture" id=256]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleC_W.png" type="Texture" id=257]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleF_S.png" type="Texture" id=258]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topB_S.png" type="Texture" id=259]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topB_N.png" type="Texture" id=260]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topB_W.png" type="Texture" id=261]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topC_E.png" type="Texture" id=262]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topC_S.png" type="Texture" id=263]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_blaster_W.png" type="Texture" id=264]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topA_S.png" type="Texture" id=265]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_middleC_W.png" type="Texture" id=266]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleE_N.png" type="Texture" id=267]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofB_S.png" type="Texture" id=268]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleC_N.png" type="Texture" id=269]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleA_S.png" type="Texture" id=270]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_sampleF_N.png" type="Texture" id=271]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topA_E.png" type="Texture" id=272]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_roofA_N.png" type="Texture" id=273]
+[ext_resource path="res://Assets/Tilesets/TDTileset/towerSquare_topB_E.png" type="Texture" id=274]
+[ext_resource path="res://Assets/Tilesets/TDTileset/woodStructure_E.png" type="Texture" id=275]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_catapult_E.png" type="Texture" id=276]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_cannon_W.png" type="Texture" id=277]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_cannon_S.png" type="Texture" id=278]
+[ext_resource path="res://Assets/Tilesets/TDTileset/woodStructure_high_N.png" type="Texture" id=279]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_cannon_N.png" type="Texture" id=280]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_catapult_S.png" type="Texture" id=281]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_catapult_W.png" type="Texture" id=282]
+[ext_resource path="res://Assets/Tilesets/TDTileset/woodStructure_W.png" type="Texture" id=283]
+[ext_resource path="res://Assets/Tilesets/TDTileset/woodStructure_S.png" type="Texture" id=284]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_cannon_E.png" type="Texture" id=285]
+[ext_resource path="res://Assets/Tilesets/TDTileset/woodStructure_high_E.png" type="Texture" id=286]
+[ext_resource path="res://Assets/Tilesets/TDTileset/woodStructure_high_S.png" type="Texture" id=287]
+[ext_resource path="res://Assets/Tilesets/TDTileset/weapon_catapult_N.png" type="Texture" id=288]
+[ext_resource path="res://Assets/Tilesets/TDTileset/woodStructure_high_W.png" type="Texture" id=289]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoPurpleWeapon_W.png" type="Texture" id=290]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_crystalLarge_N.png" type="Texture" id=291]
+[ext_resource path="res://Assets/Tilesets/TDTileset/woodStructure_N.png" type="Texture" id=292]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_crystal_E.png" type="Texture" id=293]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_crystalLarge_E.png" type="Texture" id=294]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_crystal_S.png" type="Texture" id=295]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_crystal_W.png" type="Texture" id=296]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_dirtLarge_N.png" type="Texture" id=297]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_dirtLarge_S.png" type="Texture" id=298]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_crystalLarge_S.png" type="Texture" id=299]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_dirtLarge_W.png" type="Texture" id=300]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_crystal_N.png" type="Texture" id=301]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_dirt_E.png" type="Texture" id=302]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_dirt_N.png" type="Texture" id=303]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_crystalLarge_W.png" type="Texture" id=304]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_dirtLarge_E.png" type="Texture" id=305]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoGreen_N.png" type="Texture" id=306]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoGreen_S.png" type="Texture" id=307]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoGreen_W.png" type="Texture" id=308]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoGreenWeapon_N.png" type="Texture" id=309]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_tree_W.png" type="Texture" id=310]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_tree_S.png" type="Texture" id=311]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoGreenWeapon_E.png" type="Texture" id=312]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoGreenWeapon_S.png" type="Texture" id=313]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoGreenWeapon_W.png" type="Texture" id=314]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoGreen_E.png" type="Texture" id=315]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoPurpleWeapon_N.png" type="Texture" id=316]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoPurpleWeapon_S.png" type="Texture" id=317]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoPurpleWeapon_E.png" type="Texture" id=318]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_tree_N.png" type="Texture" id=319]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_rocksLarge_N.png" type="Texture" id=320]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_rocksLarge_W.png" type="Texture" id=321]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_rocks_S.png" type="Texture" id=322]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_rocks_W.png" type="Texture" id=323]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_dirt_W.png" type="Texture" id=324]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_rocksLarge_E.png" type="Texture" id=325]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_dirt_S.png" type="Texture" id=326]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_rocksLarge_S.png" type="Texture" id=327]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_treeLarge_E.png" type="Texture" id=328]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_treeLarge_N.png" type="Texture" id=329]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_treeLarge_S.png" type="Texture" id=330]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_treeLarge_W.png" type="Texture" id=331]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_rocks_N.png" type="Texture" id=332]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_tree_E.png" type="Texture" id=333]
+[ext_resource path="res://Assets/Tilesets/TDTileset/detail_rocks_E.png" type="Texture" id=334]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerInner_N.png" type="Texture" id=335]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_tree_N.png" type="Texture" id=336]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_tree_S.png" type="Texture" id=337]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_woodStructure_high_S.png" type="Texture" id=338]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideCorner_W.png" type="Texture" id=339]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideSplit_N.png" type="Texture" id=340]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideStraight_N.png" type="Texture" id=341]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_woodStructure_S.png" type="Texture" id=342]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_woodStructure_high_E.png" type="Texture" id=343]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerInner_E.png" type="Texture" id=344]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerLarge_W.png" type="Texture" id=345]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideTransition_N.png" type="Texture" id=346]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerOuter_N.png" type="Texture" id=347]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerRound_S.png" type="Texture" id=348]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideCorner_S.png" type="Texture" id=349]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_bump_W.png" type="Texture" id=350]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerInner_W.png" type="Texture" id=351]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerRound_W.png" type="Texture" id=352]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerSquare_N.png" type="Texture" id=353]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideSplit_W.png" type="Texture" id=354]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_crystal_N.png" type="Texture" id=355]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_crystal_S.png" type="Texture" id=356]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_crystal_W.png" type="Texture" id=357]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_dirtHigh_N.png" type="Texture" id=358]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideCorner_E.png" type="Texture" id=359]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_woodStructure_high_W.png" type="Texture" id=360]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_woodStructure_N.png" type="Texture" id=361]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerLarge_E.png" type="Texture" id=362]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideTransition_S.png" type="Texture" id=363]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_woodStructure_high_N.png" type="Texture" id=364]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_bump_N.png" type="Texture" id=365]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideStraight_S.png" type="Texture" id=366]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_woodStructure_W.png" type="Texture" id=367]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerInner_S.png" type="Texture" id=368]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerLarge_S.png" type="Texture" id=369]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerRound_N.png" type="Texture" id=370]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerSquare_S.png" type="Texture" id=371]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_bump_S.png" type="Texture" id=372]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerOuter_E.png" type="Texture" id=373]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideStraight_E.png" type="Texture" id=374]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerSquare_E.png" type="Texture" id=375]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerSquare_W.png" type="Texture" id=376]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_crossing_E.png" type="Texture" id=377]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_crossing_W.png" type="Texture" id=378]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_bump_E.png" type="Texture" id=379]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_dirtHigh_E.png" type="Texture" id=380]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_crossing_N.png" type="Texture" id=381]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_dirtHigh_S.png" type="Texture" id=382]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_dirtHigh_W.png" type="Texture" id=383]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideTransition_W.png" type="Texture" id=384]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_crossing_S.png" type="Texture" id=385]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideSplit_S.png" type="Texture" id=386]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideCorner_N.png" type="Texture" id=387]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideSplit_E.png" type="Texture" id=388]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_W.png" type="Texture" id=389]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideStraight_W.png" type="Texture" id=390]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerLarge_N.png" type="Texture" id=391]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerOuter_S.png" type="Texture" id=392]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerOuter_W.png" type="Texture" id=393]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_tree_W.png" type="Texture" id=394]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_woodStructure_E.png" type="Texture" id=395]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_cornerRound_E.png" type="Texture" id=396]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_crystal_E.png" type="Texture" id=397]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_wideTransition_E.png" type="Texture" id=398]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_dirt_W.png" type="Texture" id=399]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_E.png" type="Texture" id=400]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_dirt_E.png" type="Texture" id=401]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endRoundSpawn_E.png" type="Texture" id=402]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_dirt_S.png" type="Texture" id=403]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_dirt_N.png" type="Texture" id=404]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoYellowWeapon_W.png" type="Texture" id=405]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_crystalLarge_E.png" type="Texture" id=406]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_crystalLarge_S.png" type="Texture" id=407]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoPurple_W.png" type="Texture" id=408]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoRedWeapon_E.png" type="Texture" id=409]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoRedWeapon_W.png" type="Texture" id=410]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoRed_N.png" type="Texture" id=411]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoRed_W.png" type="Texture" id=412]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoYellow_E.png" type="Texture" id=413]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_crystal_S.png" type="Texture" id=414]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoRed_S.png" type="Texture" id=415]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoRedWeapon_N.png" type="Texture" id=416]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_crystalLarge_N.png" type="Texture" id=417]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoYellow_W.png" type="Texture" id=418]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_dirtLarge_N.png" type="Texture" id=419]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_dirtLarge_E.png" type="Texture" id=420]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoYellowWeapon_S.png" type="Texture" id=421]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_dirt_E.png" type="Texture" id=422]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_dirt_S.png" type="Texture" id=423]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoYellowWeapon_E.png" type="Texture" id=424]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_crystalLarge_W.png" type="Texture" id=425]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoYellow_N.png" type="Texture" id=426]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_crystal_E.png" type="Texture" id=427]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoRed_E.png" type="Texture" id=428]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_dirtLarge_W.png" type="Texture" id=429]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoPurple_S.png" type="Texture" id=430]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoPurple_N.png" type="Texture" id=431]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_crystal_N.png" type="Texture" id=432]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_dirtLarge_S.png" type="Texture" id=433]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoYellow_S.png" type="Texture" id=434]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_crystal_W.png" type="Texture" id=435]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_dirt_N.png" type="Texture" id=436]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_dirt_W.png" type="Texture" id=437]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoRedWeapon_S.png" type="Texture" id=438]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoYellowWeapon_N.png" type="Texture" id=439]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straight_E.png" type="Texture" id=440]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straight_W.png" type="Texture" id=441]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_spawnRound_W.png" type="Texture" id=442]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straightHillLarge_S.png" type="Texture" id=443]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_transition_W.png" type="Texture" id=444]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_spawn_S.png" type="Texture" id=445]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_spawn_N.png" type="Texture" id=446]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straightHill_W.png" type="Texture" id=447]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straightHill_E.png" type="Texture" id=448]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straightHillLarge_W.png" type="Texture" id=449]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_treeQuad_S.png" type="Texture" id=450]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_spawnRound_S.png" type="Texture" id=451]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_split_W.png" type="Texture" id=452]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_transition_E.png" type="Texture" id=453]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_treeQuad_E.png" type="Texture" id=454]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_spawn_W.png" type="Texture" id=455]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straightHill_N.png" type="Texture" id=456]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_transition_S.png" type="Texture" id=457]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_treeQuad_N.png" type="Texture" id=458]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_transition_N.png" type="Texture" id=459]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_treeDouble_N.png" type="Texture" id=460]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_split_E.png" type="Texture" id=461]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straightHillLarge_N.png" type="Texture" id=462]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_treeDouble_E.png" type="Texture" id=463]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straightHillLarge_E.png" type="Texture" id=464]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straightHill_S.png" type="Texture" id=465]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_treeDouble_W.png" type="Texture" id=466]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_treeQuad_W.png" type="Texture" id=467]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_tree_E.png" type="Texture" id=468]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_spawn_E.png" type="Texture" id=469]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_treeDouble_S.png" type="Texture" id=470]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straight_N.png" type="Texture" id=471]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_straight_S.png" type="Texture" id=472]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_split_N.png" type="Texture" id=473]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_split_S.png" type="Texture" id=474]
+[ext_resource path="res://Assets/Tilesets/TDTileset/enemy_ufoPurple_E.png" type="Texture" id=475]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_end_N.png" type="Texture" id=476]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverBridge_N.png" type="Texture" id=477]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverCorner_W.png" type="Texture" id=478]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endRound_E.png" type="Texture" id=479]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endSpawn_E.png" type="Texture" id=480]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endRoundSpawn_S.png" type="Texture" id=481]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_end_S.png" type="Texture" id=482]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endRound_W.png" type="Texture" id=483]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endRound_S.png" type="Texture" id=484]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_end_E.png" type="Texture" id=485]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_end_W.png" type="Texture" id=486]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_hill_N.png" type="Texture" id=487]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverBridge_W.png" type="Texture" id=488]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endRoundSpawn_N.png" type="Texture" id=489]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_hill_E.png" type="Texture" id=490]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverFall_E.png" type="Texture" id=491]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_N.png" type="Texture" id=492]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverFall_N.png" type="Texture" id=493]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverFall_S.png" type="Texture" id=494]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_hill_S.png" type="Texture" id=495]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverFall_W.png" type="Texture" id=496]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverCorner_E.png" type="Texture" id=497]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endRound_N.png" type="Texture" id=498]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverSlopeLarge_E.png" type="Texture" id=499]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverSlopeLarge_N.png" type="Texture" id=500]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverSlopeLarge_S.png" type="Texture" id=501]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_hill_W.png" type="Texture" id=502]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endSpawn_N.png" type="Texture" id=503]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverBridge_E.png" type="Texture" id=504]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endSpawn_S.png" type="Texture" id=505]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverBridge_S.png" type="Texture" id=506]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverCorner_N.png" type="Texture" id=507]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_riverCorner_S.png" type="Texture" id=508]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endRoundSpawn_W.png" type="Texture" id=509]
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_endSpawn_W.png" type="Texture" id=510]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverTransition_W.png" type="Texture" id=511]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverSlopeLarge_E.png" type="Texture" id=512]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverStraight_W.png" type="Texture" id=513]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverSlope_S.png" type="Texture" id=514]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverFall_E.png" type="Texture" id=515]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverFall_W.png" type="Texture" id=516]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverStraight_S.png" type="Texture" id=517]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverCorner_N.png" type="Texture" id=518]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverCorner_E.png" type="Texture" id=519]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverFall_S.png" type="Texture" id=520]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverSlopeLarge_N.png" type="Texture" id=521]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverSlopeLarge_S.png" type="Texture" id=522]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverFall_N.png" type="Texture" id=523]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverCorner_W.png" type="Texture" id=524]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverSlope_E.png" type="Texture" id=525]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverSlope_N.png" type="Texture" id=526]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverStraight_E.png" type="Texture" id=527]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverCorner_S.png" type="Texture" id=528]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverStraight_N.png" type="Texture" id=529]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverTransition_E.png" type="Texture" id=530]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_rock_E.png" type="Texture" id=531]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_rock_N.png" type="Texture" id=532]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverSlope_W.png" type="Texture" id=533]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_rock_W.png" type="Texture" id=534]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverTransition_N.png" type="Texture" id=535]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_S.png" type="Texture" id=536]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_slope_E.png" type="Texture" id=537]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_slope_N.png" type="Texture" id=538]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_slope_S.png" type="Texture" id=539]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_slope_W.png" type="Texture" id=540]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_spawnRound_E.png" type="Texture" id=541]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_spawnRound_N.png" type="Texture" id=542]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_rock_S.png" type="Texture" id=543]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverTransition_S.png" type="Texture" id=544]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_riverSlopeLarge_W.png" type="Texture" id=545]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_tree_N.png" type="Texture" id=546]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_bump_E.png" type="Texture" id=547]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_rocksLarge_S.png" type="Texture" id=548]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_rocks_W.png" type="Texture" id=549]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_treeLarge_S.png" type="Texture" id=550]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_tree_E.png" type="Texture" id=551]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_rocks_N.png" type="Texture" id=552]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_tree_S.png" type="Texture" id=553]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_bump_S.png" type="Texture" id=554]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_rocksLarge_E.png" type="Texture" id=555]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_treeLarge_N.png" type="Texture" id=556]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_rocksLarge_W.png" type="Texture" id=557]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_tree_W.png" type="Texture" id=558]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_rocksLarge_N.png" type="Texture" id=559]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_bump_N.png" type="Texture" id=560]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_bump_W.png" type="Texture" id=561]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerInner_E.png" type="Texture" id=562]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerLarge_N.png" type="Texture" id=563]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerInner_N.png" type="Texture" id=564]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerInner_S.png" type="Texture" id=565]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerLarge_E.png" type="Texture" id=566]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_treeLarge_W.png" type="Texture" id=567]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerLarge_S.png" type="Texture" id=568]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_treeLarge_E.png" type="Texture" id=569]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerLarge_W.png" type="Texture" id=570]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerOuter_E.png" type="Texture" id=571]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_rocks_E.png" type="Texture" id=572]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerOuter_N.png" type="Texture" id=573]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerOuter_S.png" type="Texture" id=574]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerOuter_W.png" type="Texture" id=575]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerRound_N.png" type="Texture" id=576]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerRound_E.png" type="Texture" id=577]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerRound_S.png" type="Texture" id=578]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_tile_cornerInner_W.png" type="Texture" id=579]
+[ext_resource path="res://Assets/Tilesets/TDTileset/snow_detail_rocks_S.png" type="Texture" id=580]
+
+[node name="TDTileset" type="Node2D"]
+
+[node name="DetailCrystalLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 294 )
+
+[node name="DetailCrystalLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 291 )
+
+[node name="DetailCrystalLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 299 )
+
+[node name="DetailCrystalLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 304 )
+
+[node name="DetailCrystalE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 293 )
+
+[node name="DetailCrystalN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 301 )
+
+[node name="DetailCrystalS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 295 )
+
+[node name="DetailCrystalW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 296 )
+
+[node name="DetailDirtLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 305 )
+
+[node name="DetailDirtLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 297 )
+
+[node name="DetailDirtLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 298 )
+
+[node name="DetailDirtLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 300 )
+
+[node name="DetailDirtE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 302 )
+
+[node name="DetailDirtN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 303 )
+
+[node name="DetailDirtS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 326 )
+
+[node name="DetailDirtW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 324 )
+
+[node name="DetailRocksLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 325 )
+
+[node name="DetailRocksLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 320 )
+
+[node name="DetailRocksLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 327 )
+
+[node name="DetailRocksLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 321 )
+
+[node name="DetailRocksE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 334 )
+
+[node name="DetailRocksN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 332 )
+
+[node name="DetailRocksS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 322 )
+
+[node name="DetailRocksW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 323 )
+
+[node name="DetailTreeLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 328 )
+
+[node name="DetailTreeLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 329 )
+
+[node name="DetailTreeLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 330 )
+
+[node name="DetailTreeLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 331 )
+
+[node name="DetailTreeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 333 )
+
+[node name="DetailTreeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 319 )
+
+[node name="DetailTreeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 311 )
+
+[node name="DetailTreeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 310 )
+
+[node name="EnemyUfoGreenWeaponE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 312 )
+
+[node name="EnemyUfoGreenWeaponN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 309 )
+
+[node name="EnemyUfoGreenWeaponS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 313 )
+
+[node name="EnemyUfoGreenWeaponW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 314 )
+
+[node name="EnemyUfoGreenE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 315 )
+
+[node name="EnemyUfoGreenN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 306 )
+
+[node name="EnemyUfoGreenS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 307 )
+
+[node name="EnemyUfoGreenW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 308 )
+
+[node name="EnemyUfoPurpleWeaponE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 318 )
+
+[node name="EnemyUfoPurpleWeaponN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 316 )
+
+[node name="EnemyUfoPurpleWeaponS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 317 )
+
+[node name="EnemyUfoPurpleWeaponW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 290 )
+
+[node name="EnemyUfoPurpleE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 475 )
+
+[node name="EnemyUfoPurpleN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 431 )
+
+[node name="EnemyUfoPurpleS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 430 )
+
+[node name="EnemyUfoPurpleW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 408 )
+
+[node name="EnemyUfoRedWeaponE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 409 )
+
+[node name="EnemyUfoRedWeaponN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 416 )
+
+[node name="EnemyUfoRedWeaponS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 438 )
+
+[node name="EnemyUfoRedWeaponW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 410 )
+
+[node name="EnemyUfoRedE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 428 )
+
+[node name="EnemyUfoRedN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 411 )
+
+[node name="EnemyUfoRedS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 415 )
+
+[node name="EnemyUfoRedW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 412 )
+
+[node name="EnemyUfoYellowWeaponE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 424 )
+
+[node name="EnemyUfoYellowWeaponN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 439 )
+
+[node name="EnemyUfoYellowWeaponS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 421 )
+
+[node name="EnemyUfoYellowWeaponW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 405 )
+
+[node name="EnemyUfoYellowE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 413 )
+
+[node name="EnemyUfoYellowN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 426 )
+
+[node name="EnemyUfoYellowS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 434 )
+
+[node name="EnemyUfoYellowW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 418 )
+
+[node name="SnowDetailCrystalLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 406 )
+
+[node name="SnowDetailCrystalLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 417 )
+
+[node name="SnowDetailCrystalLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 407 )
+
+[node name="SnowDetailCrystalLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 425 )
+
+[node name="SnowDetailCrystalE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 427 )
+
+[node name="SnowDetailCrystalN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 432 )
+
+[node name="SnowDetailCrystalS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 414 )
+
+[node name="SnowDetailCrystalW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 435 )
+
+[node name="SnowDetailDirtLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 420 )
+
+[node name="SnowDetailDirtLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 419 )
+
+[node name="SnowDetailDirtLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 433 )
+
+[node name="SnowDetailDirtLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 429 )
+
+[node name="SnowDetailDirtE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 422 )
+
+[node name="SnowDetailDirtN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 436 )
+
+[node name="SnowDetailDirtS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 423 )
+
+[node name="SnowDetailDirtW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 437 )
+
+[node name="SnowDetailRocksLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 555 )
+
+[node name="SnowDetailRocksLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 559 )
+
+[node name="SnowDetailRocksLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 548 )
+
+[node name="SnowDetailRocksLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 557 )
+
+[node name="SnowDetailRocksE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 572 )
+
+[node name="SnowDetailRocksN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 552 )
+
+[node name="SnowDetailRocksS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 580 )
+
+[node name="SnowDetailRocksW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 549 )
+
+[node name="SnowDetailTreeLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 569 )
+
+[node name="SnowDetailTreeLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 556 )
+
+[node name="SnowDetailTreeLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 550 )
+
+[node name="SnowDetailTreeLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 567 )
+
+[node name="SnowDetailTreeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 551 )
+
+[node name="SnowDetailTreeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 546 )
+
+[node name="SnowDetailTreeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 553 )
+
+[node name="SnowDetailTreeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 558 )
+
+[node name="SnowTileBumpE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 547 )
+
+[node name="SnowTileBumpN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 560 )
+
+[node name="SnowTileBumpS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 554 )
+
+[node name="SnowTileBumpW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 561 )
+
+[node name="SnowTileCornerInnerE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 562 )
+
+[node name="SnowTileCornerInnerN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 564 )
+
+[node name="SnowTileCornerInnerS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 565 )
+
+[node name="SnowTileCornerInnerW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 579 )
+
+[node name="SnowTileCornerLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 566 )
+
+[node name="SnowTileCornerLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 563 )
+
+[node name="SnowTileCornerLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 568 )
+
+[node name="SnowTileCornerLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 570 )
+
+[node name="SnowTileCornerOuterE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 571 )
+
+[node name="SnowTileCornerOuterN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 573 )
+
+[node name="SnowTileCornerOuterS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 574 )
+
+[node name="SnowTileCornerOuterW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 575 )
+
+[node name="SnowTileCornerRoundE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 577 )
+
+[node name="SnowTileCornerRoundN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 576 )
+
+[node name="SnowTileCornerRoundS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 578 )
+
+[node name="SnowTileCornerRoundW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 25 )
+
+[node name="SnowTileCornerSquareE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 17 )
+
+[node name="SnowTileCornerSquareN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 26 )
+
+[node name="SnowTileCornerSquareS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 31 )
+
+[node name="SnowTileCornerSquareW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 16 )
+
+[node name="SnowTileCrossingE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 18 )
+
+[node name="SnowTileCrossingN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 22 )
+
+[node name="SnowTileCrossingS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 15 )
+
+[node name="SnowTileCrossingW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 28 )
+
+[node name="SnowTileCrystalE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 32 )
+
+[node name="SnowTileCrystalN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 7 )
+
+[node name="SnowTileCrystalS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 8 )
+
+[node name="SnowTileCrystalW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 2 )
+
+[node name="SnowTileE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 29 )
+
+[node name="SnowTileEndRoundSpawnE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 9 )
+
+[node name="SnowTileEndRoundSpawnN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 4 )
+
+[node name="SnowTileEndRoundSpawnS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 10 )
+
+[node name="SnowTileEndRoundSpawnW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 34 )
+
+[node name="SnowTileEndRoundE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 35 )
+
+[node name="SnowTileEndRoundN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 23 )
+
+[node name="SnowTileEndRoundS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 11 )
+
+[node name="SnowTileEndRoundW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 19 )
+
+[node name="SnowTileEndE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 24 )
+
+[node name="SnowTileEndN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 14 )
+
+[node name="SnowTileEndS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 12 )
+
+[node name="SnowTileEndW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 13 )
+
+[node name="SnowTileHillE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 20 )
+
+[node name="SnowTileHillN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 21 )
+
+[node name="SnowTileHillS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 5 )
+
+[node name="SnowTileHillW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 6 )
+
+[node name="SnowTileN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 30 )
+
+[node name="SnowTileRiverBridgeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 27 )
+
+[node name="SnowTileRiverBridgeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 33 )
+
+[node name="SnowTileRiverBridgeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 1 )
+
+[node name="SnowTileRiverBridgeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 3 )
+
+[node name="SnowTileRiverCornerE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 519 )
+
+[node name="SnowTileRiverCornerN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 518 )
+
+[node name="SnowTileRiverCornerS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 528 )
+
+[node name="SnowTileRiverCornerW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 524 )
+
+[node name="SnowTileRiverFallE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 515 )
+
+[node name="SnowTileRiverFallN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 523 )
+
+[node name="SnowTileRiverFallS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 520 )
+
+[node name="SnowTileRiverFallW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 516 )
+
+[node name="SnowTileRiverSlopeLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 512 )
+
+[node name="SnowTileRiverSlopeLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 521 )
+
+[node name="SnowTileRiverSlopeLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 522 )
+
+[node name="SnowTileRiverSlopeLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 545 )
+
+[node name="SnowTileRiverSlopeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 525 )
+
+[node name="SnowTileRiverSlopeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 526 )
+
+[node name="SnowTileRiverSlopeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 514 )
+
+[node name="SnowTileRiverSlopeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 533 )
+
+[node name="SnowTileRiverStraightE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 527 )
+
+[node name="SnowTileRiverStraightN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 529 )
+
+[node name="SnowTileRiverStraightS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 517 )
+
+[node name="SnowTileRiverStraightW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 513 )
+
+[node name="SnowTileRiverTransitionE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 530 )
+
+[node name="SnowTileRiverTransitionN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 535 )
+
+[node name="SnowTileRiverTransitionS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 544 )
+
+[node name="SnowTileRiverTransitionW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 511 )
+
+[node name="SnowTileRockE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 531 )
+
+[node name="SnowTileRockN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 532 )
+
+[node name="SnowTileRockS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 543 )
+
+[node name="SnowTileRockW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 534 )
+
+[node name="SnowTileS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 536 )
+
+[node name="SnowTileSlopeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 537 )
+
+[node name="SnowTileSlopeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 538 )
+
+[node name="SnowTileSlopeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 539 )
+
+[node name="SnowTileSlopeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 540 )
+
+[node name="SnowTileSpawnRoundE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 541 )
+
+[node name="SnowTileSpawnRoundN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 542 )
+
+[node name="SnowTileSpawnRoundS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 451 )
+
+[node name="SnowTileSpawnRoundW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 442 )
+
+[node name="SnowTileSpawnE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 469 )
+
+[node name="SnowTileSpawnN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 446 )
+
+[node name="SnowTileSpawnS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 445 )
+
+[node name="SnowTileSpawnW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 455 )
+
+[node name="SnowTileSplitE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 461 )
+
+[node name="SnowTileSplitN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 473 )
+
+[node name="SnowTileSplitS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 474 )
+
+[node name="SnowTileSplitW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 452 )
+
+[node name="SnowTileStraightHillLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 464 )
+
+[node name="SnowTileStraightHillLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 462 )
+
+[node name="SnowTileStraightHillLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 443 )
+
+[node name="SnowTileStraightHillLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 449 )
+
+[node name="SnowTileStraightHillE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 448 )
+
+[node name="SnowTileStraightHillN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 456 )
+
+[node name="SnowTileStraightHillS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 465 )
+
+[node name="SnowTileStraightHillW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 447 )
+
+[node name="SnowTileStraightE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 440 )
+
+[node name="SnowTileStraightN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 471 )
+
+[node name="SnowTileStraightS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 472 )
+
+[node name="SnowTileStraightW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 441 )
+
+[node name="SnowTileTransitionE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 453 )
+
+[node name="SnowTileTransitionN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 459 )
+
+[node name="SnowTileTransitionS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 457 )
+
+[node name="SnowTileTransitionW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 444 )
+
+[node name="SnowTileTreeDoubleE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 463 )
+
+[node name="SnowTileTreeDoubleN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 460 )
+
+[node name="SnowTileTreeDoubleS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 470 )
+
+[node name="SnowTileTreeDoubleW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 466 )
+
+[node name="SnowTileTreeQuadE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 454 )
+
+[node name="SnowTileTreeQuadN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 458 )
+
+[node name="SnowTileTreeQuadS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 450 )
+
+[node name="SnowTileTreeQuadW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 467 )
+
+[node name="SnowTileTreeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 468 )
+
+[node name="SnowTileTreeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 336 )
+
+[node name="SnowTileTreeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 337 )
+
+[node name="SnowTileTreeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 394 )
+
+[node name="SnowTileW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 389 )
+
+[node name="SnowTileWideCornerE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 359 )
+
+[node name="SnowTileWideCornerN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 387 )
+
+[node name="SnowTileWideCornerS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 349 )
+
+[node name="SnowTileWideCornerW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 339 )
+
+[node name="SnowTileWideSplitE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 388 )
+
+[node name="SnowTileWideSplitN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 340 )
+
+[node name="SnowTileWideSplitS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 386 )
+
+[node name="SnowTileWideSplitW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 354 )
+
+[node name="SnowTileWideStraightE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 374 )
+
+[node name="SnowTileWideStraightN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 341 )
+
+[node name="SnowTileWideStraightS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 366 )
+
+[node name="SnowTileWideStraightW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 390 )
+
+[node name="SnowTileWideTransitionE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 398 )
+
+[node name="SnowTileWideTransitionN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 346 )
+
+[node name="SnowTileWideTransitionS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 363 )
+
+[node name="SnowTileWideTransitionW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 384 )
+
+[node name="SnowWoodStructureE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 395 )
+
+[node name="SnowWoodStructureHighE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 343 )
+
+[node name="SnowWoodStructureHighN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 364 )
+
+[node name="SnowWoodStructureHighS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 338 )
+
+[node name="SnowWoodStructureHighW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 360 )
+
+[node name="SnowWoodStructureN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 361 )
+
+[node name="SnowWoodStructureS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 342 )
+
+[node name="SnowWoodStructureW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 367 )
+
+[node name="TileBumpE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 379 )
+
+[node name="TileBumpN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 365 )
+
+[node name="TileBumpS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 372 )
+
+[node name="TileBumpW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 350 )
+
+[node name="TileCornerInnerE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 344 )
+
+[node name="TileCornerInnerN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 335 )
+
+[node name="TileCornerInnerS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 368 )
+
+[node name="TileCornerInnerW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 351 )
+
+[node name="TileCornerLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 362 )
+
+[node name="TileCornerLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 391 )
+
+[node name="TileCornerLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 369 )
+
+[node name="TileCornerLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 345 )
+
+[node name="TileCornerOuterE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 373 )
+
+[node name="TileCornerOuterN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 347 )
+
+[node name="TileCornerOuterS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 392 )
+
+[node name="TileCornerOuterW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 393 )
+
+[node name="TileCornerRoundE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 396 )
+
+[node name="TileCornerRoundN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 370 )
+
+[node name="TileCornerRoundS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 348 )
+
+[node name="TileCornerRoundW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 352 )
+
+[node name="TileCornerSquareE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 375 )
+
+[node name="TileCornerSquareN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 353 )
+
+[node name="TileCornerSquareS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 371 )
+
+[node name="TileCornerSquareW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 376 )
+
+[node name="TileCrossingE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 377 )
+
+[node name="TileCrossingN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 381 )
+
+[node name="TileCrossingS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 385 )
+
+[node name="TileCrossingW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 378 )
+
+[node name="TileCrystalE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 397 )
+
+[node name="TileCrystalN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 355 )
+
+[node name="TileCrystalS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 356 )
+
+[node name="TileCrystalW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 357 )
+
+[node name="TileDirtHighE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 380 )
+
+[node name="TileDirtHighN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 358 )
+
+[node name="TileDirtHighS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 382 )
+
+[node name="TileDirtHighW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 383 )
+
+[node name="TileDirtE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 401 )
+
+[node name="TileDirtN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 404 )
+
+[node name="TileDirtS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 403 )
+
+[node name="TileDirtW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 399 )
+
+[node name="TileE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 400 )
+
+[node name="TileEndRoundSpawnE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 402 )
+
+[node name="TileEndRoundSpawnN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 489 )
+
+[node name="TileEndRoundSpawnS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 481 )
+
+[node name="TileEndRoundSpawnW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 509 )
+
+[node name="TileEndRoundE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 479 )
+
+[node name="TileEndRoundN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 498 )
+
+[node name="TileEndRoundS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 484 )
+
+[node name="TileEndRoundW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 483 )
+
+[node name="TileEndSpawnE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 480 )
+
+[node name="TileEndSpawnN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 503 )
+
+[node name="TileEndSpawnS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 505 )
+
+[node name="TileEndSpawnW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 510 )
+
+[node name="TileEndE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 485 )
+
+[node name="TileEndN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 476 )
+
+[node name="TileEndS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 482 )
+
+[node name="TileEndW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 486 )
+
+[node name="TileHillE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 490 )
+
+[node name="TileHillN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 487 )
+
+[node name="TileHillS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 495 )
+
+[node name="TileHillW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 502 )
+
+[node name="TileN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 492 )
+
+[node name="TileRiverBridgeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 504 )
+
+[node name="TileRiverBridgeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 477 )
+
+[node name="TileRiverBridgeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 506 )
+
+[node name="TileRiverBridgeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 488 )
+
+[node name="TileRiverCornerE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 497 )
+
+[node name="TileRiverCornerN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 507 )
+
+[node name="TileRiverCornerS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 508 )
+
+[node name="TileRiverCornerW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 478 )
+
+[node name="TileRiverFallE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 491 )
+
+[node name="TileRiverFallN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 493 )
+
+[node name="TileRiverFallS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 494 )
+
+[node name="TileRiverFallW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 496 )
+
+[node name="TileRiverSlopeLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 499 )
+
+[node name="TileRiverSlopeLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 500 )
+
+[node name="TileRiverSlopeLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 501 )
+
+[node name="TileRiverSlopeLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 55 )
+
+[node name="TileRiverSlopeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 67 )
+
+[node name="TileRiverSlopeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 56 )
+
+[node name="TileRiverSlopeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 45 )
+
+[node name="TileRiverSlopeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 70 )
+
+[node name="TileRiverStraightE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 68 )
+
+[node name="TileRiverStraightN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 51 )
+
+[node name="TileRiverStraightS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 65 )
+
+[node name="TileRiverStraightW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 60 )
+
+[node name="TileRiverTransitionE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 43 )
+
+[node name="TileRiverTransitionN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 53 )
+
+[node name="TileRiverTransitionS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 66 )
+
+[node name="TileRiverTransitionW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 61 )
+
+[node name="TileRockE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 50 )
+
+[node name="TileRockN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 63 )
+
+[node name="TileRockS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 58 )
+
+[node name="TileRockW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 54 )
+
+[node name="TileS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 46 )
+
+[node name="TileSlopeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 52 )
+
+[node name="TileSlopeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 39 )
+
+[node name="TileSlopeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 57 )
+
+[node name="TileSlopeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 42 )
+
+[node name="TileSpawnRoundE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 59 )
+
+[node name="TileSpawnRoundN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 62 )
+
+[node name="TileSpawnRoundS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 64 )
+
+[node name="TileSpawnRoundW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 69 )
+
+[node name="TileSpawnE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 36 )
+
+[node name="TileSpawnN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 37 )
+
+[node name="TileSpawnS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 38 )
+
+[node name="TileSpawnW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 40 )
+
+[node name="TileSplitE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 41 )
+
+[node name="TileSplitN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 44 )
+
+[node name="TileSplitS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 47 )
+
+[node name="TileSplitW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 48 )
+
+[node name="TileStraightHillLargeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 49 )
+
+[node name="TileStraightHillLargeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 125 )
+
+[node name="TileStraightHillLargeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 111 )
+
+[node name="TileStraightHillLargeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 90 )
+
+[node name="TileStraightHillE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 74 )
+
+[node name="TileStraightHillN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 106 )
+
+[node name="TileStraightHillS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 78 )
+
+[node name="TileStraightHillW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 81 )
+
+[node name="TileStraightE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 73 )
+
+[node name="TileStraightN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 101 )
+
+[node name="TileStraightS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 86 )
+
+[node name="TileStraightW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 113 )
+
+[node name="TileTransitionE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 82 )
+
+[node name="TileTransitionN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 100 )
+
+[node name="TileTransitionS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 124 )
+
+[node name="TileTransitionW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 97 )
+
+[node name="TileTreeDoubleE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 103 )
+
+[node name="TileTreeDoubleN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 91 )
+
+[node name="TileTreeDoubleS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 132 )
+
+[node name="TileTreeDoubleW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 107 )
+
+[node name="TileTreeQuadE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 92 )
+
+[node name="TileTreeQuadN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 126 )
+
+[node name="TileTreeQuadS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 108 )
+
+[node name="TileTreeQuadW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 72 )
+
+[node name="TileTreeE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 96 )
+
+[node name="TileTreeN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 93 )
+
+[node name="TileTreeS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 130 )
+
+[node name="TileTreeW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 98 )
+
+[node name="TileW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 104 )
+
+[node name="TileWideCornerE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 118 )
+
+[node name="TileWideCornerN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 105 )
+
+[node name="TileWideCornerS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 128 )
+
+[node name="TileWideCornerW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 102 )
+
+[node name="TileWideSplitE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 109 )
+
+[node name="TileWideSplitN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 110 )
+
+[node name="TileWideSplitS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 121 )
+
+[node name="TileWideSplitW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 112 )
+
+[node name="TileWideStraightE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 114 )
+
+[node name="TileWideStraightN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 75 )
+
+[node name="TileWideStraightS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 115 )
+
+[node name="TileWideStraightW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 127 )
+
+[node name="TileWideTransitionE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 116 )
+
+[node name="TileWideTransitionN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 117 )
+
+[node name="TileWideTransitionS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 94 )
+
+[node name="TileWideTransitionW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 119 )
+
+[node name="TowerRoundBaseE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 120 )
+
+[node name="TowerRoundBaseN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 99 )
+
+[node name="TowerRoundBaseS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 95 )
+
+[node name="TowerRoundBaseW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 122 )
+
+[node name="TowerRoundBottomAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 123 )
+
+[node name="TowerRoundBottomAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 80 )
+
+[node name="TowerRoundBottomAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 129 )
+
+[node name="TowerRoundBottomAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 85 )
+
+[node name="TowerRoundBottomBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 131 )
+
+[node name="TowerRoundBottomBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 83 )
+
+[node name="TowerRoundBottomBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 133 )
+
+[node name="TowerRoundBottomBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 134 )
+
+[node name="TowerRoundBottomCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 76 )
+
+[node name="TowerRoundBottomCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 71 )
+
+[node name="TowerRoundBottomCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 77 )
+
+[node name="TowerRoundBottomCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 79 )
+
+[node name="TowerRoundCrystalsE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 84 )
+
+[node name="TowerRoundCrystalsN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 87 )
+
+[node name="TowerRoundCrystalsS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 88 )
+
+[node name="TowerRoundCrystalsW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 89 )
+
+[node name="TowerRoundMiddleAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 135 )
+
+[node name="TowerRoundMiddleAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 136 )
+
+[node name="TowerRoundMiddleAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 137 )
+
+[node name="TowerRoundMiddleAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 138 )
+
+[node name="TowerRoundMiddleBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 140 )
+
+[node name="TowerRoundMiddleBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 139 )
+
+[node name="TowerRoundMiddleBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 196 )
+
+[node name="TowerRoundMiddleBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 187 )
+
+[node name="TowerRoundMiddleCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 184 )
+
+[node name="TowerRoundMiddleCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 179 )
+
+[node name="TowerRoundMiddleCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 197 )
+
+[node name="TowerRoundMiddleCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 151 )
+
+[node name="TowerRoundRoofAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 156 )
+
+[node name="TowerRoundRoofAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 180 )
+
+[node name="TowerRoundRoofAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 186 )
+
+[node name="TowerRoundRoofAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 185 )
+
+[node name="TowerRoundRoofBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 181 )
+
+[node name="TowerRoundRoofBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 152 )
+
+[node name="TowerRoundRoofBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 199 )
+
+[node name="TowerRoundRoofBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 190 )
+
+[node name="TowerRoundRoofCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 188 )
+
+[node name="TowerRoundRoofCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 149 )
+
+[node name="TowerRoundRoofCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 182 )
+
+[node name="TowerRoundRoofCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 195 )
+
+[node name="TowerRoundSampleAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 161 )
+
+[node name="TowerRoundSampleAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 141 )
+
+[node name="TowerRoundSampleAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 147 )
+
+[node name="TowerRoundSampleAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 158 )
+
+[node name="TowerRoundSampleBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 198 )
+
+[node name="TowerRoundSampleBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 183 )
+
+[node name="TowerRoundSampleBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 155 )
+
+[node name="TowerRoundSampleBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 200 )
+
+[node name="TowerRoundSampleCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 189 )
+
+[node name="TowerRoundSampleCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 201 )
+
+[node name="TowerRoundSampleCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 191 )
+
+[node name="TowerRoundSampleCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 192 )
+
+[node name="TowerRoundSampleDE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 157 )
+
+[node name="TowerRoundSampleDN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 176 )
+
+[node name="TowerRoundSampleDS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 159 )
+
+[node name="TowerRoundSampleDW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 193 )
+
+[node name="TowerRoundSampleEE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 153 )
+
+[node name="TowerRoundSampleEN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 194 )
+
+[node name="TowerRoundSampleES" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 202 )
+
+[node name="TowerRoundSampleEW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 203 )
+
+[node name="TowerRoundSampleFE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 204 )
+
+[node name="TowerRoundSampleFN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 142 )
+
+[node name="TowerRoundSampleFS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 162 )
+
+[node name="TowerRoundSampleFW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 174 )
+
+[node name="TowerRoundTopAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 177 )
+
+[node name="TowerRoundTopAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 143 )
+
+[node name="TowerRoundTopAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 144 )
+
+[node name="TowerRoundTopAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 145 )
+
+[node name="TowerRoundTopBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 154 )
+
+[node name="TowerRoundTopBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 146 )
+
+[node name="TowerRoundTopBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 175 )
+
+[node name="TowerRoundTopBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 160 )
+
+[node name="TowerRoundTopCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 163 )
+
+[node name="TowerRoundTopCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 164 )
+
+[node name="TowerRoundTopCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 148 )
+
+[node name="TowerRoundTopCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 165 )
+
+[node name="TowerSquareBottomAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 166 )
+
+[node name="TowerSquareBottomAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 167 )
+
+[node name="TowerSquareBottomAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 168 )
+
+[node name="TowerSquareBottomAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 150 )
+
+[node name="TowerSquareBottomBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 169 )
+
+[node name="TowerSquareBottomBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 170 )
+
+[node name="TowerSquareBottomBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 171 )
+
+[node name="TowerSquareBottomBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 172 )
+
+[node name="TowerSquareBottomCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 173 )
+
+[node name="TowerSquareBottomCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 178 )
+
+[node name="TowerSquareBottomCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 208 )
+
+[node name="TowerSquareBottomCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 209 )
+
+[node name="TowerSquareMiddleAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 206 )
+
+[node name="TowerSquareMiddleAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 207 )
+
+[node name="TowerSquareMiddleAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 210 )
+
+[node name="TowerSquareMiddleAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 205 )
+
+[node name="TowerSquareMiddleBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 215 )
+
+[node name="TowerSquareMiddleBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 247 )
+
+[node name="TowerSquareMiddleBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 216 )
+
+[node name="TowerSquareMiddleBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 255 )
+
+[node name="TowerSquareMiddleCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 253 )
+
+[node name="TowerSquareMiddleCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 243 )
+
+[node name="TowerSquareMiddleCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 227 )
+
+[node name="TowerSquareMiddleCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 266 )
+
+[node name="TowerSquareRoofAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 217 )
+
+[node name="TowerSquareRoofAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 273 )
+
+[node name="TowerSquareRoofAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 218 )
+
+[node name="TowerSquareRoofAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 242 )
+
+[node name="TowerSquareRoofBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 229 )
+
+[node name="TowerSquareRoofBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 219 )
+
+[node name="TowerSquareRoofBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 268 )
+
+[node name="TowerSquareRoofBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 244 )
+
+[node name="TowerSquareRoofCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 220 )
+
+[node name="TowerSquareRoofCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 250 )
+
+[node name="TowerSquareRoofCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 251 )
+
+[node name="TowerSquareRoofCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 221 )
+
+[node name="TowerSquareSampleAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 245 )
+
+[node name="TowerSquareSampleAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 252 )
+
+[node name="TowerSquareSampleAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 270 )
+
+[node name="TowerSquareSampleAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 228 )
+
+[node name="TowerSquareSampleBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 230 )
+
+[node name="TowerSquareSampleBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 254 )
+
+[node name="TowerSquareSampleBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 235 )
+
+[node name="TowerSquareSampleBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 246 )
+
+[node name="TowerSquareSampleCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 222 )
+
+[node name="TowerSquareSampleCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 269 )
+
+[node name="TowerSquareSampleCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 256 )
+
+[node name="TowerSquareSampleCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 257 )
+
+[node name="TowerSquareSampleDE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 212 )
+
+[node name="TowerSquareSampleDN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 248 )
+
+[node name="TowerSquareSampleDS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 239 )
+
+[node name="TowerSquareSampleDW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 249 )
+
+[node name="TowerSquareSampleEE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 240 )
+
+[node name="TowerSquareSampleEN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 267 )
+
+[node name="TowerSquareSampleES" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 231 )
+
+[node name="TowerSquareSampleEW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 241 )
+
+[node name="TowerSquareSampleFE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 224 )
+
+[node name="TowerSquareSampleFN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 271 )
+
+[node name="TowerSquareSampleFS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 258 )
+
+[node name="TowerSquareSampleFW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 223 )
+
+[node name="TowerSquareTopAE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 272 )
+
+[node name="TowerSquareTopAN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 211 )
+
+[node name="TowerSquareTopAS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 265 )
+
+[node name="TowerSquareTopAW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 232 )
+
+[node name="TowerSquareTopBE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 274 )
+
+[node name="TowerSquareTopBN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 260 )
+
+[node name="TowerSquareTopBS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 259 )
+
+[node name="TowerSquareTopBW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 261 )
+
+[node name="TowerSquareTopCE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 262 )
+
+[node name="TowerSquareTopCN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 225 )
+
+[node name="TowerSquareTopCS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 263 )
+
+[node name="TowerSquareTopCW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 213 )
+
+[node name="WeaponBallistaE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 214 )
+
+[node name="WeaponBallistaN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 226 )
+
+[node name="WeaponBallistaS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 233 )
+
+[node name="WeaponBallistaW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 234 )
+
+[node name="WeaponBlasterE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 236 )
+
+[node name="WeaponBlasterN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 237 )
+
+[node name="WeaponBlasterS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 238 )
+
+[node name="WeaponBlasterW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 264 )
+
+[node name="WeaponCannonE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 285 )
+
+[node name="WeaponCannonN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 280 )
+
+[node name="WeaponCannonS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 278 )
+
+[node name="WeaponCannonW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 277 )
+
+[node name="WeaponCatapultE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 276 )
+
+[node name="WeaponCatapultN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 288 )
+
+[node name="WeaponCatapultS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 281 )
+
+[node name="WeaponCatapultW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 282 )
+
+[node name="WoodStructureE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 275 )
+
+[node name="WoodStructureHighE" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 286 )
+
+[node name="WoodStructureHighN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 279 )
+
+[node name="WoodStructureHighS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 287 )
+
+[node name="WoodStructureHighW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 289 )
+
+[node name="WoodStructureN" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 292 )
+
+[node name="WoodStructureS" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 284 )
+
+[node name="WoodStructureW" type="Sprite" parent="."]
+position = Vector2( 541, 253 )
+texture = ExtResource( 283 )
