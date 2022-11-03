@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Tilesets/TDTileset/tile_E.png" type="Texture" id=1]
+
+[node name="GroundTileset" type="Node2D"]
+
+[node name="TileE" type="Sprite" parent="."]
+position = Vector2( 267, 138 )
+texture = ExtResource( 1 )
