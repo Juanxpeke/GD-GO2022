@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const SPEED = 4000
+const SPEED = 40000
 var motion = Vector2()
 
 
