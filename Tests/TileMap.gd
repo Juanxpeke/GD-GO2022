@@ -9,6 +9,8 @@ var astar := AStar2D.new()
 var obstacles := []
 var units := []
 
+var paths_cache := []
+
 # Called when the node is in the scene tree.
 func _ready() -> void:
 	add_cells_points()
@@ -31,6 +33,10 @@ func connect_point_cardinals(point_position : Vector2) -> void:
 			astar.connect_points(point_id, cardinal_point_id, true)
 
 
+func get_cells_distance(start_position : Vector2, end_position : Vector2) -> int:
+	var astar_path := astar.get_point_path(get_point_id(start_position), get_point_id(end_position))
+	return astar_path.size() - 1
+
 func get_astar_path(start_position: Vector2, end_position: Vector2, max_distance := -1) -> Array:
 	var astar_path := astar.get_point_path(get_point_id(start_position), get_point_id(end_position))
 	return set_path_length(astar_path, max_distance)
@@ -43,9 +49,11 @@ func set_path_length(point_path: Array, max_distance: int) -> Array:
 
 # Maps a (x, y) integer coordinate to a unique integer. It uses
 # improved Szudzik pair agorithm.
-func get_point_id(point : Vector2) -> int:
-	var x : int = point.x
-	var y : int = point.y
+func get_point_id(point_position : Vector2) -> int:
+	# We should get positions with values (n * scale, m * scale)
+	var scale : int = cell_size.y / 2
+	var x : int = point_position.x / scale
+	var y : int = point_position.y / scale
 	
 	var a := x * 2 if x >= 0 else (x * -2) - 1
 	var b := y * 2 if y >= 0 else (y * -2) - 1

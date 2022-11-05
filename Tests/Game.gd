@@ -5,13 +5,14 @@ onready var player = $Board/Player
 onready var line = $Line
 
 var last_cell_position : Vector2
+var player_movement_points := 3
 
 func _process(delta):
 	var mouse_isometric_position = cart2iso(get_viewport().get_mouse_position())
 	var cell_isometric_position = (mouse_isometric_position / board.cell_size.y).floor() * board.cell_size.y
 	var cell_cartisian_position = iso2cart(cell_isometric_position)
 	
-	if cell_cartisian_position != last_cell_position:
+	if cell_cartisian_position != last_cell_position and board.get_cells_distance(player.global_position, cell_cartisian_position) <= player_movement_points:
 		last_cell_position = cell_cartisian_position
 		
 		var path_points = board.get_astar_path(player.global_position, cell_cartisian_position)
