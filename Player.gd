@@ -1,4 +1,7 @@
-extends KinematicBody2D
+extends Entity
+
+
+
 
 const SPEED = 40000
 var motion = Vector2()
@@ -8,17 +11,6 @@ var motion = Vector2()
 func _ready():
 	pass
 
-# Converts any Vector2 coordinates or motion from the cartesian to the isometric system
-func cartesian_to_isometric(cartesian):
-	return Vector2(cartesian.x - cartesian.y, (cartesian.x + cartesian.y) / 2)
-
-# useful to convert mouse coordinates back to screen-space, and detect where the player wants to know.
-# If we want to add mouse-based controls, we'll need this function
-func isometric_to_cartesian(iso):
-	var cart_pos = Vector2()
-	cart_pos.x = (iso.x + iso.y * 2) / 2
-	cart_pos.y = - iso.x + cart_pos.x
-	return cart_pos
 
 func _physics_process(delta):
 	# Everything works like you're used to in a top-down game
@@ -36,5 +28,5 @@ func _physics_process(delta):
 
 	motion = direction.normalized() * SPEED * delta
 	# Isometric movement is movement like you're used to, converted to the isometric system
-	motion = cartesian_to_isometric(motion)
-	move_and_slide(motion)
+	# motion = cartesian_to_isometric(motion)
+	# move_and_slide(motion)

@@ -1,15 +1,20 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Tilesets/GroundTileset/GroundTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Tests/Player.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Tests/TileMap.gd" type="Script" id=4]
 [ext_resource path="res://Tests/Game.gd" type="Script" id=5]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 40.0
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
-[node name="TileMapTest" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="Board" type="TileMap" parent="."]
@@ -20,18 +25,9 @@ format = 1
 tile_data = PoolIntArray( -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -65536, 0, 0, -65535, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, 0, 0, 0, 1, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0 )
 script = ExtResource( 4 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 256, 320 )
+[node name="Player" type="AnimatedSprite" parent="Board"]
+position = Vector2( 320, 352 )
+frames = SubResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-rotation = 1.5708
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 3 )
 
 [node name="Line" type="Line2D" parent="."]

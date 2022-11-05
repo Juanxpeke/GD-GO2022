@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "AstarTileMap",
 "language": "GDScript",
 "path": "res://Tests/TileMap.gd"
+}, {
+"base": "Node",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Entity.gd"
 } ]
 _global_script_class_icons={
-"AstarTileMap": ""
+"AstarTileMap": "",
+"Entity": ""
 }
 
 [application]
