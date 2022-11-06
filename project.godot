@@ -10,7 +10,7 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "TileMap",
-"class": "AstarTileMap",
+"class": "AStarTileMap",
 "language": "GDScript",
 "path": "res://Tests/TileMap.gd"
 }, {
@@ -20,7 +20,7 @@ _global_script_classes=[ {
 "path": "res://Entity.gd"
 } ]
 _global_script_class_icons={
-"AstarTileMap": "",
+"AStarTileMap": "",
 "Entity": ""
 }
 

@@ -1,5 +1,15 @@
 extends TileMap
-class_name AstarTileMap
+class_name AStarTileMap
+
+# Wrapper class for TileMap class. It adds new basic functionalities and also
+# allows the user to draw shapes in it. The definitions adopted for using this 
+# class are the following:
+#
+# 1) The tilemap has infinite cells, and a finite amount of cells that are used.
+# 2) Each cell can be defined with an ID, a cartesian coordinate, a position
+#	contained in the cell, or the origin position of the cell.
+# 3) Methods will be defined following these concepts, for example, there could
+#	be a method 'get_cell_id_by_cor', which returns 0 if  (0, 0) is given.
 
 const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
@@ -9,51 +19,71 @@ var astar := AStar2D.new()
 var obstacles := []
 var units := []
 
-var paths_cache := []
+var path_cache := []
 
-# Called when the node is in the scene tree.
+# Called when the node is added to the scene tree.
 func _ready() -> void:
-	add_cells_points()
+	refill_astar_points()
 
-# Adds the tilemap cells points to the AStar graph and its cardinal conections.
-func add_cells_points() -> void:
+# =================
+# ===== ASTAR =====
+# =================
+
+# Refiils the AStar graph with the tilemap cells origins and its cardinal conections.
+func refill_astar_points() -> void:
 	astar.clear()
-	var cell_positions = get_cells_global_positions()
-	for cell_position in cell_positions:
-		astar.add_point(get_point_id(cell_position), cell_position)
-	for cell_position in cell_positions:
-		connect_point_cardinals(cell_position)
+	var cell_origins = get_used_cells_origins()
+	for cell_origin in cell_origins:
+		astar.add_point(get_cell_id_by_or(cell_origin), cell_origin)
+	for cell_origin in cell_origins:
+		connect_astar_point(cell_origin)
 
 # Connects a point to its cardinal neighbors.
-func connect_point_cardinals(point_position : Vector2) -> void:
-	var point_id := get_point_id(point_position)
+func connect_astar_point(point_position : Vector2) -> void:
+	var point_id := get_cell_id_by_or(point_position)
 	for direction in DIRECTIONS:
-		var cardinal_point_id := get_point_id(point_position + map_to_world(direction))
+		var cardinal_point_id := get_cell_id_by_or(point_position + map_to_world(direction))
 		if cardinal_point_id != point_id and astar.has_point(cardinal_point_id):
 			astar.connect_points(point_id, cardinal_point_id, true)
 
+# ===================
+# ===== GETTERS =====
+# ===================
 
-func get_cells_distance(start_position : Vector2, end_position : Vector2) -> int:
-	var astar_path := astar.get_point_path(get_point_id(start_position), get_point_id(end_position))
+# Notes: Origin right now is the top-left corner of the cell.
+
+# Given a position in the board, it returns the origin position of the cell that
+# covers that position.
+func get_cell_origin_by_pos(position : Vector2) -> Vector2:
+	return global_position + map_to_world(world_to_map(to_local(position)))
+	
+# Returns an array with the origin positions of all the cells USED in the tilemap.
+func get_used_cells_origins() -> Array:
+	var cells_coordinates = get_used_cells()
+	var cell_origins := []
+	for cell_coordinate in cells_coordinates:
+		var cell_origin := global_position + map_to_world(cell_coordinate)
+		cell_origins.append(cell_origin)
+	return cell_origins
+
+# Returns an array with the origin positions of cells in a certain path.
+func get_cells_path_by_or(start_origin: Vector2, end_origin: Vector2) -> Array:
+	return astar.get_point_path(get_cell_id_by_or(start_origin), get_cell_id_by_or(end_origin)) as Array
+
+# Returns the cell distance between two cells.
+func get_cells_distance_by_or(start_origin : Vector2, end_origin : Vector2) -> int:
+	var astar_path = astar.get_point_path(get_cell_id_by_or(start_origin), get_cell_id_by_or(end_origin)) as Array
 	return astar_path.size() - 1
 
-func get_astar_path(start_position: Vector2, end_position: Vector2, max_distance := -1) -> Array:
-	var astar_path := astar.get_point_path(get_point_id(start_position), get_point_id(end_position))
-	return set_path_length(astar_path, max_distance)
+# Returns true if the correspondent cell is used, false otherwise.
+func has_cell_by_or(cell_origin : Vector2) -> bool:
+	return astar.has_point(get_cell_id_by_or(cell_origin))
 
-func set_path_length(point_path: Array, max_distance: int) -> Array:
-	if max_distance < 0: return point_path
-	point_path.resize(min(point_path.size(), max_distance))
-	return point_path
-
-
-# Maps a (x, y) integer coordinate to a unique integer. It uses
-# improved Szudzik pair agorithm.
-func get_point_id(point_position : Vector2) -> int:
-	# We should get positions with values (n * scale, m * scale)
-	var scale : int = cell_size.y / 2
-	var x : int = point_position.x / scale
-	var y : int = point_position.y / scale
+# Given a cell coordinate, returns a unique integer. It uses improved Szudzik
+# pair agorithm to calculate the ID.
+func get_cell_id_by_co(cell_coordinate : Vector2) -> int:
+	var x : int = cell_coordinate.x
+	var y : int = cell_coordinate.y
 	
 	var a := x * 2 if x >= 0 else (x * -2) - 1
 	var b := y * 2 if y >= 0 else (y * -2) - 1
@@ -63,17 +93,31 @@ func get_point_id(point_position : Vector2) -> int:
 		return -c - 1
 	
 	return c
+	
+# Given a cell origin, returns a unique integer. It uses improved Szudzik pair 
+# agorithm to calculate the ID, and first transforms the origin to the equivalent
+# coordinate, in order reduce the IDs values.
+func get_cell_id_by_or(cell_origin : Vector2) -> int:
+	var cell_coordinate = get_cell_coord_by_or(cell_origin)
+	return get_cell_id_by_co(cell_coordinate)
 
-# Returns an array with the global positions of all the cells in the tilemap.
-func get_cells_global_positions() -> Array:
-	var cells_coordinates = get_used_cells()
-	var cell_positions := []
-	for cell_coordinate in cells_coordinates:
-		var cell_position := global_position + map_to_world(cell_coordinate)
-		cell_positions.append(cell_position)
-	return cell_positions
+# Given a cell origin, it returns the equivalent cartesian coordinate.
+func get_cell_coord_by_or(cell_origin : Vector2) -> Vector2:
+	return world_to_map(to_local(cell_origin))
+
+	
+# Converts from isometric coordinates to cartesian coordinates.
+func iso2cart(iso_position : Vector2) -> Vector2:
+	return Vector2(iso_position.x - iso_position.y, (iso_position.x + iso_position.y) / 2)
+
+# Converts from cartesian coordinates to isometric coordinates.
+func cart2iso(cart_position : Vector2) -> Vector2:
+	return Vector2(cart_position.x / 2 + cart_position.y, -cart_position.x / 2 + cart_position.y)
 
 
+# ====================
+# ===== GRAPHICS =====
+# ====================
 
 # Shows the possible movements of an entity on the board. It uses
 # the entity cache in case it is not the entity's turn.
@@ -83,8 +127,17 @@ func show_possible_movements(entity : Entity) -> void:
 # Shows the path from an entity to a given cell. It can also use a cache,
 # because if the path is A, then, the path to some cell inside A should also
 # be the optimum path.
-func show_path(entity : Entity, cell) -> void:
-	pass
+func show_path(cell1, cell2) -> void:
+	var cells_path = get_cells_path_by_or(cell1, cell2)
+	cells_path = cells_path.slice(1, cells_path.size() - 1)
+	for cell in cells_path:
+		var cell_coord = get_cell_coord_by_or(cell)
+		set_cellv(cell_coord, 1)
+		path_cache.append(cell_coord)
+	
+func hide_path() -> void:
+	for cell_coord in path_cache:
+		set_cellv(cell_coord, 0)
 	
 # Highlights a cell.
 func highlight_cell(cell, mode : int) -> void:
@@ -101,9 +154,13 @@ func highlight_cell(cell, mode : int) -> void:
 
 
 
+func set_path_length(point_path: Array, max_distance: int) -> Array:
+	if max_distance < 0: return point_path
+	point_path.resize(min(point_path.size(), max_distance))
+	return point_path
 
 func update() -> void:
-	add_cells_points()
+	refill_astar_points()
 	var unitNodes = get_tree().get_nodes_in_group("Units")
 	for unitNode in unitNodes:
 		add_unit(unitNode)
@@ -134,7 +191,7 @@ func get_floodfill_positions(start_position: Vector2, min_range: int, max_range:
 		if skip_units and position_has_unit(current_position, start_position): continue
 		if current_position in floodfill_positions: continue
 
-		var current_point := get_point_id(current_position)
+		var current_point := get_cell_id_by_or(current_position)
 		if not astar.has_point(current_point): continue
 		if astar.is_point_disabled(current_point): continue
 
@@ -150,7 +207,7 @@ func get_floodfill_positions(start_position: Vector2, min_range: int, max_range:
 			if skip_units and position_has_unit(new_position): continue
 			if new_position in floodfill_positions: continue
 
-			var new_point := get_point_id(new_position)
+			var new_point := get_cell_id_by_or(new_position)
 			if not astar.has_point(new_point): continue
 			if astar.is_point_disabled(new_point): continue
 
@@ -182,7 +239,7 @@ func path_directions(path) -> Array:
 
 
 func has_point(point_position: Vector2) -> bool:
-	var point_id := get_point_id(point_position)
+	var point_id := get_cell_id_by_or(point_position)
 	return astar.has_point(point_id)
 
 
@@ -196,14 +253,14 @@ func get_grid_distance(distance: Vector2) -> float:
 
 func set_obstacles_points_disabled(value: bool) -> void:
 	#for obstacle in obstacles:
-	#	astar.set_point_disabled(get_point_id(obstacle.global_position.x, obstacle.global_position.y), value)
+	#	astar.set_point_disabled(get_cell_id(obstacle.global_position.x, obstacle.global_position.y), value)
 	pass
 
 func set_unit_points_disabled(value: bool, exception_units: Array = []) -> void:
 	for unit in units:
 		if unit in exception_units or unit.owner in exception_units:
 			continue
-	#	astar.set_point_disabled(get_point_id(unit.global_position.x, unit.global_position.y), value)
+	#	astar.set_point_disabled(get_cell_id(unit.global_position.x, unit.global_position.y), value)
 
 
 
@@ -235,7 +292,7 @@ func position_has_unit(unit_position: Vector2, ignore_unit_position = null) -> b
 		if unit.global_position == unit_position: return true
 	return false
 
-func get_astar_path_avoiding_obstacles_and_units(start_position: Vector2, end_position: Vector2, exception_units := [], max_distance := -1) -> Array:
+func get_cells_path_avoiding_obstacles_and_units(start_position: Vector2, end_position: Vector2, exception_units := [], max_distance := -1) -> Array:
 	set_obstacles_points_disabled(true)
 	set_unit_points_disabled(true, exception_units)
 	# var astar_path := astar.get_point_path(get_point(start_position), get_point(end_position))
@@ -244,7 +301,7 @@ func get_astar_path_avoiding_obstacles_and_units(start_position: Vector2, end_po
 	return []
 	#return set_path_length(astar_path, max_distance)
 
-func get_astar_path_avoiding_obstacles(start_position: Vector2, end_position: Vector2, max_distance := -1) -> Array:
+func get_cells_path_avoiding_obstacles(start_position: Vector2, end_position: Vector2, max_distance := -1) -> Array:
 	set_obstacles_points_disabled(true)
 	# var potential_path_points := astar.get_point_path(get_point(start_position), get_point(end_position))
 	set_obstacles_points_disabled(false)
