@@ -5,32 +5,40 @@ onready var player = $GameBoard/Player
 
 var last_cell : Vector2
 var player_movement_points := 6
+
+var movement_path := []
 var walking_path := []
 
 func _process(delta):
-	var target_cell := board.get_cell_origin_by_pos(get_viewport().get_mouse_position())
+	var target_cell := board.get_cell_origin(get_viewport().get_mouse_position())
 	
 	if target_cell != last_cell: 
 		last_cell = target_cell
-		board.hide_path()	
-		if board.has_cell_by_or(target_cell) and \
-		board.get_cells_distance_by_or(player.global_position, target_cell) <= player_movement_points:
-			board.show_path(player.global_position, target_cell)
+		board.hide_movement_path()
+		
+		var cells_path := board.get_cells_path(player.global_position, target_cell)
+			
+		if cells_path.size() > 0 and cells_path.size() - 1 <= player_movement_points and walking_path.size() == 0:
+			movement_path = cells_path.slice(1, cells_path.size() - 1)
+			board.show_movement_path(movement_path)
+		else:
+			movement_path = []
 	
 	if walking_path.size() > 0:
-		walk_to(walking_path, delta)
+		walk(delta)
 
-func walk_to(path : Array, delta):
-	var closest_point : Vector2 = path[0]
+func walk(delta):
+	var closest_point : Vector2 = walking_path[0]
 	player.global_position += (closest_point - player.global_position).normalized() * delta * 300
+	
 	if closest_point.distance_to(player.global_position) < 5:
 		player.global_position = closest_point
-		path.remove(0)
+		walking_path.remove(0)
 
 # Called when an input occurs.
 func _input(event):
-	if event.is_action_pressed("mouse_left") and \
-	board.has_cell_by_or(last_cell) and \
-	board.get_cells_distance_by_or(player.global_position, last_cell) <= player_movement_points:
-		walking_path = board.get_cells_path_by_or(player.global_position, last_cell)
-		
+	if event.is_action_pressed("mouse_left") and walking_path.size() == 0:
+		board.hide_movement_path()
+		player_movement_points -= movement_path.size()
+		walking_path = movement_path
+		movement_path = []
