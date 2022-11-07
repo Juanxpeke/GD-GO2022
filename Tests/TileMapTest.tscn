@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Tilesets/GroundTileset/GroundTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/Tilesets/DrawnTileset/DrawnTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Tests/TileMap.gd" type="Script" id=4]
 [ext_resource path="res://Tests/Game.gd" type="Script" id=5]
@@ -16,16 +16,23 @@ animations = [ {
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="Board" type="TileMap" parent="."]
+[node name="GameBoard" type="TileMap" parent="."]
 mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 64 )
 format = 1
-tile_data = PoolIntArray( -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -65536, 1, 0, -65535, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, 0, 0, 0, 1, 1, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 524297, 1, 0 )
+tile_data = PoolIntArray( -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0 )
 script = ExtResource( 4 )
 
-[node name="Player" type="AnimatedSprite" parent="Board"]
+[node name="MovementBoard" type="TileMap" parent="GameBoard"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 64 )
+format = 1
+
+[node name="SpellsBoard" type="TileMap" parent="GameBoard"]
+format = 1
+
+[node name="Player" type="AnimatedSprite" parent="GameBoard"]
 position = Vector2( 320, 352 )
 frames = SubResource( 1 )
-
-[node name="Line" type="Line2D" parent="."]

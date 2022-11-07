@@ -15,11 +15,11 @@ const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
 const PAIRING_LIMIT = int(pow(2, 30))
 
+onready var movement_board := $MovementBoard
+
 var astar := AStar2D.new()
 var obstacles := []
 var units := []
-
-var path_cache := []
 
 # Called when the node is added to the scene tree.
 func _ready() -> void:
@@ -132,12 +132,10 @@ func show_path(cell1, cell2) -> void:
 	cells_path = cells_path.slice(1, cells_path.size() - 1)
 	for cell in cells_path:
 		var cell_coord = get_cell_coord_by_or(cell)
-		set_cellv(cell_coord, 1)
-		path_cache.append(cell_coord)
+		movement_board.set_cellv(cell_coord, 1)
 	
 func hide_path() -> void:
-	for cell_coord in path_cache:
-		set_cellv(cell_coord, 0)
+	movement_board.clear()
 	
 # Highlights a cell.
 func highlight_cell(cell, mode : int) -> void:
