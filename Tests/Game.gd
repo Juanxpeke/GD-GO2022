@@ -9,6 +9,24 @@ var player_movement_points := 6
 var movement_path := []
 var walking_path := []
 
+var spell_active := false
+
+class Spell:
+	var action_points_cost : int
+	var base_range : int
+
+	func _init(action_points_cost : int, base_range : int):
+		self.action_points_cost = action_points_cost
+		self.base_range = base_range
+	
+	func get_cell_mapping(action_range : int) -> Array:
+		assert(action_range >= 0, "Error: Spell range is ")
+		if action_range == 0:
+			return []
+		else:
+			return [Vector2(0, action_range), Vector2(action_range, 0), Vector2(-action_range, 0), Vector2(0, -action_range)]
+
+
 func _process(delta):
 	var target_cell := board.get_cell_origin(get_viewport().get_mouse_position())
 	
@@ -42,3 +60,12 @@ func _input(event):
 		player_movement_points -= movement_path.size()
 		walking_path = movement_path
 		movement_path = []
+		
+	if event.is_action_pressed("ui_cancel"):
+		if not spell_active:
+			var spell = Spell.new(5, 5)
+			board.show_spell_cells(spell, player.global_position)
+			spell_active = true
+		else:
+			board.hide_spell_cells()
+			spell_active = false

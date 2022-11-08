@@ -15,8 +15,12 @@ const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
 const PAIRING_LIMIT = int(pow(2, 30))
 
+enum Tiles {GROUND_TILE, MOVEMENT_TILE, SPELL_RANGE_TILE, SPELL_AREA_TILE}
+
 onready var movement_board := $MovementBoard
 onready var spells_board := $SpellsBoard
+
+onready var enemy := $Enemy
 
 var astar := AStar2D.new()
 var obstacles := []
@@ -25,6 +29,8 @@ var units := []
 # Called when the node is added to the scene tree.
 func _ready() -> void:
 	refill_astar_points()
+	add_obstacle(enemy)
+	set_obstacles_points_disabled(true)
 
 # =================
 # ===== ASTAR =====
@@ -122,15 +128,22 @@ func show_possible_movements(entity : Entity) -> void:
 # be the optimum path.
 func show_movement_path(cells_path : Array) -> void:
 	for cell_origin in cells_path:
-		var cell_coord = get_cell_coord(cell_origin)
-		movement_board.set_cellv(cell_coord, 1)
+		var cell_coord := get_cell_coord(cell_origin)
+		movement_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
+	
+func show_spell_cells(spell, origin : Vector2) -> void:
+	for action_range in spell.base_range + 1:
+		for cell_coord in spell.get_cell_mapping(action_range):
+			cell_coord += get_cell_coord(origin)
+			spells_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_TILE)
+	
+func hide_spell_cells() -> void:
+	spells_board.clear()
+
 	
 func hide_movement_path() -> void:
 	movement_board.clear()
 	
-# Highlights a cell.
-func highlight_cell(cell, mode : int) -> void:
-	pass
 
 
 
@@ -241,9 +254,8 @@ func get_grid_distance(distance: Vector2) -> float:
 
 
 func set_obstacles_points_disabled(value: bool) -> void:
-	#for obstacle in obstacles:
-	#	astar.set_point_disabled(get_cell_id(obstacle.global_position.x, obstacle.global_position.y), value)
-	pass
+	for obstacle in obstacles:
+		astar.set_point_disabled(get_cell_id(obstacle.global_position), value)
 
 func set_unit_points_disabled(value: bool, exception_units: Array = []) -> void:
 	for unit in units:
