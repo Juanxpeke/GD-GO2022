@@ -132,10 +132,12 @@ func show_movement_path(cells_path : Array) -> void:
 		movement_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
 	
 func show_spell_cells(spell, origin : Vector2) -> void:
+	var used_cells = get_used_cells()
 	for action_range in spell.base_range + 1:
 		for cell_coord in spell.get_cell_mapping(action_range):
 			cell_coord += get_cell_coord(origin)
-			spells_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_TILE)
+			if cell_coord in used_cells:
+				spells_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_TILE)
 	
 func hide_spell_cells() -> void:
 	spells_board.clear()
