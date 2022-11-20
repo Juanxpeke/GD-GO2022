@@ -2,14 +2,7 @@ extends TileMap
 class_name AStarTileMap
 
 # Wrapper class for TileMap class. It adds new basic functionalities and also
-# allows the user to draw shapes in it. The definitions adopted for using this 
-# class are the following:
-#
-# 1) The tilemap has infinite cells, and a finite amount of cells that are used.
-# 2) Each cell can be defined with an ID, a cartesian coordinate, a position
-#	contained in the cell, or the origin position of the cell.
-# 3) Methods will be defined following these concepts, for example, there could
-#	be a method 'get_cell_id_by_cor', which returns 0 if  (0, 0) is given.
+# allows the user to draw shapes in it.
 
 const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
@@ -74,10 +67,76 @@ func get_used_cells_origins() -> Array:
 	return cell_origins
 
 # Returns an array with the origin positions of cells in a certain path.
-func get_cells_path(start_origin: Vector2, end_origin: Vector2) -> Array:
+func get_cells_path(start_origin : Vector2, end_origin : Vector2) -> Array:
 	if not has_cell(start_origin) or not has_cell(end_origin): return []
 	return astar.get_point_path(get_cell_id(start_origin), get_cell_id(end_origin)) as Array
 
+func get_cells_line_low(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
+	var cells_line = []
+	var dx = x1 - x0
+	var dy = y1 - y0
+	var yi = 1
+	if dy < 0:
+		yi = -1
+		dy = -dy
+		
+	var D = (2 * dy) - dx
+	var y = y0
+
+	for x in range(x0, x1 + 1):
+		cells_line.append(Vector2(x, y))
+		if D > 0:
+			y = y + yi
+			D = D + (2 * (dy - dx))
+		else:
+			D = D + 2*dy
+			
+	return cells_line
+
+func get_cells_line_high(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
+	var cells_line = []
+	var dx = x1 - x0
+	var dy = y1 - y0
+	var xi = 1
+	if dx < 0:
+		xi = -1
+		dx = -dx
+
+	var D = (2 * dx) - dy
+	var x = x0
+
+	for y in range(y0, y1 + 1):
+		cells_line.append(Vector2(x, y))
+		if D > 0:
+			x = x + xi
+			D = D + (2 * (dx - dy))
+		else:
+			D = D + 2*dx
+			
+	return cells_line
+
+# Returns an array with the coordiantes of cells in the discrete line from 
+# start_origin to end_origin.
+func get_cells_line(start_origin : Vector2, end_origin : Vector2) -> Array:
+	var start_coord := get_cell_coord(start_origin)
+	var end_coord := get_cell_coord(end_origin)
+	
+	var x0 := start_coord[0]
+	var y0 := start_coord[1]
+	var x1 := end_coord[0]
+	var y1 := end_coord[1]
+	
+	if abs(y1 - y0) < abs(x1 - x0):
+		if x0 > x1:
+			return get_cells_line_low(x1, y1, x0, y0)
+		else:
+			return get_cells_line_low(x0, y0, x1, y1)
+	else:
+		if y0 > y1:
+			return get_cells_line_high(x1, y1, x0, y0)
+		else:
+			return get_cells_line_high(x0, y0, x1, y1)
+	
 
 # Returns true if the correspondent cell is used, false otherwise.
 func has_cell(cell_origin : Vector2) -> bool:
@@ -131,13 +190,27 @@ func show_movement_path(cells_path : Array) -> void:
 		var cell_coord := get_cell_coord(cell_origin)
 		movement_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
 	
-func show_spell_cells(spell, origin : Vector2) -> void:
-	var used_cells = get_used_cells()
-	for action_range in spell.base_range + 1:
-		for cell_coord in spell.get_cell_mapping(action_range):
-			cell_coord += get_cell_coord(origin)
+func show_line(cells_coords : Array) -> void:
+	for cell_coord in cells_coords:
+		spells_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_TILE)
+		
+
+	
+func show_spell_cells(spell : Spell, origin : Vector2) -> void:
+	var used_cells := get_used_cells()
+	
+	
+	for action_range in spell.spell_range + 1:
+		for cell_coord in spell.get_range_cells(action_range):
+			var origin_coord = get_cell_coord(origin)
+			cell_coord += origin_coord
+			var line_cells = get_line(origin_coord, cell_coord)
+			
 			if cell_coord in used_cells:
 				spells_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_TILE)
+
+func get_line(origin, cell_coord):
+	pass
 	
 func hide_spell_cells() -> void:
 	spells_board.clear()

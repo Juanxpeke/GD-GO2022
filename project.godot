@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Entity",
 "language": "GDScript",
 "path": "res://Entity.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "Spell",
+"language": "GDScript",
+"path": "res://Tests/Spells/Spell.gd"
 } ]
 _global_script_class_icons={
 "AStarTileMap": "",
-"Entity": ""
+"Entity": "",
+"Spell": ""
 }
 
 [application]
