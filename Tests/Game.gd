@@ -19,7 +19,6 @@ func _process(delta):
 	if target_cell != last_cell: 
 		last_cell = target_cell
 		board.hide_movement_path()
-		board.hide_spell_cells()
 		
 		var cells_path := board.get_cells_path(player.global_position, target_cell)
 		var cells_line := board.get_cells_line(player.global_position, target_cell)
@@ -27,7 +26,6 @@ func _process(delta):
 		if cells_path.size() > 0 and cells_path.size() - 1 <= player_movement_points and walking_path.size() == 0:
 			movement_path = cells_path.slice(1, cells_path.size() - 1)
 			board.show_movement_path(movement_path)
-			print("==========\nCells line : \n" + str(cells_line) + "\n==========")
 			board.show_line(cells_line)
 		else:
 			movement_path = []
@@ -59,8 +57,4 @@ func _input(event):
 		else:
 			board.hide_spell_cells()
 			spell_active = false
-			
-	if event.is_action_pressed("move_down"):
-		print("Line:")
-		print(board.get_cells_line(Vector2(0,0), Vector2(320, 64)))
-		print("")
+

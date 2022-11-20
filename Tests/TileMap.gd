@@ -2,18 +2,22 @@ extends TileMap
 class_name AStarTileMap
 
 # Wrapper class for TileMap class. It adds new basic functionalities and also
-# allows the user to draw shapes in it.
+# allows the user to draw paths or areas in it.
 
 const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
 const PAIRING_LIMIT = int(pow(2, 30))
 
-enum Tiles {GROUND_TILE, MOVEMENT_TILE, SPELL_RANGE_TILE, SPELL_AREA_TILE}
+enum Tiles {GROUND_TILE, 
+			MOVEMENT_TILE, 
+			SPELL_RANGE_TILE,
+			SPELL_RANGE_BLOCKED_TILE, 
+			SPELL_AREA_TILE}
 
 onready var movement_board := $MovementBoard
 onready var spells_board := $SpellsBoard
 
-onready var enemy := $Enemy
+onready var enemy := $Enemy # debug
 
 var astar := AStar2D.new()
 var obstacles := []
@@ -71,11 +75,14 @@ func get_cells_path(start_origin : Vector2, end_origin : Vector2) -> Array:
 	if not has_cell(start_origin) or not has_cell(end_origin): return []
 	return astar.get_point_path(get_cell_id(start_origin), get_cell_id(end_origin)) as Array
 
+# Returns an array with the coordinates of cells in the discrete line from
+# coordinates (x0, y0) to (x1, y1). Low part of Bresenham's line algorithm.
 func get_cells_line_low(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 	var cells_line = []
 	var dx = x1 - x0
 	var dy = y1 - y0
 	var yi = 1
+	
 	if dy < 0:
 		yi = -1
 		dy = -dy
@@ -93,11 +100,14 @@ func get_cells_line_low(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 			
 	return cells_line
 
+# Returns an array with the coordinates of cells in the discrete line from
+# coordinates (x0, y0) to (x1, y1). High part of Bresenham's line algorithm.
 func get_cells_line_high(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 	var cells_line = []
 	var dx = x1 - x0
 	var dy = y1 - y0
 	var xi = 1
+	
 	if dx < 0:
 		xi = -1
 		dx = -dx
@@ -115,12 +125,10 @@ func get_cells_line_high(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 			
 	return cells_line
 
-# Returns an array with the coordiantes of cells in the discrete line from 
-# start_origin to end_origin.
-func get_cells_line(start_origin : Vector2, end_origin : Vector2) -> Array:
-	var start_coord := get_cell_coord(start_origin)
-	var end_coord := get_cell_coord(end_origin)
-	
+# Returns an array with the coordinates of cells in the discrete line from 
+# start_coord to end_coord, it uses the Bresenham's line algorithm divided
+# in different cases.
+func get_cells_line(start_coord : Vector2, end_coord : Vector2) -> Array:
 	var x0 := start_coord[0]
 	var y0 := start_coord[1]
 	var x1 := end_coord[0]
@@ -137,11 +145,6 @@ func get_cells_line(start_origin : Vector2, end_origin : Vector2) -> Array:
 		else:
 			return get_cells_line_high(x0, y0, x1, y1)
 	
-
-# Returns true if the correspondent cell is used, false otherwise.
-func has_cell(cell_origin : Vector2) -> bool:
-	return astar.has_point(get_cell_id(cell_origin))
-
 # Given a cell origin, returns a unique identifier. It uses improved Szudzik pair 
 # algorithm to calculate the ID, and first transforms the origin to the equivalent
 # coordinate, in order reduce the IDs values.
@@ -163,7 +166,14 @@ func get_cell_id(cell_origin : Vector2) -> int:
 func get_cell_coord(cell_origin : Vector2) -> Vector2:
 	return world_to_map(to_local(cell_origin))
 
-	
+# ================
+# ===== MISC =====
+# ================
+
+# Returns true if the correspondent cell is used, false otherwise.
+func has_cell(cell_origin : Vector2) -> bool:
+	return astar.has_point(get_cell_id(cell_origin))
+
 # Converts from isometric coordinates to cartesian coordinates.
 func iso2cart(iso_position : Vector2) -> Vector2:
 	return Vector2(iso_position.x - iso_position.y, (iso_position.x + iso_position.y) / 2)
@@ -172,17 +182,16 @@ func iso2cart(iso_position : Vector2) -> Vector2:
 func cart2iso(cart_position : Vector2) -> Vector2:
 	return Vector2(cart_position.x / 2 + cart_position.y, -cart_position.x / 2 + cart_position.y)
 
-
 # ====================
-# ===== GRAPHICS =====
+# ===== DRAWING =====
 # ====================
 
-# Shows the possible movements of an entity on the board. It uses
-# the entity cache in case it is not the entity's turn.
-func show_possible_movements(entity : Entity) -> void:
+# Shows the area possible movements. It should use an entity cache in case it is
+# not the entity's turn.
+func show_possible_movements() -> void:
 	pass
 	
-# Shows the path from an entity to a given cell. It can also use a cache,
+# Shows the movement path following a cells array. It can also use a cache,
 # because if the path is A, then, the path to some cell inside A should also
 # be the optimum path.
 func show_movement_path(cells_path : Array) -> void:
@@ -197,17 +206,18 @@ func show_line(cells_coords : Array) -> void:
 
 	
 func show_spell_cells(spell : Spell, origin : Vector2) -> void:
+	var origin_coord := get_cell_coord(origin)
 	var used_cells := get_used_cells()
+	var spell_cells := spell.get_cells(origin_coord)
 	
-	
-	for action_range in spell.spell_range + 1:
-		for cell_coord in spell.get_range_cells(action_range):
-			var origin_coord = get_cell_coord(origin)
-			cell_coord += origin_coord
-			var line_cells = get_line(origin_coord, cell_coord)
+	for spell_cell_coord in spell_cells:
+		if spell_cell_coord in used_cells:
+			var spell_line_cells := get_cells_line(origin_coord, spell_cell_coord)
 			
-			if cell_coord in used_cells:
-				spells_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_TILE)
+			if false:
+				spells_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_BLOCKED_TILE)
+			else:
+				spells_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_TILE)
 
 func get_line(origin, cell_coord):
 	pass
@@ -226,10 +236,9 @@ func hide_movement_path() -> void:
 
 
 
-
-
-
-
+# =======================================
+# ===== COPIED BUT NOT USED YET xdd =====
+# =======================================
 
 func set_path_length(point_path: Array, max_distance: int) -> Array:
 	if max_distance < 0: return point_path

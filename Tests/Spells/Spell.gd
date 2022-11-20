@@ -21,3 +21,11 @@ func get_range_cells(range_index : int) -> Array:
 				Vector2( range_index, 0),
 				Vector2(-range_index, 0),
 				Vector2(0, -range_index)]
+
+# Gets all the range cells of the spell.
+func get_cells(origin_coord := Vector2(0, 0)) -> Array:
+	var spell_cells := []
+	for range_index in spell_range + 1:
+		for cell_coord in get_range_cells(range_index):
+			spell_cells.append(cell_coord + origin_coord)
+	return spell_cells
