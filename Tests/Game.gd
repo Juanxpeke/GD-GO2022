@@ -21,12 +21,10 @@ func _process(delta):
 		board.hide_movement_path()
 		
 		var cells_path := board.get_cells_path(player.global_position, target_cell)
-		var cells_line := board.get_cells_line(player.global_position, target_cell)
-			
+
 		if cells_path.size() > 0 and cells_path.size() - 1 <= player_movement_points and walking_path.size() == 0:
 			movement_path = cells_path.slice(1, cells_path.size() - 1)
 			board.show_movement_path(movement_path)
-			board.show_line(cells_line)
 		else:
 			movement_path = []
 	

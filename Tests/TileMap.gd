@@ -79,16 +79,16 @@ func get_cells_path(start_origin : Vector2, end_origin : Vector2) -> Array:
 # coordinates (x0, y0) to (x1, y1). Low part of Bresenham's line algorithm.
 func get_cells_line_low(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 	var cells_line = []
-	var dx = x1 - x0
-	var dy = y1 - y0
-	var yi = 1
+	var dx : int = x1 - x0
+	var dy : int = y1 - y0
+	var yi : int = 1
 	
 	if dy < 0:
 		yi = -1
 		dy = -dy
 		
-	var D = (2 * dy) - dx
-	var y = y0
+	var D : int = (2 * dy) - dx
+	var y : int = y0
 
 	for x in range(x0, x1 + 1):
 		cells_line.append(Vector2(x, y))
@@ -96,7 +96,7 @@ func get_cells_line_low(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 			y = y + yi
 			D = D + (2 * (dy - dx))
 		else:
-			D = D + 2*dy
+			D = D + 2 * dy
 			
 	return cells_line
 
@@ -104,16 +104,16 @@ func get_cells_line_low(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 # coordinates (x0, y0) to (x1, y1). High part of Bresenham's line algorithm.
 func get_cells_line_high(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 	var cells_line = []
-	var dx = x1 - x0
-	var dy = y1 - y0
-	var xi = 1
+	var dx : int = x1 - x0
+	var dy : int = y1 - y0
+	var xi : int = 1
 	
 	if dx < 0:
 		xi = -1
 		dx = -dx
 
-	var D = (2 * dx) - dy
-	var x = x0
+	var D : int = (2 * dx) - dy
+	var x : int = x0
 
 	for y in range(y0, y1 + 1):
 		cells_line.append(Vector2(x, y))
@@ -121,7 +121,7 @@ func get_cells_line_high(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 			x = x + xi
 			D = D + (2 * (dx - dy))
 		else:
-			D = D + 2*dx
+			D = D + 2 * dx
 			
 	return cells_line
 
@@ -129,10 +129,10 @@ func get_cells_line_high(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 # start_coord to end_coord, it uses the Bresenham's line algorithm divided
 # in different cases.
 func get_cells_line(start_coord : Vector2, end_coord : Vector2) -> Array:
-	var x0 := start_coord[0]
-	var y0 := start_coord[1]
-	var x1 := end_coord[0]
-	var y1 := end_coord[1]
+	var x0 : int = start_coord[0]
+	var y0 : int = start_coord[1]
+	var x1 : int = end_coord[0]
+	var y1 : int = end_coord[1]
 	
 	if abs(y1 - y0) < abs(x1 - x0):
 		if x0 > x1:
@@ -144,6 +144,84 @@ func get_cells_line(start_coord : Vector2, end_coord : Vector2) -> Array:
 			return get_cells_line_high(x1, y1, x0, y0)
 		else:
 			return get_cells_line_high(x0, y0, x1, y1)
+	
+# Returns an array with the coordinates of cells in the discrete line from
+# coordinates (x0, y0) to (x1, y1). Low part of Bresenham's line algorithm.
+func get_jcells_line_low(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
+	var cells_line = []
+	var dx : int = x1 - x0
+	var dy : int = y1 - y0
+	var yi : int = 1
+	
+	if dy < 0:
+		yi = -1
+		dy = -dy
+		
+	var D : int = dy - dx
+	var y : int = y0
+
+	for x in range(x0, x1 + 1):
+		cells_line.append(Vector2(x, y))
+		if D > 0:
+			cells_line.append(Vector2(x, y + yi))
+			y = y + yi
+			D = D + (2 * (dy - dx))
+		elif D < 0:
+			D = D + 2 * dy
+		else:
+			y = y + yi
+			D = D + (2 * (dy - dx))
+			
+	return cells_line
+
+# Returns an array with the coordinates of cells in the discrete line from
+# coordinates (x0, y0) to (x1, y1). High part of Bresenham's line algorithm.
+func get_jcells_line_high(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
+	var cells_line = []
+	var dx : int = x1 - x0
+	var dy : int = y1 - y0
+	var xi : int = 1
+	
+	if dx < 0:
+		xi = -1
+		dx = -dx
+
+	var D : int = dx - dy
+	var x : int = x0
+
+	for y in range(y0, y1 + 1):
+		cells_line.append(Vector2(x, y))
+		if D > 0:
+			cells_line.append(Vector2(x + xi, y))
+			x = x + xi
+			D = D + (2 * (dx - dy))
+		elif D < 0:
+			D = D + 2 * dx
+		else:
+			x = x + xi
+			D = D + (2 * (dx - dy))
+			
+	return cells_line
+
+# Returns an array with the coordinates of cells in the discrete line from 
+# start_coord to end_coord, it uses the Bresenham's line algorithm divided
+# in different cases.
+func get_jcells_line(start_coord : Vector2, end_coord : Vector2) -> Array:
+	var x0 : int = start_coord[0]
+	var y0 : int = start_coord[1]
+	var x1 : int = end_coord[0]
+	var y1 : int = end_coord[1]
+	
+	if abs(y1 - y0) < abs(x1 - x0):
+		if x0 > x1:
+			return get_jcells_line_low(x1, y1, x0, y0)
+		else:
+			return get_jcells_line_low(x0, y0, x1, y1)
+	else:
+		if y0 > y1:
+			return get_jcells_line_high(x1, y1, x0, y0)
+		else:
+			return get_jcells_line_high(x0, y0, x1, y1)
 	
 # Given a cell origin, returns a unique identifier. It uses improved Szudzik pair 
 # algorithm to calculate the ID, and first transforms the origin to the equivalent
@@ -161,7 +239,8 @@ func get_cell_id(cell_origin : Vector2) -> int:
 		return -c - 1
 	
 	return c
-
+	
+	
 # Given a cell origin, it returns the equivalent cartesian coordinate.
 func get_cell_coord(cell_origin : Vector2) -> Vector2:
 	return world_to_map(to_local(cell_origin))
@@ -199,11 +278,13 @@ func show_movement_path(cells_path : Array) -> void:
 		var cell_coord := get_cell_coord(cell_origin)
 		movement_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
 	
-func show_line(cells_coords : Array) -> void:
-	for cell_coord in cells_coords:
-		spells_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_TILE)
-		
-
+# Shows the movement path following a cells array. It can also use a cache,
+# because if the path is A, then, the path to some cell inside A should also
+# be the optimum path.
+func show_line(cells_path : Array) -> void:
+	for cell_origin in cells_path:
+		movement_board.set_cellv(cell_origin, Tiles.MOVEMENT_TILE)
+	
 	
 func show_spell_cells(spell : Spell, origin : Vector2) -> void:
 	var origin_coord := get_cell_coord(origin)
@@ -212,15 +293,18 @@ func show_spell_cells(spell : Spell, origin : Vector2) -> void:
 	
 	for spell_cell_coord in spell_cells:
 		if spell_cell_coord in used_cells:
-			var spell_line_cells := get_cells_line(origin_coord, spell_cell_coord)
+			var spell_line_cells := get_jcells_line(origin_coord, spell_cell_coord)
+			var is_cell_blocked := false
+			for obstacle in obstacles:
+				if get_cell_coord(obstacle.global_position) in spell_line_cells:
+					is_cell_blocked = true
+					break
 			
-			if false:
+			if is_cell_blocked:
 				spells_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_BLOCKED_TILE)
 			else:
 				spells_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_TILE)
 
-func get_line(origin, cell_coord):
-	pass
 	
 func hide_spell_cells() -> void:
 	spells_board.clear()
