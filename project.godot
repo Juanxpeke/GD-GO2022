@@ -15,6 +15,16 @@ _global_script_classes=[ {
 "path": "res://Tests/TileMap.gd"
 }, {
 "base": "Node",
+"class": "Battle",
+"language": "GDScript",
+"path": "res://Game/Battle/Battle.gd"
+}, {
+"base": "Node",
+"class": "BattleState",
+"language": "GDScript",
+"path": "res://Game/Battle/BattleState.gd"
+}, {
+"base": "Node",
 "class": "Entity",
 "language": "GDScript",
 "path": "res://Entity.gd"
@@ -26,6 +36,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AStarTileMap": "",
+"Battle": "",
+"BattleState": "",
 "Entity": "",
 "Spell": ""
 }
