@@ -38,6 +38,12 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 64 )
 format = 1
 
+[node name="SpellsAreaBoard" type="TileMap" parent="GameBoard"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 64 )
+format = 1
+
 [node name="Player" type="AnimatedSprite" parent="GameBoard"]
 position = Vector2( 320, 352 )
 frames = SubResource( 1 )

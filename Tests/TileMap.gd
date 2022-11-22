@@ -15,8 +15,9 @@ enum Tiles {GROUND_TILE,
 			SPELL_RANGE_BLOCKED_TILE, 
 			SPELL_AREA_TILE}
 
-onready var movement_board := $MovementBoard
-onready var spells_board := $SpellsBoard
+onready var movement_board : TileMap = $MovementBoard
+onready var spells_board : TileMap = $SpellsBoard
+onready var spells_area_board : TileMap = $SpellsAreaBoard
 
 onready var enemy := $Enemy # debug
 
@@ -208,18 +209,11 @@ func show_movement_path(cells_path : Array) -> void:
 		var cell_coord := get_cell_coord(cell_origin)
 		movement_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
 	
-# Shows the movement path following a cells array. It can also use a cache,
-# because if the path is A, then, the path to some cell inside A should also
-# be the optimum path.
-func show_line(cells_path : Array) -> void:
-	for cell_origin in cells_path:
-		movement_board.set_cellv(cell_origin, Tiles.MOVEMENT_TILE)
 	
-	
-func show_spell_cells(spell : Spell, origin : Vector2) -> void:
+func show_spell_range_cells(spell : Spell, origin : Vector2) -> void:
 	var origin_coord := get_cell_coord(origin)
 	var used_cells := get_used_cells()
-	var spell_cells := spell.get_cells(origin_coord)
+	var spell_cells := spell.get_range_cells(origin_coord)
 	
 	for spell_cell_coord in spell_cells:
 		if spell_cell_coord in used_cells:
@@ -235,10 +229,25 @@ func show_spell_cells(spell : Spell, origin : Vector2) -> void:
 			else:
 				spells_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_TILE)
 
+
+func show_spell_area_cells(spell : Spell, origin : Vector2) -> void:
+	var origin_coord := get_cell_coord(origin)
 	
-func hide_spell_cells() -> void:
+	if spells_board.get_cellv(origin_coord) != Tiles.SPELL_RANGE_TILE:
+		return
+	
+	var used_cells := get_used_cells()
+	var spell_area_cells := spell.get_area_cells(origin_coord)
+	
+	for spell_cell_coord in spell_area_cells:
+		if spell_cell_coord in used_cells:
+			spells_area_board.set_cellv(spell_cell_coord, Tiles.SPELL_AREA_TILE)
+	
+func hide_spell_range_cells() -> void:
 	spells_board.clear()
 
+func hide_spell_area_cells() -> void:
+	spells_area_board.clear()
 	
 func hide_movement_path() -> void:
 	movement_board.clear()

@@ -12,7 +12,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Gets the range cells of the spell in a given range index.
-func get_range_cells(range_index : int) -> Array:
+func get_index_range_cells(range_index : int) -> Array:
 	assert(range_index >= 0, "Error: Spell range index must be equal or greater than 0.")
 	if range_index == 0:
 		return []
@@ -23,9 +23,19 @@ func get_range_cells(range_index : int) -> Array:
 				Vector2(0, -range_index)]
 
 # Gets all the range cells of the spell.
-func get_cells(origin_coord := Vector2(0, 0)) -> Array:
-	var spell_cells := []
+func get_range_cells(origin_coord := Vector2(0, 0)) -> Array:
+	var range_cells := []
 	for range_index in spell_range + 1:
-		for cell_coord in get_range_cells(range_index):
-			spell_cells.append(cell_coord + origin_coord)
-	return spell_cells
+		for cell_coord in get_index_range_cells(range_index):
+			range_cells.append(cell_coord + origin_coord)
+	return range_cells
+
+# Gets the effect area cells of the spell.
+func get_area_cells(origin_coord := Vector2(0, 0)) -> Array:
+	var area_cells := []
+	area_cells.append(Vector2(0, 0) + origin_coord)
+	return area_cells
+	
+	
+	
+	
