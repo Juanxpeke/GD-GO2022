@@ -1,50 +1,50 @@
 extends BattleState
-class_name PlayerTurnSpellState
+class_name PlayerTurnIdleState
 
-var spell : Spell
 var last_cell : Vector2
-
-var area_effect_cells := []
+var movement_path := []
 
 # Inherited parent constructor.
 func _init(battle, board).(battle, board):
 	pass
-	
-# Sets the related spell.
-func set_spell(spell : Spell) -> void:
-	self.spell = spell
-	
-# Called when being selected as the new state.
-func enter() -> void:
-	board.show_spell_range_cells(spell, battle.get_player_position())
 
 # Called when being removed as the current state.
 func exit() -> void:
-	board.hide_spell_range_cells()
-	board.hide_spell_area_cells()
-
+	board.hide_movement_path()
+	
 # Called every frame.
 func update() -> void:
+	if battle.animation_state == battle.walking_state:
+		return
+		
 	var target_cell := board.get_cell_origin(battle.get_viewport().get_mouse_position())
 	
 	if target_cell != last_cell: 
 		last_cell = target_cell
-		board.hide_spell_area_cells()
-		board.show_spell_area_cells(spell, target_cell)
-		area_effect_cells = board.spells_area_board.get_used_cells()
-				
+		board.hide_movement_path()
+		
+		var cells_path := board.get_cells_path(battle.get_player_position(), target_cell)
+
+		if cells_path.size() > 0 and cells_path.size() - 1 <= battle.get_player_movement_points():
+			movement_path = cells_path.slice(1, cells_path.size() - 1)
+			board.show_movement_path(movement_path)
+		else:
+			movement_path = []
+
 # Called when an input occurs.
 func handle_input(event) -> void:
-	if event.is_action_pressed(spell.get_action()):
-		battle.to_idle_state()
+	if battle.animation_state == battle.walking_state:
+		return
 	
-	elif event.is_action_pressed("mouse_left"):
-		battle.try_to_cast_spell(board.spells_area_board, spell)
-		battle.to_idle_state()
+	if event.is_action_pressed("mouse_left"):
+		board.hide_movement_path()
+		battle.substract_player_movement_points(movement_path.size())
+		battle.to_walking_state(movement_path)
+		movement_path = []
 		
 	elif event.is_action_pressed("cast_first_spell"):
 		battle.to_spell_state(battle.get_player_spell(0))
-		
+	
 	elif event.is_action_pressed("cast_second_spell"):
 		battle.to_spell_state(battle.get_player_spell(1))
 		

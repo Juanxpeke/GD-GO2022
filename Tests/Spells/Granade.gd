@@ -1,4 +1,9 @@
 extends Spell
+class_name GranadeSpell
+
+# Constructor.
+func _init():
+	spell_range = 6
 
 # Gets the range cells of the spell in a given range index.
 func get_index_range_cells(range_index : int) -> Array:
@@ -34,4 +39,7 @@ func get_area_cells(origin_coord := Vector2(0, 0)) -> Array:
 	area_cells.append(Vector2(0, 0) + origin_coord)
 	return area_cells
 	
-	
+# Gets the related action.
+func get_action() -> String:
+	return "cast_first_spell"
+

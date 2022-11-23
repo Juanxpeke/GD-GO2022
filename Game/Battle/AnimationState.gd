@@ -1,5 +1,5 @@
 extends Object
-class_name BattleState
+class_name AnimationState
 
 var battle
 var board : AStarTileMap
@@ -18,10 +18,10 @@ func exit() -> void:
 	pass
 	
 # Virtual function intended to be called in the '_process()' callback.
-func update() -> void:
+func update(_delta : float) -> void:
 	pass
 
 # Virtual function intended to be called in the '_input()' callback.
-func handle_input(event) -> void:
+func handle_input(event : InputEvent) -> void:
 	pass
 

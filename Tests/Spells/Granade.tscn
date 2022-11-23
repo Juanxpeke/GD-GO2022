@@ -5,5 +5,3 @@
 
 [node name="Granade" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-spell_action_points = 2
-spell_range = 6

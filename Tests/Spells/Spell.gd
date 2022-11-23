@@ -1,11 +1,11 @@
-extends AnimatedSprite
+extends Object
 class_name Spell
 
-export var spell_name : String = 'Spell'
-export var spell_action_points : int = 0
-export var spell_range : int = 0
-export var spell_icon_image : StreamTexture
-export var spell_sound : AudioStream
+var spell_name : String = 'Spell'
+var spell_action_points : int = 0
+var spell_range : int = 0
+var spell_icon_image : StreamTexture
+var spell_sound : AudioStream
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +36,8 @@ func get_area_cells(origin_coord := Vector2(0, 0)) -> Array:
 	area_cells.append(Vector2(0, 0) + origin_coord)
 	return area_cells
 	
-	
+# Gets the related action.
+func get_action() -> String:
+	return ""
 	
 	
