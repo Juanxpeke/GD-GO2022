@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/Battle/Battle.gd" type="Script" id=1]
 [ext_resource path="res://Game/Board/Board.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Entities/Player.gd" type="Script" id=4]
+[ext_resource path="res://GUI/Battle/BattleUI.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,3 +24,12 @@ tile_data = PoolIntArray( -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 
 position = Vector2( 320, 160 )
 frames = SubResource( 1 )
 script = ExtResource( 4 )
+
+[node name="TurnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="BattleUI" parent="." instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0

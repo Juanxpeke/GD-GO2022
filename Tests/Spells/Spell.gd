@@ -1,6 +1,8 @@
 extends Object
 class_name Spell
 
+signal animation_ended
+
 var spell_name : String = 'Spell'
 var spell_action_points : int = 0
 var spell_range : int = 0
@@ -39,5 +41,9 @@ func get_area_cells(origin_coord := Vector2(0, 0)) -> Array:
 # Gets the related action.
 func get_action() -> String:
 	return ""
+
+func apply_effect(cell) -> void:
+	print("Pium! Die " + str(cell))
 	
-	
+func show_animation() -> void:
+	emit_signal("animation_ended")

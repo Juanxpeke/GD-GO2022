@@ -4,6 +4,7 @@ class_name GranadeSpell
 # Constructor.
 func _init():
 	spell_range = 6
+	spell_action_points = 4
 
 # Gets the range cells of the spell in a given range index.
 func get_index_range_cells(range_index : int) -> Array:

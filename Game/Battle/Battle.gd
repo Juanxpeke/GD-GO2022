@@ -82,14 +82,18 @@ func get_player_spell(spell_index : int) -> Spell:
 func substract_player_movement_points(amount : int) -> void:
 	player.substract_movement_points(amount)
 	
+func show_spell_message():
+	print("Not enough AP!")
+	
 # Tries to cast a spell.
 func try_to_cast_spell(area_cells, spell) -> void:
 	if player.get_action_points() < spell.spell_action_points:
-		#	show_spell_message()
+		show_spell_message()
 		return
 	
+	player.substract_action_points(spell.spell_action_points)
+	
 	spell.show_animation()
-	# yield()
 	
 	for cell in area_cells:
 		spell.apply_effect(cell)

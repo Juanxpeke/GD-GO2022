@@ -39,7 +39,7 @@ func handle_input(event) -> void:
 		battle.to_idle_state()
 	
 	elif event.is_action_pressed("mouse_left"):
-		battle.try_to_cast_spell(board.spells_area_board, spell)
+		battle.try_to_cast_spell(board.spells_area_board.get_used_cells(), spell)
 		battle.to_idle_state()
 		
 	elif event.is_action_pressed("cast_first_spell"):

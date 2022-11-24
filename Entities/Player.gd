@@ -5,7 +5,7 @@ signal action_points_changed
 signal movement_points_changed
 
 var total_health_points := 100
-var total_action_points := 3
+var total_action_points := 6
 var total_movement_points := 3
 
 var health_points := total_health_points
