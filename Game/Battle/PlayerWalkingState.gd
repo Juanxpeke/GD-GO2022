@@ -7,9 +7,6 @@ var walking_path := []
 func _init(battle, board).(battle, board):
 	pass
 
-func set_walking_path(walking_path) -> void:
-	self.walking_path = walking_path
-
 # Called every frame.
 func update(_delta : float) -> void:
 	if walking_path.size() == 0:
@@ -22,3 +19,7 @@ func update(_delta : float) -> void:
 	if closest_point.distance_to(battle.get_player_position()) < 5:
 		battle.set_player_position(closest_point)
 		walking_path.remove(0)
+
+
+func set_walking_path(walking_path) -> void:
+	self.walking_path = walking_path

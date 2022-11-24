@@ -1,12 +1,13 @@
 extends AnimatedSprite
+class_name Player
 
 signal health_changed
 signal action_points_changed
 signal movement_points_changed
 
 var total_health_points := 100
-var total_action_points := 6
-var total_movement_points := 3
+var total_action_points := 7
+var total_movement_points := 4
 
 var health_points := total_health_points
 var action_points := total_action_points
@@ -50,11 +51,17 @@ func add_action_points(amount : int) -> void:
 func substract_action_points(amount : int) -> void:
 	set_action_points(action_points - amount)
 
+# Resets the current player action points to the total.
+func reset_action_points() -> void:
+	set_action_points(total_action_points)
+
 # Gets the player current action points.
 func get_action_points() -> int:
 	return action_points
 
-
+# =========================
+# ==== MOVEMENT POINTS ====
+# =========================
 
 # Sets the player current movement points.
 func set_movement_points(amount : int) -> void:
@@ -68,6 +75,10 @@ func add_movement_points(amount : int) -> void:
 # Substracts a certain amount to the current player movement points.
 func substract_movement_points(amount : int) -> void:
 	set_movement_points(movement_points - amount)
+
+# Resets the current player movement points to the total.
+func reset_movement_points() -> void:
+	set_movement_points(total_movement_points)
 
 # Gets the player current movement points.
 func get_movement_points() -> int:

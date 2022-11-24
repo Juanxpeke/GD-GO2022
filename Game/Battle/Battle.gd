@@ -4,19 +4,28 @@ class_name Battle
 var battle_state : BattleState
 var animation_state : AnimationState
 
-onready var board := $Board
-onready var player := $Player
+# Important nodes
+onready var board : AStarTileMap = $Board
+onready var player : Player = $Player
+onready var turn_timer : Timer = $TurnTimer
+onready var battle_ui : Control = $BattleUI
+# Battle states
+onready var player_start_state := PlayerStartState.new(self, board)
 onready var player_idle_state := PlayerTurnIdleState.new(self, board)
 onready var player_spell_state := PlayerTurnSpellState.new(self, board)
+onready var enemy_state := EnemyState.new(self, board)
+# Animation states
 onready var void_state := PlayerVoidState.new(self, board)
 onready var walking_state := PlayerWalkingState.new(self, board)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	battle_state = player_idle_state
+	battle_ui.set_player(player)
+	
+	battle_state = player_start_state
+	battle_state.enter()
 	animation_state = void_state
-	player.add_movement_points(4)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,22 +36,38 @@ func _process(delta):
 func _input(event):
 	battle_state.handle_input(event)
 
-# =====================
-# ==== TRANSITIONS ====
-# =====================
+# ============================
+# ==== BATTLE TRANSITIONS ====
+# ============================
 
-# Changes the state to the idle state.
-func to_idle_state() -> void:
+# Advances a turn.
+func to_enemy_state() -> void:
+	battle_state.exit()
+	battle_state = enemy_state
+	battle_state.enter()
+
+# Changes the state to the player start state.
+func to_player_start_state() -> void:
+	battle_state.exit()
+	battle_state = player_start_state
+	battle_state.enter()
+
+# Changes the state to the player idle state.
+func to_player_idle_state() -> void:
 	battle_state.exit()
 	battle_state = player_idle_state
 	battle_state.enter()
 
-# Changes the state to the correspondent spell state.
-func to_spell_state(spell) -> void:
+# Changes the state to the player spell state related to the given spell.
+func to_player_spell_state(spell : Spell) -> void:
 	battle_state.exit()
 	player_spell_state.set_spell(spell)
 	battle_state = player_spell_state
 	battle_state.enter()
+
+# ===============================
+# ==== ANIMATION TRANSITIONS ====
+# ===============================
 
 # Changes the animation state to void.
 func to_void_state() -> void:
@@ -57,30 +82,42 @@ func to_walking_state(walking_path) -> void:
 	animation_state.set_walking_path(walking_path)
 	animation_state.enter()
 
-# =================
-# ==== PLAYERS ====
-# =================
+# ================
+# ==== PLAYER ====
+# ================
+
+# Gets the player node.
+func get_player() -> Player:
+	return player
 
 # Gets the player position.
 func get_player_position() -> Vector2:
 	return player.global_position
 
-func set_player_position(value):
+# Sets the player position.
+func set_player_position(value : Vector2) -> void:
 	player.global_position = value
 
-func add_player_position(value):
+# Adds a certain value to the player position.
+func add_player_position(value : Vector2) -> void:
 	player.global_position += value
 	
 # Gets the player movement points.
 func get_player_movement_points() -> int:
 	return player.get_movement_points()
 	
-func get_player_spell(spell_index : int) -> Spell:
-	return player.get_spell(spell_index)
-	
 # Substract the player movement points to the given amount.
 func substract_player_movement_points(amount : int) -> void:
 	player.substract_movement_points(amount)
+	
+# Resets the player action and movement points.
+func reset_player_points() -> void:
+	player.reset_action_points()
+	player.reset_movement_points()
+	
+# ===============
+# ==== LOGIC ====	
+# ===============
 	
 func show_spell_message():
 	print("Not enough AP!")

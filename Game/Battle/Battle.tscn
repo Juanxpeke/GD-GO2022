@@ -14,7 +14,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Battle" type="Node2D"]
+[node name="Battle" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
@@ -26,10 +26,7 @@ frames = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="TurnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
-autostart = true
 
 [node name="BattleUI" parent="." instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0

@@ -1,19 +1,28 @@
 extends BattleState
 class_name PlayerTurnIdleState
 
-var last_cell : Vector2
+var last_cell := Vector2(-1, -1)
 var movement_path := []
 
 # Inherited parent constructor.
 func _init(battle, board).(battle, board):
 	pass
 
+# Called when being selected as the new state.
+func enter() -> void:
+	print("Entered player idle state.\n")
+
 # Called when being removed as the current state.
 func exit() -> void:
+	last_cell = Vector2(-1, -1)
 	board.hide_movement_path()
 	
 # Called every frame.
 func update() -> void:
+	if battle.turn_timer.is_stopped():
+		battle.to_enemy_state()
+		return
+	
 	if battle.animation_state == battle.walking_state:
 		return
 		
@@ -43,13 +52,13 @@ func handle_input(event) -> void:
 		movement_path = []
 		
 	elif event.is_action_pressed("cast_first_spell"):
-		battle.to_spell_state(battle.get_player_spell(0))
+		battle.to_player_spell_state(battle.get_player_spell(0))
 	
 	elif event.is_action_pressed("cast_second_spell"):
-		battle.to_spell_state(battle.get_player_spell(1))
+		battle.to_player_spell_state(battle.get_player_spell(1))
 		
 	elif event.is_action_pressed("cast_third_spell"):
-		battle.to_spell_state(battle.get_player_spell(2))
+		battle.to_player_spell_state(battle.get_player_spell(2))
 
 	elif event.is_action_pressed("cast_fourth_spell"):
-		battle.to_spell_state(battle.get_player_spell(3))
+		battle.to_player_spell_state(battle.get_player_spell(3))
