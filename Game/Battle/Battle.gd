@@ -43,6 +43,12 @@ func _ready():
 	battle_state.enter()
 	animation_state = void_state
 	
+	print("====================")
+	var xd = board.get_cells_floodfill(player.global_position, 3)
+	print(xd)
+	print("====================")
+	board.show_movement_pathx(xd)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	delta_sum += delta

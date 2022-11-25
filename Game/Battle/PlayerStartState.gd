@@ -9,5 +9,5 @@ func _init(battle, board).(battle, board):
 func enter() -> void:
 	print("Entered player start state.\n")
 	battle.turn_timer.start()
-	battle.decrease_spells_cooldown()
+	battle.decrease_spells_cooldowns()
 	battle.to_player_idle_state()

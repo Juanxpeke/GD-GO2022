@@ -58,7 +58,7 @@ func connect_astar_point(point_position : Vector2) -> void:
 func get_cell_origin(position : Vector2) -> Vector2:
 	return global_position + map_to_world(world_to_map(to_local(position)))
 	
-# Returns an array with the origin positions of all the cells USED in the tilemap.
+# Returns an array with the origin positions of all the cells used in the tilemap.
 func get_used_cells_origins() -> Array:
 	var cells_coordinates = get_used_cells()
 	var cell_origins := []
@@ -75,6 +75,50 @@ func get_cells_path(start_origin : Vector2, end_origin : Vector2) -> Array:
 	set_unit_points_disabled(false)
 	return cells_path
 		
+# Gets the reachable cells coordinates from a certain origin, given a certain distance.
+func get_cells_floodfill(origin : Vector2, distance : int) -> Array:
+	var origin_coord := get_cell_coord(origin)
+	var cells_floodfill := []
+	
+	for i in range(1, distance + 1):
+		print("Checking index " + str(i))
+		cells_floodfill.append_array([
+			origin + Vector2(128, 64),
+			origin + (Vector2(i, 0) *  Vector2(128, 64)),
+			origin + (Vector2(0, -i) *  Vector2(128, 64)),
+			origin + (Vector2(-i, 0) *  Vector2(128, 64))])
+		
+		continue
+		for j in range(1, i):
+			var cell_origin := origin + (Vector2(j, i - j) * Vector2(128, 64))
+			print("Looking for path between " + str(origin_coord) + " and " + str(origin_coord + Vector2(j, i - j)))
+			print("Looking for path between " + str(origin) + " and " + str(cell_origin))
+			var cell_distance := get_cells_path(origin, cell_origin).size()
+			if get_unit_at_cell(origin_coord + Vector2(j, i - j)) != null and \
+			get_obstacle_at_cell(origin_coord + Vector2(j, i - j)) != null and \
+			cell_distance <= distance and cell_distance > 0:
+				cells_floodfill.append(origin + (Vector2(j, i - j) * Vector2(128, 64)))
+		
+		for j in range(1, i):
+			var cell_origin := origin + (Vector2(i - j, -j) * Vector2(128, 64))
+			var cell_distance := get_cells_path(origin, cell_origin).size()
+			if cell_distance <= distance and cell_distance > 0:
+				cells_floodfill.append(origin + (Vector2(i - j, -j) * Vector2(128, 64)))
+		
+		for j in range(1, i):
+			var cell_origin := origin + (Vector2(-j, j - i) * Vector2(128, 64))
+			var cell_distance := get_cells_path(origin, cell_origin).size()
+			if cell_distance <= distance and cell_distance > 0:
+				cells_floodfill.append(origin + (Vector2(-j, j - i) * Vector2(128, 64)))
+		
+		for j in range(1, i):
+			var cell_origin := origin + (Vector2(j - i, j) * Vector2(128, 64))
+			var cell_distance := get_cells_path(origin, cell_origin).size()
+			if cell_distance <= distance and cell_distance > 0:
+				cells_floodfill.append(origin + (Vector2(j - i, j) * Vector2(128, 64)))
+
+	return cells_floodfill
+
 # Returns an array with the coordinates of cells in the discrete line from
 # coordinates (x0, y0) to (x1, y1). Low part of modified Dofus' line algorithm.
 func get_cells_line_low(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
@@ -198,6 +242,11 @@ func show_movement_path(cells_path : Array) -> void:
 	for cell_origin in cells_path:
 		var cell_coord := get_cell_coord(cell_origin)
 		movement_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
+		
+func show_movement_pathx(cells_path : Array) -> void:
+	for cell_origin in cells_path:
+		var cell_coord := get_cell_coord(cell_origin)
+		spells_area_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
 	
 # Shows the spell range cells given a spell and a certain origin. If the line between the origin and
 # a certain spell range cell touches an obstacle or a unit, it is marked as blocked. For this, we
@@ -292,6 +341,13 @@ func set_unit_points_disabled(value: bool) -> void:
 func set_obstacles_points_disabled(value: bool) -> void:
 	for obstacle in obstacles:
 		astar.set_point_disabled(get_cell_id(obstacle.global_position), value)
+
+# Returns the obstacle located in a certain cell coordinate. If there is no obstacle in the given cell,
+# returns null.
+func get_obstacle_at_cell(cell_coord : Vector2) -> Object:
+	for obstacle in obstacles:
+		if get_cell_coord(obstacle.global_position) == cell_coord: return obstacle
+	return null
 
 # Returns the unit located in a certain cell coordinate. If there is no unit in the given cell,
 # returns null.

@@ -15,13 +15,13 @@ var health_points := total_health_points
 var action_points := total_action_points
 var movement_points := total_movement_points
 
+var spells := []
+
 var walking_path := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-var spells = []
 
 # =======================
 # ==== HEALTH POINTS ====

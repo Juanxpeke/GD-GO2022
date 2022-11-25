@@ -13,14 +13,15 @@ func get_index_range_cells(range_index : int) -> Array:
 	if range_index == 0:
 		return []
 	else:
-		var range_cells := []
-		for i in range_index + 1:
+		var range_cells := [Vector2(0, range_index), Vector2(range_index, 0),
+							Vector2(0, -range_index), Vector2(-range_index, 0)]
+		for i in range(1, range_index):
 			range_cells.append(Vector2(i, range_index - i))
-		for i in range_index + 1:
+		for i in range(1, range_index):
 			range_cells.append(Vector2(range_index - i, -i))
-		for i in range_index + 1:
+		for i in range(1, range_index):
 			range_cells.append(Vector2(-i, i - range_index))
-		for i in range_index + 1:
+		for i in range(1, range_index):
 			range_cells.append(Vector2(i - range_index, i))
 		return range_cells
 
