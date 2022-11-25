@@ -4,15 +4,18 @@ class_name Battle
 var battle_state : BattleState
 var animation_state : AnimationState
 
+var delta_sum : float = 0.0
+
 # Important nodes
 onready var board : AStarTileMap = $Board
 onready var player : Player = $Player
+onready var enemy : Enemy = $Enemy
 onready var turn_timer : Timer = $TurnTimer
 onready var battle_ui : Control = $BattleUI
 # Battle states
 onready var player_start_state := PlayerStartState.new(self, board)
-onready var player_idle_state := PlayerTurnIdleState.new(self, board)
-onready var player_spell_state := PlayerTurnSpellState.new(self, board)
+onready var player_idle_state := PlayerIdleState.new(self, board)
+onready var player_spell_state := PlayerSpellState.new(self, board)
 onready var enemy_state := EnemyState.new(self, board)
 # Animation states
 onready var void_state := PlayerVoidState.new(self, board)
@@ -21,6 +24,10 @@ onready var walking_state := PlayerWalkingState.new(self, board)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	board.add_unit(player)
+	board.add_unit(enemy)
+	# board.add_obstacle(enemy)
+	
 	battle_ui.set_player(player)
 	
 	battle_state = player_start_state
@@ -29,6 +36,11 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	delta_sum += delta
+	if delta_sum >= 1.0:
+		delta_sum = 0.0
+		battle_ui.update_timer_label(floor(turn_timer.time_left))
+	
 	battle_state.update()
 	animation_state.update(delta)
 
@@ -109,6 +121,10 @@ func get_player_movement_points() -> int:
 # Substract the player movement points to the given amount.
 func substract_player_movement_points(amount : int) -> void:
 	player.substract_movement_points(amount)
+	
+# Gets a certain player spell.
+func get_player_spell(spell_index : int) -> Spell:
+	return player.get_spell(spell_index)
 	
 # Resets the player action and movement points.
 func reset_player_points() -> void:

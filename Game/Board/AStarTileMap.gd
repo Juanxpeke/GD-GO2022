@@ -7,35 +7,30 @@ class_name AStarTileMap
 
 const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
-const PAIRING_LIMIT = int(pow(2, 30))
-
-enum Tiles {GROUND_TILE, 
+enum Tiles {GROU0ND_TILE, 
 			MOVEMENT_TILE, 
 			SPELL_RANGE_TILE,
 			SPELL_RANGE_BLOCKED_TILE, 
 			SPELL_AREA_TILE}
 
-onready var movement_board : TileMap = $MovementBoard
-onready var spells_board : TileMap = $SpellsBoard
-onready var spells_area_board : TileMap = $SpellsAreaBoard
-
-onready var enemy := $Enemy # debug
-
 var astar := AStar2D.new()
 var obstacles := []
 var units := []
 
+onready var movement_board : TileMap = $MovementBoard
+onready var spells_range_board : TileMap = $SpellsRangeBoard
+onready var spells_area_board : TileMap = $SpellsAreaBoard
+
 # Called when the node is added to the scene tree.
 func _ready() -> void:
 	refill_astar_points()
-	add_obstacle(enemy)
 	set_obstacles_points_disabled(true)
 
 # =================
 # ===== ASTAR =====
 # =================
 
-# Refiils the AStar graph with the tilemap cells origins and its cardinal conections.
+# RefiLls the AStar graph with the tilemap cells origins and its cardinal conections.
 func refill_astar_points() -> void:
 	astar.clear()
 	var cell_origins = get_used_cells_origins()
@@ -75,7 +70,10 @@ func get_used_cells_origins() -> Array:
 # Returns an array with the origin positions of cells in a certain path.
 func get_cells_path(start_origin : Vector2, end_origin : Vector2) -> Array:
 	if not has_cell(start_origin) or not has_cell(end_origin): return []
-	return astar.get_point_path(get_cell_id(start_origin), get_cell_id(end_origin)) as Array
+	set_unit_points_disabled(true)
+	var cells_path : Array = astar.get_point_path(get_cell_id(start_origin), get_cell_id(end_origin))
+	set_unit_points_disabled(false)
+	return cells_path
 		
 # Returns an array with the coordinates of cells in the discrete line from
 # coordinates (x0, y0) to (x1, y1). Low part of modified Dofus' line algorithm.
@@ -184,19 +182,11 @@ func get_cell_coord(cell_origin : Vector2) -> Vector2:
 func has_cell(cell_origin : Vector2) -> bool:
 	return astar.has_point(get_cell_id(cell_origin))
 
-# Converts from isometric coordinates to cartesian coordinates.
-func iso2cart(iso_position : Vector2) -> Vector2:
-	return Vector2(iso_position.x - iso_position.y, (iso_position.x + iso_position.y) / 2)
-
-# Converts from cartesian coordinates to isometric coordinates.
-func cart2iso(cart_position : Vector2) -> Vector2:
-	return Vector2(cart_position.x / 2 + cart_position.y, -cart_position.x / 2 + cart_position.y)
-
-# ====================
+# ===================
 # ===== DRAWING =====
-# ====================
+# ===================
 
-# Shows the area possible movements. It should use an entity cache in case it is
+# Shows an area of possible movements. It should use an entity cache in case it is
 # not the entity's turn.
 func show_possible_movements() -> void:
 	pass
@@ -209,31 +199,44 @@ func show_movement_path(cells_path : Array) -> void:
 		var cell_coord := get_cell_coord(cell_origin)
 		movement_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
 	
-	
+# Shows the spell range cells given a spell and a certain origin. If the line between the origin and
+# a certain spell range cell touches an obstacle or a unit, it is marked as blocked. For this, we
+# use a modified version of the Bresenham's line algorithm.
 func show_spell_range_cells(spell : Spell, origin : Vector2) -> void:
 	var origin_coord := get_cell_coord(origin)
 	var used_cells := get_used_cells()
 	var spell_cells := spell.get_range_cells(origin_coord)
 	
 	for spell_cell_coord in spell_cells:
+		
 		if spell_cell_coord in used_cells:
+			
 			var spell_line_cells := get_cells_line(origin_coord, spell_cell_coord)
 			var is_cell_blocked := false
+			
 			for obstacle in obstacles:
 				if get_cell_coord(obstacle.global_position) in spell_line_cells:
 					is_cell_blocked = true
 					break
-			
+					
+			for unit in units:
+				var unit_coord := get_cell_coord(unit.global_position)
+					
+				if unit_coord in spell_line_cells and unit_coord != origin_coord and \
+				unit_coord != spell_cell_coord:
+					is_cell_blocked = true
+					break
+					
 			if is_cell_blocked:
-				spells_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_BLOCKED_TILE)
+				spells_range_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_BLOCKED_TILE)
 			else:
-				spells_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_TILE)
+				spells_range_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_TILE)
 
-
+# Shows the spell area cells given a spell and a certain origin.
 func show_spell_area_cells(spell : Spell, origin : Vector2) -> void:
 	var origin_coord := get_cell_coord(origin)
 	
-	if spells_board.get_cellv(origin_coord) != Tiles.SPELL_RANGE_TILE:
+	if spells_range_board.get_cellv(origin_coord) != Tiles.SPELL_RANGE_TILE:
 		return
 	
 	var used_cells := get_used_cells()
@@ -243,180 +246,64 @@ func show_spell_area_cells(spell : Spell, origin : Vector2) -> void:
 		if spell_cell_coord in used_cells:
 			spells_area_board.set_cellv(spell_cell_coord, Tiles.SPELL_AREA_TILE)
 	
-func hide_spell_range_cells() -> void:
-	spells_board.clear()
-
-func hide_spell_area_cells() -> void:
-	spells_area_board.clear()
-	
+# Hide all the cells in the movement path.
 func hide_movement_path() -> void:
 	movement_board.clear()
 	
+# Hide all the spell range cells.
+func hide_spell_range_cells() -> void:
+	spells_range_board.clear()
 
+# Hide all the spell are cells.
+func hide_spell_area_cells() -> void:
+	spells_area_board.clear()
+	
+# ===============================
+# ===== UNITS AND OBSTACLES =====
+# ===============================
 
-
-
-
-
-
-# =======================================
-# ===== COPIED BUT NOT USED YET xdd =====
-# =======================================
-
-func set_path_length(point_path: Array, max_distance: int) -> Array:
-	if max_distance < 0: return point_path
-	point_path.resize(min(point_path.size(), max_distance))
-	return point_path
-
-func update() -> void:
-	refill_astar_points()
-	var unitNodes = get_tree().get_nodes_in_group("Units")
-	for unitNode in unitNodes:
-		add_unit(unitNode)
-	var obstacleNodes = get_tree().get_nodes_in_group("Obstacles")
-	for obstacleNode in obstacleNodes:
-		add_obstacle(obstacleNode)
-		
-
-
-
-
-func stop_path_at_unit(potential_path_points: Array) -> Array:
-	for i in range(1, potential_path_points.size()):
-		var point : Vector2 = potential_path_points[i]
-		if position_has_unit(point):
-			potential_path_points.resize(i)
-			break
-	return potential_path_points
-
-
-func get_floodfill_positions(start_position: Vector2, min_range: int, max_range: int, skip_obstacles := true, skip_units := true, return_center := false) -> Array:
-	var floodfill_positions := []
-	var checking_positions := [start_position]
-
-	while not checking_positions.empty():
-		var current_position : Vector2 = checking_positions.pop_back()
-		if skip_obstacles and position_has_obstacle(current_position, start_position): continue
-		if skip_units and position_has_unit(current_position, start_position): continue
-		if current_position in floodfill_positions: continue
-
-		var current_point := get_cell_id(current_position)
-		if not astar.has_point(current_point): continue
-		if astar.is_point_disabled(current_point): continue
-
-		var distance := (current_position - start_position)
-		var grid_distance := get_grid_distance(distance)
-		if grid_distance > max_range: continue
-
-		floodfill_positions.append(current_position)
-
-		for direction in DIRECTIONS:
-			var new_position := current_position + map_to_world(direction)
-			if skip_obstacles and position_has_obstacle(new_position): continue
-			if skip_units and position_has_unit(new_position): continue
-			if new_position in floodfill_positions: continue
-
-			var new_point := get_cell_id(new_position)
-			if not astar.has_point(new_point): continue
-			if astar.is_point_disabled(new_point): continue
-
-			checking_positions.append(new_position)
-	if not return_center:
-		floodfill_positions.erase(start_position)
-
-	var floodfill_positions_size := floodfill_positions.size()
-	for i in floodfill_positions_size:
-		var floodfill_position : Vector2 = floodfill_positions[floodfill_positions_size-i-1] # Loop through the positions backwards vvv
-		var distance = (floodfill_position - start_position)
-		var grid_distance := get_grid_distance(distance)
-		if grid_distance < min_range:
-			floodfill_positions.erase(floodfill_position) # Since we are modifying the array here
-
-	return floodfill_positions
-
-
-
-
-func path_directions(path) -> Array:
-	# Convert a path into directional vectors whose sum would be path[length-1]
-	var directions = []
-	for p in range(1, path.size()):
-		directions.append(path[p] - path[p - 1])
-	return directions
-
-
-
-
-func has_point(point_position: Vector2) -> bool:
-	var point_id := get_cell_id(point_position)
-	return astar.has_point(point_id)
-
-
-
-
-func get_grid_distance(distance: Vector2) -> float:
-	var vec := world_to_map(distance).abs().floor()
-	return vec.x + vec.y
-
-
-
-func set_obstacles_points_disabled(value: bool) -> void:
-	for obstacle in obstacles:
-		astar.set_point_disabled(get_cell_id(obstacle.global_position), value)
-
-func set_unit_points_disabled(value: bool, exception_units: Array = []) -> void:
-	for unit in units:
-		if unit in exception_units or unit.owner in exception_units:
-			continue
-	#	astar.set_point_disabled(get_cell_id(unit.global_position.x, unit.global_position.y), value)
-
-
-
+# Adds an obstacle to the obstacle list.
 func add_obstacle(obstacle: Object) -> void:
 	obstacles.append(obstacle)
 	if not obstacle.is_connected("tree_exiting", self, "remove_obstacle"):
 		obstacle.connect("tree_exiting", self, "remove_obstacle", [obstacle])
 
+# Removes an obstacle from the obstacle list.
 func remove_obstacle(obstacle: Object) -> void:
 	obstacles.erase(obstacle)
 
+# Adds a unitto the unit list.
 func add_unit(unit: Object) -> void:
 	units.append(unit)
 	if not unit.is_connected("tree_exiting", self, "remove_unit"):
 		unit.connect("tree_exiting", self, "remove_unit", [unit])
 
+# Removes a unit from the unit list.
 func remove_unit(unit: Object) -> void:
 	units.erase(unit)
 
-func position_has_obstacle(obstacle_position: Vector2, ignore_obstacle_position = null) -> bool:
-	if obstacle_position == ignore_obstacle_position: return false
+# Marks the units positions as disabled or enabled in the AStar graph, based on the given boolean.
+func set_unit_points_disabled(value: bool) -> void:
+	for unit in units:
+		astar.set_point_disabled(get_cell_id(unit.global_position), value)
+
+# Marks the obstacles positions as disabled or enabled in the AStar graph, based on the given
+# boolean.
+func set_obstacles_points_disabled(value: bool) -> void:
+	for obstacle in obstacles:
+		astar.set_point_disabled(get_cell_id(obstacle.global_position), value)
+
+# Returns true if a certain position has an obstacle, false otherwise.
+func position_has_obstacle(obstacle_position: Vector2) -> bool:
 	for obstacle in obstacles:
 		if obstacle.global_position == obstacle_position: return true
 	return false
 
-func position_has_unit(unit_position: Vector2, ignore_unit_position = null) -> bool:
-	if unit_position == ignore_unit_position: return false
+# Returns true if a certain position has a unit, false otherwise.
+func position_has_unit(unit_position: Vector2) -> bool:
 	for unit in units:
 		if unit.global_position == unit_position: return true
 	return false
-
-func get_cells_path_avoiding_obstacles_and_units(start_position: Vector2, end_position: Vector2, exception_units := [], max_distance := -1) -> Array:
-	set_obstacles_points_disabled(true)
-	set_unit_points_disabled(true, exception_units)
-	# var astar_path := astar.get_point_path(get_point(start_position), get_point(end_position))
-	set_obstacles_points_disabled(false)
-	set_unit_points_disabled(false)
-	return []
-	#return set_path_length(astar_path, max_distance)
-
-func get_cells_path_avoiding_obstacles(start_position: Vector2, end_position: Vector2, max_distance := -1) -> Array:
-	set_obstacles_points_disabled(true)
-	# var potential_path_points := astar.get_point_path(get_point(start_position), get_point(end_position))
-	set_obstacles_points_disabled(false)
-	# var astar_path := stop_path_at_unit(potential_path_points)
-	return []
-	# return set_path_length(astar_path, max_distance)
-
 
 # ===========================
 # ===== EXTRA UTILITIES =====

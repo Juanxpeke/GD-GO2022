@@ -1,12 +1,12 @@
 extends Object
 class_name Spell
 
-signal animation_ended
-
 var spell_name : String = 'Spell'
 var spell_action_points : int = 0
 var spell_range : int = 0
+var spell_cooldown : int = 0
 var spell_icon_image : StreamTexture
+var spell_sprite : StreamTexture
 var spell_sound : AudioStream
 
 # Called when the node enters the scene tree for the first time.
@@ -42,8 +42,10 @@ func get_area_cells(origin_coord := Vector2(0, 0)) -> Array:
 func get_action() -> String:
 	return ""
 
-func apply_effect(cell) -> void:
-	print("Pium! Die " + str(cell))
-	
+# Applies its effect to the given entity
+func apply_effect(entity) -> void:
+	pass
+
+# DEBUG
 func show_animation() -> void:
-	emit_signal("animation_ended")
+	pass

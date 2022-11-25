@@ -1,5 +1,5 @@
 extends BattleState
-class_name PlayerTurnIdleState
+class_name PlayerIdleState
 
 var last_cell := Vector2(-1, -1)
 var movement_path := []
@@ -62,3 +62,6 @@ func handle_input(event) -> void:
 
 	elif event.is_action_pressed("cast_fourth_spell"):
 		battle.to_player_spell_state(battle.get_player_spell(3))
+		
+	elif event.is_action_pressed("cast_fifth_spell"):
+		battle.to_player_spell_state(battle.get_player_spell(4))

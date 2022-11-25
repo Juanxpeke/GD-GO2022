@@ -2,6 +2,7 @@ extends Control
 
 var player : Player
 
+onready var timer_label := $"%TimerLabel"
 onready var action_points_label := $"%APLabel"
 onready var movement_points_label := $"%MPLabel"
 
@@ -19,6 +20,10 @@ func set_player(player : Player) -> void:
 	update_action_points_label()
 	update_movement_points_label()
 	update_spells_layout()
+
+# Updates the timer label.
+func update_timer_label(timer_value : int) -> void:
+	timer_label.text = str(timer_value)
 
 # Updates the health indicators.
 func update_health_gauges() -> void:
@@ -38,3 +43,5 @@ func update_movement_points_label() -> void:
 func update_spells_layout() -> void:
 	assert(player, "Player is not defined for the UI.")
 	pass
+
+

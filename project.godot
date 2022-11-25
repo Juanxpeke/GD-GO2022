@@ -29,40 +29,60 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Battle/BattleState.gd"
 }, {
+"base": "Entity",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Entities/Enemy.gd"
+}, {
 "base": "BattleState",
 "class": "EnemyState",
 "language": "GDScript",
 "path": "res://Game/Battle/EnemyState.gd"
 }, {
-"base": "Spell",
-"class": "GranadeSpell",
-"language": "GDScript",
-"path": "res://Tests/Spells/Granade.gd"
-}, {
-"base": "Spell",
-"class": "LaserBeam",
-"language": "GDScript",
-"path": "res://Tests/Spells/LaserBeam.gd"
-}, {
 "base": "AnimatedSprite",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Entities/Entity.gd"
+}, {
+"base": "Spell",
+"class": "Granade",
+"language": "GDScript",
+"path": "res://Spells/Granade.gd"
+}, {
+"base": "Spell",
+"class": "Knife",
+"language": "GDScript",
+"path": "res://Spells/Knife.gd"
+}, {
+"base": "Spell",
+"class": "Medkit",
+"language": "GDScript",
+"path": "res://Spells/Medkit.gd"
+}, {
+"base": "Spell",
+"class": "Pistol",
+"language": "GDScript",
+"path": "res://Spells/Pistol.gd"
+}, {
+"base": "Entity",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Entities/Player.gd"
 }, {
 "base": "BattleState",
+"class": "PlayerIdleState",
+"language": "GDScript",
+"path": "res://Game/Battle/PlayerIdleState.gd"
+}, {
+"base": "BattleState",
+"class": "PlayerSpellState",
+"language": "GDScript",
+"path": "res://Game/Battle/PlayerSpellState.gd"
+}, {
+"base": "BattleState",
 "class": "PlayerStartState",
 "language": "GDScript",
 "path": "res://Game/Battle/PlayerStartState.gd"
-}, {
-"base": "BattleState",
-"class": "PlayerTurnIdleState",
-"language": "GDScript",
-"path": "res://Game/Battle/PlayerTurnIdleState.gd"
-}, {
-"base": "BattleState",
-"class": "PlayerTurnSpellState",
-"language": "GDScript",
-"path": "res://Game/Battle/PlayerTurnSpellState.gd"
 }, {
 "base": "AnimationState",
 "class": "PlayerVoidState",
@@ -74,25 +94,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Battle/PlayerWalkingState.gd"
 }, {
+"base": "Spell",
+"class": "SniperRifle",
+"language": "GDScript",
+"path": "res://Spells/SniperRifle.gd"
+}, {
 "base": "Object",
 "class": "Spell",
 "language": "GDScript",
-"path": "res://Tests/Spells/Spell.gd"
+"path": "res://Spells/Spell.gd"
 } ]
 _global_script_class_icons={
 "AStarTileMap": "",
 "AnimationState": "",
 "Battle": "",
 "BattleState": "",
+"Enemy": "",
 "EnemyState": "",
-"GranadeSpell": "",
-"LaserBeam": "",
+"Entity": "",
+"Granade": "",
+"Knife": "",
+"Medkit": "",
+"Pistol": "",
 "Player": "",
+"PlayerIdleState": "",
+"PlayerSpellState": "",
 "PlayerStartState": "",
-"PlayerTurnIdleState": "",
-"PlayerTurnSpellState": "",
 "PlayerVoidState": "",
 "PlayerWalkingState": "",
+"SniperRifle": "",
 "Spell": ""
 }
 
@@ -101,6 +131,10 @@ _global_script_class_icons={
 config/name="Game Off 2022"
 run/main_scene="res://Game/Battle/Battle.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameManager="*res://Game/GameManager.gd"
 
 [gui]
 
@@ -150,11 +184,18 @@ cast_second_spell={
 }
 cast_third_spell={
 "deadzone": 0.5,
-"events": [  ]
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":51,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
 }
 cast_fourth_spell={
 "deadzone": 0.5,
-"events": [  ]
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":52,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+cast_fifth_spell={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":53,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [physics]
