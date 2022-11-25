@@ -1,6 +1,12 @@
 extends Node
 class_name Battle
 
+export var true_won_game_scene : PackedScene = preload("res://Game/Screens/TrueWonGameScreen.tscn")
+export var won_game_scene : PackedScene = preload("res://Game/Screens/WonGameScreen.tscn")
+export var bad_won_game_scene : PackedScene = preload("res://Game/Screens/BadWonGameScreen.tscn")
+export var lost_game_scene : PackedScene = preload("res://Game/Screens/LostGameScreen.tscn")
+export var bad_lost_game_scene : PackedScene = preload("res://Game/Screens/BadLostGameScreen.tscn")
+
 var battle_state : BattleState
 var animation_state : AnimationState
 
@@ -10,6 +16,7 @@ var delta_sum : float = 0.0
 onready var board : AStarTileMap = $Board
 onready var player : Player = $Player
 onready var enemy : Enemy = $Enemy
+onready var the_heart : TheHeart = $TheHeart
 onready var turn_timer : Timer = $TurnTimer
 onready var battle_ui : Control = $BattleUI
 # Battle states
@@ -24,9 +31,11 @@ onready var walking_state := PlayerWalkingState.new(self, board)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.connect("entity_has_dead", self, "end_game_lost")
+	enemy.connect("entity_has_dead", self, "end_game_won")
+	
 	board.add_unit(player)
 	board.add_unit(enemy)
-	# board.add_obstacle(enemy)
 	
 	battle_ui.set_player(player)
 	
@@ -135,13 +144,11 @@ func reset_player_points() -> void:
 # ==== LOGIC ====	
 # ===============
 	
-func show_spell_message():
-	print("Not enough AP!")
 	
 # Tries to cast a spell.
 func try_to_cast_spell(area_cells, spell) -> void:
 	if player.get_action_points() < spell.spell_action_points:
-		show_spell_message()
+		print("Not enough AP!")
 		return
 	
 	player.substract_action_points(spell.spell_action_points)
@@ -149,6 +156,25 @@ func try_to_cast_spell(area_cells, spell) -> void:
 	spell.show_animation()
 	
 	for cell in area_cells:
-		if board.position_has_unit(cell):
-			print("KILL")
+		var affected_unit = board.get_unit_at_cell(cell)
+		if affected_unit != null:
+			spell.apply_effect(affected_unit)
+		
+# Ends the game when the player wins.
+func end_game_won() -> void:
+	if the_heart.current_state == the_heart.TheHeartStates.HAPPY:
+		get_tree().change_scene_to(true_won_game_scene)
+	elif the_heart.current_state == the_heart.TheHeartStates.HAPPY_BEATEN or \
+	the_heart.current_state == the_heart.TheHeartStates.SAD_BEATEN:
+		get_tree().change_scene_to(won_game_scene)
+	else:
+		get_tree().change_scene_to(bad_won_game_scene)
 
+# Ends the game when the player losses.
+func end_game_lost() -> void:
+	if the_heart.current_state == the_heart.TheHeartStates.HAPPY or \
+	the_heart.current_state == the_heart.TheHeartStates.HAPPY_BEATEN or \
+	the_heart.current_state == the_heart.TheHeartStates.SAD_BEATEN:
+		get_tree().change_scene_to(lost_game_scene)
+	else:
+		get_tree().change_scene_to(bad_lost_game_scene)

@@ -2,9 +2,9 @@ extends Control
 
 var player : Player
 
-onready var timer_label := $"%TimerLabel"
 onready var action_points_label := $"%APLabel"
 onready var movement_points_label := $"%MPLabel"
+onready var timer_label := $"%TimerLabel"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

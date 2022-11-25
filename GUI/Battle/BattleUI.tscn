@@ -8,35 +8,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
-[node name="Timer" type="Control" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -100.0
-margin_right = -50.0
-margin_bottom = -50.0
-
-[node name="TimerIcon" type="TextureProgress" parent="Timer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture_under = ExtResource( 1 )
-fill_mode = 4
-nine_patch_stretch = true
-
-[node name="TimerLabel" type="Label" parent="Timer"]
-unique_name_in_owner = true
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_top = -30.0
-margin_right = 20.0
-margin_bottom = -10.0
-text = "0"
-align = 1
-valign = 1
-
 [node name="APLabel" type="Label" parent="."]
 unique_name_in_owner = true
 anchor_top = 1.0
@@ -56,3 +27,28 @@ margin_top = -44.0
 margin_right = 154.0
 margin_bottom = -22.0
 text = "0"
+
+[node name="HeartIcon" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -120.0
+margin_right = -20.0
+margin_bottom = -20.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="TimerLabel" type="Label" parent="HeartIcon"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -50.0
+margin_top = -40.0
+margin_right = 50.0
+margin_bottom = -20.0
+text = "0"
+align = 1
+valign = 1

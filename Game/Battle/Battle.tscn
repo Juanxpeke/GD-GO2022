@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game/Battle/Battle.gd" type="Script" id=1]
 [ext_resource path="res://Game/Board/Board.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/Player.gd" type="Script" id=4]
 [ext_resource path="res://GUI/Battle/BattleUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Enemy.gd" type="Script" id=6]
+[ext_resource path="res://Entities/TheHeart.gd" type="Script" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -38,6 +39,9 @@ script = ExtResource( 4 )
 position = Vector2( 448, 288 )
 frames = SubResource( 2 )
 script = ExtResource( 6 )
+
+[node name="TheHeart" type="Node" parent="."]
+script = ExtResource( 7 )
 
 [node name="TurnTimer" type="Timer" parent="."]
 wait_time = 10.0

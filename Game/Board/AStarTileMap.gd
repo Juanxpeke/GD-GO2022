@@ -293,17 +293,12 @@ func set_obstacles_points_disabled(value: bool) -> void:
 	for obstacle in obstacles:
 		astar.set_point_disabled(get_cell_id(obstacle.global_position), value)
 
-# Returns true if a certain position has an obstacle, false otherwise.
-func position_has_obstacle(obstacle_position: Vector2) -> bool:
-	for obstacle in obstacles:
-		if obstacle.global_position == obstacle_position: return true
-	return false
-
-# Returns true if a certain position has a unit, false otherwise.
-func position_has_unit(unit_position: Vector2) -> bool:
+# Returns the unit located in a certain cell coordinate. If there is no unit in the given cell,
+# returns null.
+func get_unit_at_cell(cell_coord : Vector2) -> Entity:
 	for unit in units:
-		if unit.global_position == unit_position: return true
-	return false
+		if get_cell_coord(unit.global_position) == cell_coord: return unit as Entity
+	return null
 
 # ===========================
 # ===== EXTRA UTILITIES =====

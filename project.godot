@@ -103,6 +103,11 @@ _global_script_classes=[ {
 "class": "Spell",
 "language": "GDScript",
 "path": "res://Spells/Spell.gd"
+}, {
+"base": "Node",
+"class": "TheHeart",
+"language": "GDScript",
+"path": "res://Entities/TheHeart.gd"
 } ]
 _global_script_class_icons={
 "AStarTileMap": "",
@@ -123,7 +128,8 @@ _global_script_class_icons={
 "PlayerVoidState": "",
 "PlayerWalkingState": "",
 "SniperRifle": "",
-"Spell": ""
+"Spell": "",
+"TheHeart": ""
 }
 
 [application]

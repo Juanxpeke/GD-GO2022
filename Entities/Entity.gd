@@ -1,6 +1,7 @@
 extends AnimatedSprite
 class_name Entity
 
+signal entity_has_dead
 signal health_points_changed
 signal action_points_changed
 signal movement_points_changed
@@ -27,6 +28,8 @@ var spells = []
 func set_health_points(amount : int) -> void:
 	health_points = clamp(amount, 0, total_health_points)
 	emit_signal("health_points_changed")
+	if health_points == 0:
+		emit_signal("entity_has_dead")
 
 # Adds a certain amount to the current player health points.
 func add_health_points(amount : int) -> void:
@@ -39,6 +42,10 @@ func substract_health_points(amount : int) -> void:
 # Gets the player current health points.
 func get_health_points() -> int:
 	return health_points
+
+# Takes damages.
+func take_damage(amount : int) -> void:
+	substract_health_points(amount)
 
 # =======================
 # ==== ACTION POINTS ====
