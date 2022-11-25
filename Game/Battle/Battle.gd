@@ -149,5 +149,6 @@ func try_to_cast_spell(area_cells, spell) -> void:
 	spell.show_animation()
 	
 	for cell in area_cells:
-		spell.apply_effect(cell)
+		if board.position_has_unit(cell):
+			print("KILL")
 
