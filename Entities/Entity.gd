@@ -5,14 +5,17 @@ signal entity_has_dead
 signal health_points_changed
 signal action_points_changed
 signal movement_points_changed
+signal walking_animation_ended
 
-var total_health_points := 100
-var total_action_points := 7
+var total_health_points := 1000
+var total_action_points := 6
 var total_movement_points := 4
 
 var health_points := total_health_points
 var action_points := total_action_points
 var movement_points := total_movement_points
+
+var walking_path := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -101,10 +104,36 @@ func get_movement_points() -> int:
 # ==== SPELLS ====
 # ================
 
+# Gets the list of spells.
+func get_spells() -> Array:
+	return spells
+
 # Gets the player spell at the given index.
 func get_spell(spell_index : int):
 	return spells[spell_index]
 	
+# ===================
+# ==== BEHAVIOUR ====
+# ===================
 
-
-
+# Makes a certain movement.
+func make_movement(walking_path : Array) -> void:
+	self.walking_path = walking_path
+	
+func cast_spell(spell, entity : Entity) -> void:
+	spell.apply_effect(entity)
+	
+# Called every frame.
+func _process(delta : float) -> void:
+	if walking_path.size() == 0:
+		return
+	
+	var closest_point : Vector2 = walking_path[0]
+	global_position += (closest_point - global_position).normalized() * delta * 300
+	
+	if closest_point.distance_to(global_position) < 5:
+		global_position = closest_point
+		walking_path.remove(0)
+	
+	if walking_path.size() == 0:
+		emit_signal("walking_animation_ended")

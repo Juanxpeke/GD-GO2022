@@ -1,11 +1,10 @@
 extends Spell
-class_name SniperRifle
+class_name LaserBeam
 
 # Constructor.
 func _init():
 	spell_range = 12
 	spell_action_points = 4
-	spell_cooldown = 2
 	
 # Gets the related action.
 func get_action() -> String:
@@ -13,4 +12,4 @@ func get_action() -> String:
 
 # Applies its effect to the given entity
 func apply_effect(entity) -> void:
-	entity.take_damage(90)
+	entity.take_damage(120)

@@ -55,6 +55,11 @@ _global_script_classes=[ {
 "path": "res://Spells/Knife.gd"
 }, {
 "base": "Spell",
+"class": "LaserBeam",
+"language": "GDScript",
+"path": "res://Spells/LaserBeam.gd"
+}, {
+"base": "Spell",
 "class": "Medkit",
 "language": "GDScript",
 "path": "res://Spells/Medkit.gd"
@@ -119,6 +124,7 @@ _global_script_class_icons={
 "Entity": "",
 "Granade": "",
 "Knife": "",
+"LaserBeam": "",
 "Medkit": "",
 "Pistol": "",
 "Player": "",

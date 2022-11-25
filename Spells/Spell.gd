@@ -5,13 +5,11 @@ var spell_name : String = 'Spell'
 var spell_action_points : int = 0
 var spell_range : int = 0
 var spell_cooldown : int = 0
+var spell_current_cooldown : int = 0
 var spell_icon_image : StreamTexture
 var spell_sprite : StreamTexture
 var spell_sound : AudioStream
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 # Gets the range cells of the spell in a given range index.
 func get_index_range_cells(range_index : int) -> Array:

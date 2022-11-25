@@ -9,5 +9,7 @@ func _init(battle, board).(battle, board):
 func enter() -> void:
 	print("Entered enemy state.\n")
 	battle.reset_player_points()
-	yield(battle.get_tree().create_timer(2.0), "timeout")
+	
+	battle.make_enemy_best_movement()
+	
 	battle.to_player_start_state()

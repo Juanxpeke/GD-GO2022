@@ -141,9 +141,23 @@ func reset_player_points() -> void:
 	player.reset_movement_points()
 	
 # ===============
+# ==== ENEMY ====
+# ===============
+
+# Makes the enemy best movement.
+func make_enemy_best_movement() -> void:
+	enemy.make_best_movement(self, board)
+	
+# ===============
 # ==== LOGIC ====	
 # ===============
 	
+# Decreases the player and enemy spells cooldowns by 1.
+func decrease_spells_cooldowns() -> void:
+	for spell in player.get_spells():
+		spell.spell_current_cooldown = max(spell.spell_current_cooldown - 1, 0)
+	for spell in enemy.get_spells():
+		spell.spell_current_cooldown = max(spell.spell_current_cooldown - 1, 0)
 	
 # Tries to cast a spell.
 func try_to_cast_spell(area_cells, spell) -> void:
@@ -151,7 +165,11 @@ func try_to_cast_spell(area_cells, spell) -> void:
 		print("Not enough AP!")
 		return
 	
+	if spell.spell_current_cooldown > 0:
+		print("Spell is in cooldown!")
+	
 	player.substract_action_points(spell.spell_action_points)
+	spell.spell_current_cooldown = spell.spell_cooldown
 	
 	spell.show_animation()
 	
