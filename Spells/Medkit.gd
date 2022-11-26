@@ -5,7 +5,7 @@ class_name Medkit
 func _init():
 	spell_range = 0
 	spell_action_points = 4
-	spell_cooldown = 3
+	spell_cooldown = 4
 
 # Gets the range cells of the spell in a given range index.
 func get_index_range_cells(range_index : int) -> Array:
@@ -19,3 +19,7 @@ func get_action() -> String:
 # Applies its effect to the given entity
 func apply_effect(entity) -> void:
 	entity.heal(20)
+	
+# Returns the string version of the spell.
+func _to_string() -> String:
+	return "Medkit"

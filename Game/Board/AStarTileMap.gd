@@ -99,6 +99,14 @@ func get_cells_path(start_origin : Vector2, end_origin : Vector2) -> Array:
 	var cells_path : Array = astar.get_point_path(get_cell_id(start_origin), get_cell_id(end_origin))
 	set_unit_points_disabled(false)
 	return cells_path
+
+# Returns an array with the origin positions of cells in a certain path. Ignores the given unit.
+func get_cells_path_ignoring_unit(start_origin : Vector2, end_origin : Vector2, unit : Entity) -> Array:
+	if not has_cell(start_origin) or not has_cell(end_origin): return []
+	set_unit_points_disabled_ignoring_unit(true, unit)
+	var cells_path : Array = astar.get_point_path(get_cell_id(start_origin), get_cell_id(end_origin))
+	set_unit_points_disabled(false)
+	return cells_path
 		
 # Returns the reachable cells coordinates from a certain origin, given a certain distance.
 func get_cells_floodfill(origin : Vector2, distance : int) -> Array:
@@ -370,6 +378,12 @@ func remove_unit(unit: Object) -> void:
 func set_unit_points_disabled(value: bool) -> void:
 	for unit in units:
 		astar.set_point_disabled(get_cell_id(unit.global_position), value)
+
+# Marks the units positions as disabled or enabled in the AStar graph, based on the given boolean.
+func set_unit_points_disabled_ignoring_unit(value: bool, ignored_unit : Entity) -> void:
+	for unit in units:
+		if unit != ignored_unit:
+			astar.set_point_disabled(get_cell_id(unit.global_position), value)
 
 # Marks the obstacles positions as disabled or enabled in the AStar graph, based on the given
 # boolean.

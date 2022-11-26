@@ -48,6 +48,7 @@ func get_health_points() -> int:
 
 # Takes damages.
 func take_damage(amount : int) -> void:
+	print("I received " + str(amount) + " of damage :c current HP: " + str(health_points))
 	substract_health_points(amount)
 
 # =======================
@@ -121,9 +122,17 @@ func make_movement(walking_path : Array) -> void:
 	movement_points -= walking_path.size()
 	self.walking_path = walking_path
 	
-func cast_spell(spell, entity : Entity) -> void:
+func cast_spell(spell, area_cells, board) -> void:
 	action_points -= spell.spell_action_points
-	spell.apply_effect(entity)
+	spell.spell_current_cooldown = spell.spell_cooldown
+
+	spell.show_animation()
+
+	for cell in area_cells:
+		var affected_unit = board.get_unit_at_cell(cell)
+		if affected_unit != null:
+			spell.apply_effect(affected_unit)
+	
 	
 # Called every frame.
 func _process(delta : float) -> void:

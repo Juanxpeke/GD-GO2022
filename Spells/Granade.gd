@@ -5,7 +5,7 @@ class_name Granade
 func _init():
 	spell_range = 6
 	spell_action_points = 5
-	spell_cooldown = 1
+	spell_cooldown = 2
 
 # Gets the range cells of the spell in a given range index.
 func get_index_range_cells(range_index : int) -> Array:
@@ -48,4 +48,8 @@ func get_action() -> String:
 	
 # Applies its effect to the given entity
 func apply_effect(entity) -> void:
-	entity.take_damage(60)	
+	entity.take_damage(60)
+	
+# Returns the string version of the spell.
+func _to_string() -> String:
+	return "Granade"

@@ -49,3 +49,8 @@ func apply_effect(entity) -> void:
 # DEBUG
 func show_animation() -> void:
 	pass
+
+
+# Returns the string version of the spell.
+func _to_string() -> String:
+	return "Spell"

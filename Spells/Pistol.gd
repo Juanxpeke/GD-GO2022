@@ -13,3 +13,7 @@ func get_action() -> String:
 # Applies its effect to the given entity
 func apply_effect(entity) -> void:
 	entity.take_damage(15)
+
+# Returns the string version of the spell.
+func _to_string() -> String:
+	return "Pistol"

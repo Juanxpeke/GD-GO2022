@@ -38,10 +38,16 @@ func _ready():
 	board.add_unit(enemy)
 	
 	battle_ui.set_player(player)
+	battle_ui.set_enemy(enemy)
 	
 	battle_state = player_start_state
 	battle_state.enter()
 	animation_state = void_state
+	
+	# print(board.get_cells_path(Vector2(320, 160), Vector2(256, 192)))
+	# print(board.get_cells_path(Vector2(256, 192), Vector2(320, 160)))
+	# print(board.get_cells_path_ignoring_unit(Vector2(256, 192), Vector2(320, 160), player))
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -64,9 +70,7 @@ func _input(event):
 # Advances a turn.
 func to_enemy_state() -> void:
 	battle_state.exit()
-	print("XD")
 	battle_state = enemy_state
-	print("D:")
 	battle_state.enter()
 
 # Changes the state to the player start state.
@@ -149,7 +153,12 @@ func reset_player_points() -> void:
 # Makes the enemy best action for the current turn.
 func make_enemy_best_action() -> void:
 	enemy.make_best_action(self, board)
-	
+
+# Resets the enemy action and movement points.
+func reset_enemy_points() -> void:
+	enemy.reset_action_points()
+	enemy.reset_movement_points()
+
 # ===============
 # ==== LOGIC ====	
 # ===============
@@ -169,16 +178,9 @@ func try_to_cast_spell(area_cells, spell) -> void:
 	
 	if spell.spell_current_cooldown > 0:
 		print("Spell is in cooldown!")
+		return
 	
-	player.substract_action_points(spell.spell_action_points)
-	spell.spell_current_cooldown = spell.spell_cooldown
-	
-	spell.show_animation()
-	
-	for cell in area_cells:
-		var affected_unit = board.get_unit_at_cell(cell)
-		if affected_unit != null:
-			spell.apply_effect(affected_unit)
+	player.cast_spell(spell, area_cells, board)
 		
 # Ends the game when the player wins.
 func end_game_won() -> void:
