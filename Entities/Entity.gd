@@ -118,9 +118,11 @@ func get_spell(spell_index : int):
 
 # Makes a certain movement.
 func make_movement(walking_path : Array) -> void:
+	movement_points -= walking_path.size()
 	self.walking_path = walking_path
 	
 func cast_spell(spell, entity : Entity) -> void:
+	action_points -= spell.spell_action_points
 	spell.apply_effect(entity)
 	
 # Called every frame.

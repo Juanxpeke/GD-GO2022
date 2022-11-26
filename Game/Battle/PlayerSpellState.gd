@@ -13,7 +13,9 @@ func _init(battle, board).(battle, board):
 # Called when being selected as the new state.
 func enter() -> void:
 	print("Entered player spell state.\n")
-	board.show_spell_range_cells(spell, battle.get_player_position())
+	var player_coord := board.get_cell_coord(battle.get_player_position())
+	var cells_sight_areas := board.get_cells_sight_areas(spell.get_range_cells(player_coord), battle.get_player_position())
+	board.show_spell_range_cells(cells_sight_areas[0], cells_sight_areas[1])
 
 # Called when being removed as the current state.
 func exit() -> void:

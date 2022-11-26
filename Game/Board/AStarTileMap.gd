@@ -53,11 +53,36 @@ func connect_astar_point(point_position : Vector2) -> void:
 
 # Notes: Origin right now is the top-left corner of the cell.
 
+# Given a cell origin, returns a unique identifier. It uses improved Szudzik pair 
+# algorithm to calculate the ID, and first transforms the origin to the equivalent
+# coordinate, in order reduce the IDs values.
+func get_cell_id(cell_origin : Vector2) -> int:
+	var cell_coordinate = get_cell_coord(cell_origin)
+	var x : int = cell_coordinate.x
+	var y : int = cell_coordinate.y
+	
+	var a := x * 2 if x >= 0 else (x * -2) - 1
+	var b := y * 2 if y >= 0 else (y * -2) - 1
+	var c = (a * a) + a + b if a >= b else (b * b) + a
+	
+	if a >= 0 and b < 0 or b >= 0 and a < 0:
+		return -c - 1
+	
+	return c
+		
+# Given a cell origin, it returns the equivalent cartesian coordinate.
+func get_cell_coord(cell_origin : Vector2) -> Vector2:
+	return world_to_map(to_local(cell_origin))
+
 # Given a position in the board, it returns the origin position of the cell that
 # covers that position.
 func get_cell_origin(position : Vector2) -> Vector2:
 	return global_position + map_to_world(world_to_map(to_local(position)))
 	
+# Given a coordinate in the board, it returns the origin position of the cell.
+func get_cell_originc(cell_coord : Vector2) -> Vector2:
+	return global_position + map_to_world(cell_coord)
+
 # Returns an array with the origin positions of all the cells used in the tilemap.
 func get_used_cells_origins() -> Array:
 	var cells_coordinates = get_used_cells()
@@ -75,48 +100,72 @@ func get_cells_path(start_origin : Vector2, end_origin : Vector2) -> Array:
 	set_unit_points_disabled(false)
 	return cells_path
 		
-# Gets the reachable cells coordinates from a certain origin, given a certain distance.
+# Returns the reachable cells coordinates from a certain origin, given a certain distance.
 func get_cells_floodfill(origin : Vector2, distance : int) -> Array:
 	var origin_coord := get_cell_coord(origin)
 	var cells_floodfill := []
 	
 	for i in range(1, distance + 1):
-		print("Checking index " + str(i))
-		cells_floodfill.append_array([
-			origin + Vector2(128, 64),
-			origin + (Vector2(i, 0) *  Vector2(128, 64)),
-			origin + (Vector2(0, -i) *  Vector2(128, 64)),
-			origin + (Vector2(-i, 0) *  Vector2(128, 64))])
+		var cell_origin := get_cell_originc(origin_coord + Vector2(0, i))
+		var cell_distance := get_cells_path(origin, cell_origin).size() - 1
+		if get_unit_at_cell(origin_coord + Vector2(0, i)) == null and \
+		get_obstacle_at_cell(origin_coord + Vector2(0, i)) == null and \
+		cell_distance <= distance and cell_distance > -1:
+			cells_floodfill.append(cell_origin)
 		
-		continue
-		for j in range(1, i):
-			var cell_origin := origin + (Vector2(j, i - j) * Vector2(128, 64))
-			print("Looking for path between " + str(origin_coord) + " and " + str(origin_coord + Vector2(j, i - j)))
-			print("Looking for path between " + str(origin) + " and " + str(cell_origin))
-			var cell_distance := get_cells_path(origin, cell_origin).size()
-			if get_unit_at_cell(origin_coord + Vector2(j, i - j)) != null and \
-			get_obstacle_at_cell(origin_coord + Vector2(j, i - j)) != null and \
-			cell_distance <= distance and cell_distance > 0:
-				cells_floodfill.append(origin + (Vector2(j, i - j) * Vector2(128, 64)))
+		cell_origin = get_cell_originc(origin_coord + Vector2(i, 0))
+		cell_distance = get_cells_path(origin, cell_origin).size() - 1
+		if get_unit_at_cell(origin_coord + Vector2(i, 0)) == null and \
+		get_obstacle_at_cell(origin_coord + Vector2(i, 0)) == null and \
+		cell_distance <= distance and cell_distance > -1:
+			cells_floodfill.append(cell_origin)
 		
-		for j in range(1, i):
-			var cell_origin := origin + (Vector2(i - j, -j) * Vector2(128, 64))
-			var cell_distance := get_cells_path(origin, cell_origin).size()
-			if cell_distance <= distance and cell_distance > 0:
-				cells_floodfill.append(origin + (Vector2(i - j, -j) * Vector2(128, 64)))
+		cell_origin = get_cell_originc(origin_coord + Vector2(0, -i))
+		cell_distance = get_cells_path(origin, cell_origin).size() - 1
+		if get_unit_at_cell(origin_coord + Vector2(0, -i)) == null and \
+		get_obstacle_at_cell(origin_coord + Vector2(0, -i)) == null and \
+		cell_distance <= distance and cell_distance > -1:
+			cells_floodfill.append(cell_origin)
 		
-		for j in range(1, i):
-			var cell_origin := origin + (Vector2(-j, j - i) * Vector2(128, 64))
-			var cell_distance := get_cells_path(origin, cell_origin).size()
-			if cell_distance <= distance and cell_distance > 0:
-				cells_floodfill.append(origin + (Vector2(-j, j - i) * Vector2(128, 64)))
+		cell_origin = get_cell_originc(origin_coord + Vector2(-i, 0))
+		cell_distance = get_cells_path(origin, cell_origin).size() - 1
+		if get_unit_at_cell(origin_coord + Vector2(-i, 0)) == null and \
+		get_obstacle_at_cell(origin_coord + Vector2(-i, 0)) == null and \
+		cell_distance <= distance and cell_distance > -1:
+			cells_floodfill.append(cell_origin)
 		
 		for j in range(1, i):
-			var cell_origin := origin + (Vector2(j - i, j) * Vector2(128, 64))
-			var cell_distance := get_cells_path(origin, cell_origin).size()
-			if cell_distance <= distance and cell_distance > 0:
-				cells_floodfill.append(origin + (Vector2(j - i, j) * Vector2(128, 64)))
-
+			cell_origin = get_cell_originc(origin_coord + Vector2(j, i - j))
+			cell_distance = get_cells_path(origin, cell_origin).size() - 1
+			if get_unit_at_cell(origin_coord + Vector2(j, i - j)) == null and \
+			get_obstacle_at_cell(origin_coord + Vector2(j, i - j)) == null and \
+			cell_distance <= distance and cell_distance > -1:
+				cells_floodfill.append(cell_origin)
+		
+		for j in range(1, i):
+			cell_origin = get_cell_originc(origin_coord + Vector2(i - j, -j))
+			cell_distance = get_cells_path(origin, cell_origin).size() - 1
+			if get_unit_at_cell(origin_coord + Vector2(i - j, -j)) == null and \
+			get_obstacle_at_cell(origin_coord + Vector2(i - j, -j)) == null and \
+			cell_distance <= distance and cell_distance > -1:
+				cells_floodfill.append(cell_origin)
+		
+		for j in range(1, i):
+			cell_origin = get_cell_originc(origin_coord + Vector2(-j, j - i))
+			cell_distance = get_cells_path(origin, cell_origin).size() - 1
+			if get_unit_at_cell(origin_coord + Vector2(-j, j - i)) == null and \
+			get_obstacle_at_cell(origin_coord + Vector2(-j, j - i)) == null and \
+			cell_distance <= distance and cell_distance > -1:
+				cells_floodfill.append(cell_origin)
+		
+		for j in range(1, i):
+			cell_origin = get_cell_originc(origin_coord + Vector2(j - i, j))
+			cell_distance = get_cells_path(origin, cell_origin).size() - 1
+			if get_unit_at_cell(origin_coord + Vector2(j - i, j)) == null and \
+			get_obstacle_at_cell(origin_coord + Vector2(j - i, j)) == null and \
+			cell_distance <= distance and cell_distance > -1:
+				cells_floodfill.append(cell_origin)
+		
 	return cells_floodfill
 
 # Returns an array with the coordinates of cells in the discrete line from
@@ -197,26 +246,46 @@ func get_cells_line(start_coord : Vector2, end_coord : Vector2) -> Array:
 		else:
 			return get_cells_line_high(x0, y0, x1, y1)
 	
-# Given a cell origin, returns a unique identifier. It uses improved Szudzik pair 
-# algorithm to calculate the ID, and first transforms the origin to the equivalent
-# coordinate, in order reduce the IDs values.
-func get_cell_id(cell_origin : Vector2) -> int:
-	var cell_coordinate = get_cell_coord(cell_origin)
-	var x : int = cell_coordinate.x
-	var y : int = cell_coordinate.y
+# Returns an array with two arrays. The arrays tells if their cells are reachable or not by a cell
+# line, respectively. It uses a modified version of the Bresenham's line algorithm, divided in 
+# different cases, trying to replicate the Dofus' behaviour.
+func get_cells_sight_areas(cells_area : Array, origin : Vector2) -> Array:
+	var origin_coord := get_cell_coord(origin)
+	var used_cells := get_used_cells()
+	var free_cells := []
+	var blocked_cells := []
 	
-	var a := x * 2 if x >= 0 else (x * -2) - 1
-	var b := y * 2 if y >= 0 else (y * -2) - 1
-	var c = (a * a) + a + b if a >= b else (b * b) + a
-	
-	if a >= 0 and b < 0 or b >= 0 and a < 0:
-		return -c - 1
-	
-	return c
+	for cell_coord in cells_area:
+		if cell_coord in used_cells:
+			var cells_line := get_cells_line(origin_coord, cell_coord)
+			var is_cell_blocked := false
+			
+			for obstacle in obstacles:
+				if get_cell_coord(obstacle.global_position) in cells_line:
+					is_cell_blocked = true
+					break
+					
+			for unit in units:
+				var unit_coord := get_cell_coord(unit.global_position)
+					
+				if is_cell_blocked: break
+					
+				if unit_coord in cells_line and unit_coord != origin_coord and unit_coord != cell_coord:
+					is_cell_blocked = true
+					break
+					
+			if is_cell_blocked:
+				blocked_cells.append(cell_coord)
+			else:
+				free_cells.append(cell_coord)
 		
-# Given a cell origin, it returns the equivalent cartesian coordinate.
-func get_cell_coord(cell_origin : Vector2) -> Vector2:
-	return world_to_map(to_local(cell_origin))
+	return [free_cells, blocked_cells]
+
+# Returns the raw distance between two cell origins.
+func get_raw_distance(start_origin : Vector2, end_origin : Vector2) -> float:
+	var start_coord := get_cell_coord(start_origin)
+	var end_coord := get_cell_coord(end_origin)
+	return abs(start_coord.x - end_coord.x) + abs(start_coord.y - end_coord.y)
 
 # ================
 # ===== MISC =====
@@ -230,57 +299,23 @@ func has_cell(cell_origin : Vector2) -> bool:
 # ===== DRAWING =====
 # ===================
 
-# Shows an area of possible movements. It should use an entity cache in case it is
-# not the entity's turn.
+# Shows an area of possible movements.
 func show_possible_movements() -> void:
 	pass
 	
-# Shows the movement path following a cells array. It can also use a cache,
-# because if the path is A, then, the path to some cell inside A should also
-# be the optimum path.
+# Shows the movement path following a cells array.
 func show_movement_path(cells_path : Array) -> void:
 	for cell_origin in cells_path:
 		var cell_coord := get_cell_coord(cell_origin)
 		movement_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
 		
-func show_movement_pathx(cells_path : Array) -> void:
-	for cell_origin in cells_path:
-		var cell_coord := get_cell_coord(cell_origin)
-		spells_area_board.set_cellv(cell_coord, Tiles.MOVEMENT_TILE)
+# Shows the spell range cells.
+func show_spell_range_cells(free_cells : Array, blocked_cells : Array) -> void:
+	for cell_coord in free_cells:
+		spells_range_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_TILE)
+	for cell_coord in blocked_cells:
+		spells_range_board.set_cellv(cell_coord, Tiles.SPELL_RANGE_BLOCKED_TILE)
 	
-# Shows the spell range cells given a spell and a certain origin. If the line between the origin and
-# a certain spell range cell touches an obstacle or a unit, it is marked as blocked. For this, we
-# use a modified version of the Bresenham's line algorithm.
-func show_spell_range_cells(spell : Spell, origin : Vector2) -> void:
-	var origin_coord := get_cell_coord(origin)
-	var used_cells := get_used_cells()
-	var spell_cells := spell.get_range_cells(origin_coord)
-	
-	for spell_cell_coord in spell_cells:
-		
-		if spell_cell_coord in used_cells:
-			
-			var spell_line_cells := get_cells_line(origin_coord, spell_cell_coord)
-			var is_cell_blocked := false
-			
-			for obstacle in obstacles:
-				if get_cell_coord(obstacle.global_position) in spell_line_cells:
-					is_cell_blocked = true
-					break
-					
-			for unit in units:
-				var unit_coord := get_cell_coord(unit.global_position)
-					
-				if unit_coord in spell_line_cells and unit_coord != origin_coord and \
-				unit_coord != spell_cell_coord:
-					is_cell_blocked = true
-					break
-					
-			if is_cell_blocked:
-				spells_range_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_BLOCKED_TILE)
-			else:
-				spells_range_board.set_cellv(spell_cell_coord, Tiles.SPELL_RANGE_TILE)
-
 # Shows the spell area cells given a spell and a certain origin.
 func show_spell_area_cells(spell : Spell, origin : Vector2) -> void:
 	var origin_coord := get_cell_coord(origin)
@@ -303,7 +338,7 @@ func hide_movement_path() -> void:
 func hide_spell_range_cells() -> void:
 	spells_range_board.clear()
 
-# Hide all the spell are cells.
+# Hide all the spell area cells.
 func hide_spell_area_cells() -> void:
 	spells_area_board.clear()
 	

@@ -20,6 +20,7 @@ func exit() -> void:
 # Called every frame.
 func update() -> void:
 	if battle.turn_timer.is_stopped():
+		print("TIMER STOPPED")
 		battle.to_enemy_state()
 		return
 	

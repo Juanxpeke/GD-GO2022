@@ -43,12 +43,6 @@ func _ready():
 	battle_state.enter()
 	animation_state = void_state
 	
-	print("====================")
-	var xd = board.get_cells_floodfill(player.global_position, 3)
-	print(xd)
-	print("====================")
-	board.show_movement_pathx(xd)
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	delta_sum += delta
@@ -70,7 +64,9 @@ func _input(event):
 # Advances a turn.
 func to_enemy_state() -> void:
 	battle_state.exit()
+	print("XD")
 	battle_state = enemy_state
+	print("D:")
 	battle_state.enter()
 
 # Changes the state to the player start state.
@@ -150,9 +146,9 @@ func reset_player_points() -> void:
 # ==== ENEMY ====
 # ===============
 
-# Makes the enemy best movement.
-func make_enemy_best_movement() -> void:
-	enemy.make_best_movement(self, board)
+# Makes the enemy best action for the current turn.
+func make_enemy_best_action() -> void:
+	enemy.make_best_action(self, board)
 	
 # ===============
 # ==== LOGIC ====	

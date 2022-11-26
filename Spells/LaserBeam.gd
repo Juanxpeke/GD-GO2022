@@ -5,6 +5,7 @@ class_name LaserBeam
 func _init():
 	spell_range = 12
 	spell_action_points = 4
+	spell_score_value = 10
 	
 # Gets the related action.
 func get_action() -> String:

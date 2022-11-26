@@ -10,6 +10,8 @@ var spell_icon_image : StreamTexture
 var spell_sprite : StreamTexture
 var spell_sound : AudioStream
 
+var spell_score_value : int = 0
+
 
 # Gets the range cells of the spell in a given range index.
 func get_index_range_cells(range_index : int) -> Array:
