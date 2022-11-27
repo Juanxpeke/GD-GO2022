@@ -4,7 +4,6 @@ class_name TheHeart
 enum TheHeartStates {HAPPY,
 					HAPPY_BEATEN, 
 					SAD_BEATEN,
-					DEPRESSED_BEATEN, 
 					ALMOST_DEAD}
 					
 var current_state = TheHeartStates.HAPPY

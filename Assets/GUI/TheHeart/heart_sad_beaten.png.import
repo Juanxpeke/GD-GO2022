@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/timer.png-719c0a7a5b59aaba0aa451067c88c5ad.stex"
+path="res://.import/heart_sad_beaten.png-9fd9e796de0f21807ab382cf2271d3ed.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GUI/timer.png"
-dest_files=[ "res://.import/timer.png-719c0a7a5b59aaba0aa451067c88c5ad.stex" ]
+source_file="res://Assets/GUI/TheHeart/heart_sad_beaten.png"
+dest_files=[ "res://.import/heart_sad_beaten.png-9fd9e796de0f21807ab382cf2271d3ed.stex" ]
 
 [params]
 
