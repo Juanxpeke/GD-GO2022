@@ -48,7 +48,6 @@ func get_health_points() -> int:
 
 # Takes damages.
 func take_damage(amount : int) -> void:
-	print("I received " + str(amount) + " of damage :c current HP: " + str(health_points))
 	substract_health_points(amount)
 
 # =======================

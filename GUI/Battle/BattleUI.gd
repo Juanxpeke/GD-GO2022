@@ -3,6 +3,7 @@ extends Control
 var player : Player
 var enemy : Enemy
 
+onready var health_points_label := $"%HPLabel"
 onready var action_points_label := $"%APLabel"
 onready var movement_points_label := $"%MPLabel"
 onready var timer_label := $"%TimerLabel"
@@ -42,7 +43,8 @@ func update_timer_label(timer_value : int) -> void:
 
 # Updates the health indicators.
 func update_health_gauges() -> void:
-	pass
+	assert(player, "Player is not defined for the UI.")
+	health_points_label.text = "HP: " + str(player.get_health_points())
 
 # Updates the action points label.
 func update_action_points_label() -> void:

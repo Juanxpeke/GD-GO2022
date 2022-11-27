@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/GUI/TheHeart/heart_happy.png" type="Texture" id=1]
 [ext_resource path="res://GUI/Battle/BattleUI.gd" type="Script" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://Assets/Fonts/kaph_big.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/GUI/movement_points_icon.png" type="Texture" id=5]
 [ext_resource path="res://Assets/GUI/action_points_icon.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.941176 )
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
 
 [node name="BattleUI" type="Control"]
 anchor_right = 1.0
@@ -19,36 +24,45 @@ anchor_bottom = 1.0
 margin_top = -160.0
 margin_right = 300.0
 margin_bottom = -35.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HPLabel" type="Label" parent="PlayerLayout"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = -20.0
+margin_right = 100.0
+text = "HP: 0"
 
 [node name="APMPLayout" type="Control" parent="PlayerLayout"]
-anchor_left = 0.5
+anchor_left = 0.55
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="APIcon" type="TextureRect" parent="PlayerLayout/APMPLayout"]
-anchor_right = 0.5
+anchor_right = 0.4
 anchor_bottom = 0.5
 margin_top = 12.0
-margin_bottom = -12.0
+margin_bottom = -8.0
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
 [node name="APLabel" type="Label" parent="PlayerLayout/APMPLayout"]
 unique_name_in_owner = true
-anchor_left = 0.5
+anchor_left = 0.4
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 14.0
-margin_bottom = -12.0
+margin_bottom = -8.0
 text = "0"
 valign = 1
 
 [node name="MPIcon" type="TextureRect" parent="PlayerLayout/APMPLayout"]
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.4
 anchor_bottom = 1.0
-margin_top = 12.0
+margin_top = 8.0
 margin_bottom = -12.0
 texture = ExtResource( 5 )
 expand = true
@@ -56,11 +70,11 @@ stretch_mode = 6
 
 [node name="MPLabel" type="Label" parent="PlayerLayout/APMPLayout"]
 unique_name_in_owner = true
-anchor_left = 0.5
+anchor_left = 0.4
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 12.0
+margin_top = 8.0
 margin_bottom = -14.0
 text = "0"
 valign = 1
