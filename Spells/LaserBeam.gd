@@ -3,7 +3,7 @@ class_name LaserBeam
 
 # Constructor.
 func _init():
-	spell_range = 12
+	spell_range = 5
 	spell_action_points = 4
 	spell_score_value = 10
 	spell_cooldown = 2

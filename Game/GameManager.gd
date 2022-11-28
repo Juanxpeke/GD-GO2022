@@ -1,9 +1,10 @@
 extends Node
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass	
+# Plays an audio stream
+static func play(audio : AudioStream) -> void:
+	var audio_player := AudioStreamPlayer.new()
+	GameManager.add_child(audio_player)
+	audio_player.bus = "SFX"
+	audio_player.stream = audio
+	audio_player.connect("finished", audio_player, "queue_free")
+	audio_player.play()

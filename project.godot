@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Battle/EnemyState.gd"
 }, {
-"base": "AnimatedSprite",
+"base": "Position2D",
 "class": "Entity",
 "language": "GDScript",
 "path": "res://Entities/Entity.gd"
@@ -99,11 +99,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Battle/PlayerWalkingState.gd"
 }, {
-"base": "Spell",
-"class": "SniperRifle",
-"language": "GDScript",
-"path": "res://Spells/SniperRifle.gd"
-}, {
 "base": "Object",
 "class": "Spell",
 "language": "GDScript",
@@ -133,7 +128,6 @@ _global_script_class_icons={
 "PlayerStartState": "",
 "PlayerVoidState": "",
 "PlayerWalkingState": "",
-"SniperRifle": "",
 "Spell": "",
 "TheHeart": ""
 }
@@ -141,12 +135,18 @@ _global_script_class_icons={
 [application]
 
 config/name="Game Off 2022"
-run/main_scene="res://Game/Battle/Battle.tscn"
+run/main_scene="res://Game/Screens/StartScreen.tscn"
+boot_splash/image="res://Assets/GUI/boot_splash.png"
 config/icon="res://icon.png"
 
 [autoload]
 
 GameManager="*res://Game/GameManager.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
 
 [gui]
 

@@ -19,6 +19,7 @@ func enter() -> void:
 
 # Called when being removed as the current state.
 func exit() -> void:
+	print("Exited player spell state.\n")
 	board.hide_spell_range_cells()
 	board.hide_spell_area_cells()
 
@@ -57,8 +58,6 @@ func handle_input(event) -> void:
 	elif event.is_action_pressed("cast_fourth_spell"):
 		battle.to_player_spell_state(battle.get_player_spell(3))
 
-	elif event.is_action_pressed("cast_fifth_spell"):
-		battle.to_player_spell_state(battle.get_player_spell(4))
 
 # Sets the related spell.
 func set_spell(spell : Spell) -> void:

@@ -14,13 +14,17 @@ func enter() -> void:
 
 # Called when being removed as the current state.
 func exit() -> void:
+	print("Exited player idle state.\n")
 	last_cell = Vector2(-1, -1)
 	board.hide_movement_path()
 	
 # Called every frame.
 func update() -> void:
+	if battle.get_player().in_animation:
+		return
+	
 	if battle.turn_timer.is_stopped():
-		print("TIMER STOPPED")
+		print("Timer stopped!")
 		battle.to_enemy_state()
 		return
 	
@@ -43,13 +47,15 @@ func update() -> void:
 
 # Called when an input occurs.
 func handle_input(event) -> void:
+	if battle.get_player().in_animation:
+		return
+	
 	if battle.animation_state == battle.walking_state:
 		return
 	
 	if event.is_action_pressed("mouse_left"):
 		board.hide_movement_path()
-		battle.substract_player_movement_points(movement_path.size())
-		battle.to_walking_state(movement_path)
+		battle.get_player().make_movement(movement_path)
 		movement_path = []
 		
 	elif event.is_action_pressed("cast_first_spell"):

@@ -10,7 +10,7 @@
 0/name = "ground_tile.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
+0/modulate = Color( 0.313726, 0.313726, 0.352941, 1 )
 0/region = Rect2( 0, 0, 128, 128 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )

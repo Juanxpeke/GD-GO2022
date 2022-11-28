@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends Position2D
 class_name Entity
 
 signal entity_has_dead
@@ -17,11 +17,22 @@ var movement_points := total_movement_points
 
 var spells := []
 
+var orientation_index := 0
 var walking_path := []
+
+var in_animation := false
+
+onready var sprite : AnimatedSprite = $Sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	sprite.connect("animation_finished", self, "when_anim_finished")
+
+func when_anim_finished():
+	print("Anim finished!")
+	sprite.stop()
+	sprite.animation = "idle_" + str(orientation_index)
+	in_animation = false
 
 # =======================
 # ==== HEALTH POINTS ====
@@ -118,14 +129,37 @@ func get_spell(spell_index : int):
 
 # Makes a certain movement.
 func make_movement(walking_path : Array) -> void:
-	movement_points -= walking_path.size()
+	substract_movement_points(walking_path.size())
 	self.walking_path = walking_path
+	if walking_path.size() > 0:
+		in_animation = true
 	
 func cast_spell(spell, area_cells, board) -> void:
-	action_points -= spell.spell_action_points
+	if area_cells.size() == 0:
+		return
+	
+	substract_action_points(spell.spell_action_points)
 	spell.spell_current_cooldown = spell.spell_cooldown
 
-	spell.show_animation()
+	GameManager.play(spell.spell_sound)
+	
+	var player_cell = get_parent().get_parent().board.get_cell_coord(global_position)
+	var target_cell = area_cells[0]
+	
+	if player_cell.x < target_cell.x:
+		orientation_index = 0
+	elif player_cell.y < target_cell.y:
+		orientation_index = 1
+	elif player_cell.x > target_cell.x:
+		orientation_index = 2
+	elif player_cell.y > target_cell.y:
+		orientation_index = 3
+	
+	if sprite.frames.has_animation(str(spell).to_lower() + "_" + str(orientation_index)):
+		in_animation = true
+		sprite.animation = str(spell).to_lower() + "_" + str(orientation_index)
+		sprite.play()
+
 
 	for cell in area_cells:
 		var affected_unit = board.get_unit_at_cell(cell)
@@ -139,11 +173,31 @@ func _process(delta : float) -> void:
 		return
 	
 	var closest_point : Vector2 = walking_path[0]
+	
+	
+	var player_cell = get_parent().get_parent().board.get_cell_coord(global_position)
+	var closest_cell = get_parent().get_parent().board.get_cell_coord(closest_point)
+	
+	if player_cell.x < closest_cell.x:
+		orientation_index = 0
+	elif player_cell.y < closest_cell.y:
+		orientation_index = 1
+	elif player_cell.x > closest_cell.x:
+		orientation_index = 2
+	elif player_cell.y > closest_cell.y:
+		orientation_index = 3
+	
 	global_position += (closest_point - global_position).normalized() * delta * 300
+	
+	# print("Player cell: " + str(player_cell) + ", closest cell: " + str(closest_cell))
+	
+	sprite.animation = "run_" + str(orientation_index)
 	
 	if closest_point.distance_to(global_position) < 5:
 		global_position = closest_point
 		walking_path.remove(0)
 	
 	if walking_path.size() == 0:
+		sprite.animation = "idle_" + str(orientation_index)
+		in_animation = false
 		emit_signal("walking_animation_ended")

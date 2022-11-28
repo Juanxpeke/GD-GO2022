@@ -5,4 +5,4 @@ class_name Player
 func _ready():
 	total_health_points = 350
 	health_points = 350
-	spells = [Knife.new(), Pistol.new(), SniperRifle.new(), Granade.new(), Medkit.new()]
+	spells = [Knife.new(), Pistol.new(), Granade.new(), Medkit.new()]

@@ -14,8 +14,8 @@ var delta_sum : float = 0.0
 
 # Important nodes
 onready var board : AStarTileMap = $Board
-onready var player : Player = $Player
-onready var enemy : Enemy = $Enemy
+onready var player : Player = $"%Player"
+onready var enemy : Enemy = $"%Enemy"
 onready var the_heart : TheHeart = $TheHeart
 onready var turn_timer : Timer = $TurnTimer
 onready var battle_ui : Control = $BattleUI
@@ -54,7 +54,7 @@ func _process(delta):
 	delta_sum += delta
 	if delta_sum >= 1.0:
 		delta_sum = 0.0
-		battle_ui.update_timer_label(floor(turn_timer.time_left))
+		battle_ui.update_timer_label(ceil(turn_timer.time_left))
 	
 	battle_state.update()
 	animation_state.update(delta)
@@ -87,6 +87,10 @@ func to_player_idle_state() -> void:
 
 # Changes the state to the player spell state related to the given spell.
 func to_player_spell_state(spell : Spell) -> void:
+	if player.in_animation:
+		print("Tried spell state, but player in animation...\n")
+		return
+	
 	battle_state.exit()
 	player_spell_state.set_spell(spell)
 	battle_state = player_spell_state
