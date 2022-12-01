@@ -8,7 +8,7 @@ signal movement_points_changed
 signal walking_animation_ended
 signal spell_casted
 
-var total_health_points := 720
+var total_health_points := 180
 var total_action_points := 6
 var total_movement_points := 3
 

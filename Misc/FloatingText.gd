@@ -38,7 +38,7 @@ func _ready():
 			label.text = prefix
 			final_scale = Vector2(1.2, 1.2)
 	
-	velocity = Vector2(randi() % 20 - 10, -60)
+	velocity = Vector2(randi() % 40 - 20, -60)
 
 	tween.connect("tween_all_completed", self, "on_tween_completed")
 	

@@ -14,6 +14,8 @@ enum TheHeartStates {HAPPY,
 					
 var current_state = TheHeartStates.HAPPY
 
+var heart_time = 0.0
+
 var floating_text_scene := preload("res://Misc/FloatingText.tscn")
 var heart_happy_image := load("res://Assets/GUI/TheHeart/heart_happy.png")
 var heart_happy_gift_image := load("res://Assets/GUI/TheHeart/heart_happy_gift.png")
@@ -39,15 +41,13 @@ onready var medkit_spell_button := $"%MedkitSpellButton"
 onready var timer_label := $"%TimerLabel"
 onready var timer_center := $"%TimerCenter"
 
-onready var enemy_health_points_label := $"%EnemyHPLabel"
-onready var enemy_action_points_label := $"%EnemyAPLabel"
-onready var enemy_movement_points_label := $"%EnemyMPLabel"
-
 onready var heart_icon := $"%HeartIcon"
 onready var heart_area := $"%HeartArea"
+onready var heart_timer := $"%HeartTimer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	heart_area.connect("mouse_entered", self, "on_mouse_entered_heart")
 	heart_area.connect("mouse_exited", self, "on_mouse_exited_heart")
 
@@ -79,6 +79,8 @@ func set_player(player : Player) -> void:
 	update_action_points_label()
 	update_movement_points_label()
 	update_spells_layout()
+	
+	get_parent().player_start_state.connect("player_started", self, "on_player_started")
 
 # Tries to change to spell state.
 func try_to_player_spell_state(spell_tried):
@@ -93,14 +95,6 @@ func try_to_player_spell_state(spell_tried):
 # Sets the enemy that the UI is going to listen.
 func set_enemy(enemy : Enemy) -> void:
 	self.enemy = enemy
-	
-	enemy.connect("health_points_changed", self, "update_enemy_health_points_label")
-	enemy.connect("action_points_changed", self, "update_enemy_action_points_label")
-	enemy.connect("movement_points_changed", self, "update_enemy_movement_points_label")
-
-	update_enemy_health_points_label()
-	update_enemy_action_points_label()
-	update_enemy_movement_points_label()
 
 # Updates the timer label.
 func update_timer_label(timer_value : int) -> void:
@@ -120,21 +114,6 @@ func update_action_points_label() -> void:
 func update_movement_points_label() -> void:
 	assert(player, "Player is not defined for the UI.")
 	movement_points_label.text = str(player.get_movement_points())
-
-# Updates the enemy health points label.
-func update_enemy_health_points_label() -> void:
-	assert(enemy, "Enemy is not defined for the UI.")
-	enemy_health_points_label.text = str(enemy.get_health_points())
-
-# Updates the action points label.
-func update_enemy_action_points_label() -> void:
-	assert(enemy, "Enemy is not defined for the UI.")
-	enemy_action_points_label.text = str(enemy.get_action_points())
-
-# Updates the movement points label.
-func update_enemy_movement_points_label() -> void:
-	assert(enemy, "Enemy is not defined for the UI.")
-	enemy_movement_points_label.text = str(enemy.get_movement_points())
 
 	# Updates the spells layout.
 func update_spells_layout() -> void:
@@ -158,6 +137,48 @@ func update_spells_layout() -> void:
 		medkit_spell_button.disabled = true
 	else:
 		medkit_spell_button.disabled = false
+	
+func on_player_started():
+	if get_parent().battle_turn <= 1:
+		return
+	
+	heart_timer.start(0.3)
+	yield(heart_timer, "timeout")
+	#yield(get_tree().create_timer(0.4), "timeout")
+		
+	var rand_var = rand_range(0.0, 100.0)
+	match current_state:
+		TheHeartStates.HAPPY:
+			if rand_var <= 5.0:
+				heart_icon.texture = heart_happy_gift_image
+				get_parent().player.add_action_points(1)
+			elif rand_var <= 5.0:
+				heart_icon.texture = heart_happy_gift_image
+				get_parent().player.add_action_points(1)
+			elif rand_var <= 30.0:
+				heart_icon.texture = heart_happy_gift_image
+				get_parent().player.heal(30)
+		TheHeartStates.HAPPY_BEATEN:
+			if rand_var <= 2.5:
+				heart_icon.texture = heart_happy_beaten_gift_image
+				get_parent().player.add_action_points(1)
+			elif rand_var <= 2.5:
+				heart_icon.texture = heart_happy_beaten_gift_image
+				get_parent().player.add_action_points(1)
+			elif rand_var <= 15.0:
+				heart_icon.texture = heart_happy_beaten_gift_image
+				get_parent().player.heal(30)
+		TheHeartStates.SAD_BEATEN:
+			if rand_var <= 10.0:
+				heart_icon.texture = heart_sad_beaten_gift_image
+				get_parent().player.heal(20)
+			elif rand_var <= 60.0:
+				heart_icon.texture = heart_sad_beaten_middle_finger_image
+
+	heart_timer.start(0.6)
+	yield(heart_timer, "timeout")
+	#yield(get_tree().create_timer(0.4), "timeout")
+	update_heart_layout()
 	
 # Called when an input occurs.	
 func _input(event):

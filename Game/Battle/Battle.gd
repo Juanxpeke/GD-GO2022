@@ -8,6 +8,7 @@ export var lost_game_scene : PackedScene = preload("res://Game/Screens/LostGameS
 var battle_state : BattleState
 var animation_state : AnimationState
 
+var battle_turn : int = 0
 var turn_time : float = 2.0
 
 var delta_sum : float = 0.0

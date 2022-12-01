@@ -134,10 +134,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Game Off 2022"
+config/name="Time waits no one"
 run/main_scene="res://Game/Screens/StartScreen.tscn"
 boot_splash/image="res://Assets/GUI/boot_splash.png"
-config/icon="res://icon.png"
+config/icon="res://Assets/GUI/game_icon.png"
 
 [autoload]
 

@@ -3,7 +3,7 @@ class_name Pistol
 
 # Constructor.
 func _init():
-	spell_range = 8
+	spell_range = 7
 	spell_action_points = 3
 	spell_cooldown = 1
 	spell_sound = load("res://Assets/Audio/SFX/pistol.wav")
