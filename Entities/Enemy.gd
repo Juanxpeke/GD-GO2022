@@ -5,7 +5,7 @@ var is_agressive := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spells = [LaserBeam.new()]
+	spells = [LaserBeam.new(), Autoheal.new()]
 
 # Makes the best action for the current turn.
 func make_best_action(battle, board) -> void:
@@ -48,9 +48,16 @@ func make_best_action(battle, board) -> void:
 
 			if board.get_cell_coord(battle.get_player_position()) in cells_sight_areas[0]:
 
-				can_cast_spell = true
 				current_score += spell.spell_score_value
 
+				if current_score > best_score:
+					best_score = current_score
+					best_cell_position = cell_position
+					best_spell = spell
+					
+			elif not is_agressive and enemy_coord in cells_sight_areas[0]:
+				current_score += spell.spell_score_value
+				
 				if current_score > best_score:
 					best_score = current_score
 					best_cell_position = cell_position
@@ -61,7 +68,11 @@ func make_best_action(battle, board) -> void:
 	make_movement(board.get_cells_path(global_position, best_cell_position))
 	
 	print("-> Best spell: " + str(best_spell))
-
+	
+	yield(self, "walking_animation_ended")
+	
+	if best_spell == spells[1]:
+		cast_spell(best_spell, [board.get_cell_coord(global_position)], board)
+		return
+	
 	cast_spell(best_spell, [board.get_cell_coord(battle.get_player_position())], board)
-
-	print("-> Movement points: " + str(movement_points) + ", can cast spell: " + str(can_cast_spell) + "\n")

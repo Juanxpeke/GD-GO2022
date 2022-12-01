@@ -7,6 +7,7 @@ func _init():
 	spell_action_points = 4
 	spell_score_value = 10
 	spell_cooldown = 2
+	spell_sound = load("res://Assets/Audio/SFX/laser.wav")
 	
 # Gets the related action.
 func get_action() -> String:

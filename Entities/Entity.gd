@@ -8,7 +8,7 @@ signal movement_points_changed
 signal walking_animation_ended
 signal spell_casted
 
-var total_health_points := 180
+var total_health_points := 520
 var total_action_points := 6
 var total_movement_points := 3
 
@@ -26,6 +26,7 @@ var in_animation := false
 var floating_text_scene := preload("res://Misc/FloatingText.tscn")
 
 onready var sprite : AnimatedSprite = $Sprite
+onready var walking_player : AudioStreamPlayer = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -186,6 +187,7 @@ func make_movement(walking_path : Array) -> void:
 	substract_movement_points(walking_path.size())
 	self.walking_path = walking_path
 	if walking_path.size() > 0:
+		walking_player.play()
 		in_animation = true
 	
 func cast_spell(spell, area_cells, board) -> void:
@@ -216,7 +218,7 @@ func cast_spell(spell, area_cells, board) -> void:
 		orientation_index = 3
 	
 	if sprite.frames.has_animation(str(spell).to_lower() + "_" + str(orientation_index)):
-		print("-> In animation\n")
+		print("-> In animation " + str(spell).to_lower() + "_" + str(orientation_index) +"\n")
 		in_animation = true
 		sprite.animation = str(spell).to_lower() + "_" + str(orientation_index)
 		sprite.play()
@@ -267,4 +269,5 @@ func _process(delta : float) -> void:
 	if walking_path.size() == 0:
 		sprite.animation = "idle_" + str(orientation_index)
 		in_animation = false
+		walking_player.stop()
 		emit_signal("walking_animation_ended")

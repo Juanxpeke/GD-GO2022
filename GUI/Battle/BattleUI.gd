@@ -196,11 +196,18 @@ func _input(event):
 			
 		update_heart_layout()
 		
+		if current_state == TheHeartStates.ALMOST_DEAD:
+			return
+		
 		if get_parent().battle_state is EnemyState:
 			return
 			
 		get_parent().total_sum = float(timer_label.text) + 2.0 
 		update_timer_label(int(round(get_parent().total_sum)))
+		
+		var rand_var = rand_range(0.0, 100.0)
+		if rand_var <= 50.0:
+			get_parent().player.add_action_points(1)
 		
 		var floating_text := floating_text_scene.instance()
 		floating_text.amount = 2
