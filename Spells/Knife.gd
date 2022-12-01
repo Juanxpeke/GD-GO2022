@@ -4,7 +4,9 @@ class_name Knife
 # Constructor.
 func _init():
 	spell_range = 1
-	spell_action_points = 2	
+	spell_action_points = 2
+	spell_sound = load("res://Assets/Audio/SFX/knife.wav")
+	spell_cursor_image = load("res://Assets/Cursors/knife_spell_cursor.png")
 	
 # Gets the related action.
 func get_action() -> String:

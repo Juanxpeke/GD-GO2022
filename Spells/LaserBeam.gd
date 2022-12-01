@@ -18,4 +18,4 @@ func apply_effect(entity) -> void:
 
 # Returns the string version of the spell.
 func _to_string() -> String:
-	return "Laser Beam"
+	return "LaserBeam"

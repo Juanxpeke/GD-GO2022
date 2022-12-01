@@ -6,8 +6,7 @@ var spell_action_points : int = 0
 var spell_range : int = 0
 var spell_cooldown : int = 0
 var spell_current_cooldown : int = 0
-var spell_icon_image : StreamTexture
-var spell_sprite : StreamTexture
+var spell_cursor_image : StreamTexture
 var spell_sound : AudioStream
 
 var spell_score_value : int = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Game/Battle/Battle.gd" type="Script" id=1]
 [ext_resource path="res://Game/Board/Board.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Entities/Player.gd" type="Script" id=4]
 [ext_resource path="res://GUI/Battle/BattleUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Enemy.gd" type="Script" id=6]
-[ext_resource path="res://Entities/TheHeart.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Sprites/Player/player_idle_0_0.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Sprites/Player/player_idle_2_0.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Sprites/Player/player_idle_3_0.png" type="Texture" id=10]
@@ -27,9 +26,33 @@
 [ext_resource path="res://Assets/Sprites/Player/Pistol/player_pistol_2_2.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Sprites/Player/Pistol/player_pistol_2_3.png" type="Texture" id=26]
 [ext_resource path="res://Assets/Sprites/Player/Pistol/player_pistol_1_2.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/Player/Granade/player_granade_1_0.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Player/Granade/player_granade_1_1.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Player/Granade/player_granade_1_3.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Player/Granade/player_granade_1_2.png" type="Texture" id=31]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 28 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "granade_0",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 29 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "granade_1",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 31 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "granade_2",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 30 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "granade_3",
+"speed": 2.0
+}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "idle_0",
@@ -49,6 +72,46 @@ animations = [ {
 "loop": true,
 "name": "idle_3",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "knife_0",
+"speed": 0.6
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "knife_1",
+"speed": 0.6
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "knife_2",
+"speed": 0.6
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "knife_3",
+"speed": 0.6
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "medkit_0",
+"speed": 0.5
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "medkit_1",
+"speed": 0.5
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "medkit_2",
+"speed": 0.5
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "medkit_3",
+"speed": 0.5
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": false,
@@ -113,6 +176,26 @@ animations = [ {
 "name": "idle_3",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 3 ), null ],
+"loop": false,
+"name": "laserbeam_0",
+"speed": 0.1
+}, {
+"frames": [ ExtResource( 3 ), null ],
+"loop": false,
+"name": "laserbeam_1",
+"speed": 0.1
+}, {
+"frames": [ ExtResource( 3 ), null ],
+"loop": false,
+"name": "laserbeam_2",
+"speed": 0.1
+}, {
+"frames": [ ExtResource( 3 ), null ],
+"loop": false,
+"name": "laserbeam_3",
+"speed": 0.1
+}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "run_0",
@@ -140,6 +223,7 @@ script = ExtResource( 1 )
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.06, 0.06, 0.06, 1 )
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
@@ -165,13 +249,6 @@ script = ExtResource( 6 )
 [node name="Sprite" type="AnimatedSprite" parent="YSort/Enemy"]
 position = Vector2( 0, -48 )
 frames = SubResource( 2 )
-animation = "run_3"
-
-[node name="TheHeart" type="Node" parent="."]
-script = ExtResource( 7 )
-
-[node name="TurnTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
+animation = "laserbeam_3"
 
 [node name="BattleUI" parent="." instance=ExtResource( 5 )]

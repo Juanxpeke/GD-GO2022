@@ -5,7 +5,9 @@ class_name Pistol
 func _init():
 	spell_range = 8
 	spell_action_points = 3
+	spell_cooldown = 1
 	spell_sound = load("res://Assets/Audio/SFX/pistol.wav")
+	spell_cursor_image = load("res://Assets/Cursors/pistol_spell_cursor.png")
 	
 # Gets the related action.
 func get_action() -> String:

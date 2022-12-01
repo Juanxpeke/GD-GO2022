@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/GUI/TheHeart/heart_happy.png" type="Texture" id=1]
 [ext_resource path="res://GUI/Battle/BattleUI.gd" type="Script" id=2]
@@ -15,6 +15,11 @@
 [ext_resource path="res://Assets/GUI/Buttons/medkit_spell_button.png" type="Texture" id=13]
 [ext_resource path="res://Assets/GUI/Buttons/medkit_spell_button_hover.png" type="Texture" id=14]
 [ext_resource path="res://Assets/GUI/player_profile.png" type="Texture" id=15]
+[ext_resource path="res://Assets/GUI/Buttons/medkit_spell_button_disabled.png" type="Texture" id=16]
+[ext_resource path="res://Assets/GUI/Buttons/pistol_spell_button_disabled.png" type="Texture" id=17]
+[ext_resource path="res://Assets/GUI/Buttons/granade_spell_button_disabled.png" type="Texture" id=18]
+[ext_resource path="res://Assets/GUI/Buttons/knife_spell_button_disabled.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Fonts/kaph_regular.tres" type="DynamicFont" id=20]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.941176 )
@@ -52,8 +57,8 @@ anchor_left = 0.5
 anchor_right = 0.5
 margin_top = -40.0
 margin_right = 120.0
-custom_fonts/font = ExtResource( 4 )
-text = "HP: 0"
+custom_fonts/font = ExtResource( 20 )
+text = "0 / 0"
 valign = 1
 
 [node name="APMPLayout" type="Control" parent="PlayerLayout"]
@@ -115,6 +120,7 @@ anchor_right = 0.25
 anchor_bottom = 1.0
 texture_normal = ExtResource( 7 )
 texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 19 )
 expand = true
 stretch_mode = 5
 
@@ -125,6 +131,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 texture_normal = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
@@ -135,6 +142,7 @@ anchor_right = 0.75
 anchor_bottom = 1.0
 texture_normal = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
+texture_disabled = ExtResource( 18 )
 expand = true
 stretch_mode = 5
 
@@ -145,10 +153,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture_normal = ExtResource( 13 )
 texture_hover = ExtResource( 14 )
+texture_disabled = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
 [node name="HeartIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -174,6 +184,26 @@ custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 1
 valign = 2
+
+[node name="TimerCenter" type="Control" parent="HeartIcon/TimerLabel"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = 56.0
+margin_bottom = 56.0
+
+[node name="HeartArea" type="Control" parent="HeartIcon"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -62.0
+margin_right = 112.0
+margin_bottom = 73.0
 
 [node name="EnemyHPLabel" type="Label" parent="."]
 unique_name_in_owner = true

@@ -2,22 +2,21 @@ extends Node
 class_name Battle
 
 export var true_won_game_scene : PackedScene = preload("res://Game/Screens/TrueWonGameScreen.tscn")
-export var won_game_scene : PackedScene = preload("res://Game/Screens/WonGameScreen.tscn")
 export var bad_won_game_scene : PackedScene = preload("res://Game/Screens/BadWonGameScreen.tscn")
 export var lost_game_scene : PackedScene = preload("res://Game/Screens/LostGameScreen.tscn")
-export var bad_lost_game_scene : PackedScene = preload("res://Game/Screens/BadLostGameScreen.tscn")
 
 var battle_state : BattleState
 var animation_state : AnimationState
 
+var turn_time : float = 2.0
+
 var delta_sum : float = 0.0
+var total_sum : float = turn_time
 
 # Important nodes
 onready var board : AStarTileMap = $Board
 onready var player : Player = $"%Player"
 onready var enemy : Enemy = $"%Enemy"
-onready var the_heart : TheHeart = $TheHeart
-onready var turn_timer : Timer = $TurnTimer
 onready var battle_ui : Control = $BattleUI
 # Battle states
 onready var player_start_state := PlayerStartState.new(self, board)
@@ -28,6 +27,8 @@ onready var enemy_state := EnemyState.new(self, board)
 onready var void_state := PlayerVoidState.new(self, board)
 onready var walking_state := PlayerWalkingState.new(self, board)
 
+
+var current_spell
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,18 +45,20 @@ func _ready():
 	battle_state.enter()
 	animation_state = void_state
 	
-	# print(board.get_cells_path(Vector2(320, 160), Vector2(256, 192)))
-	# print(board.get_cells_path(Vector2(256, 192), Vector2(320, 160)))
-	# print(board.get_cells_path_ignoring_unit(Vector2(256, 192), Vector2(320, 160), player))
-
+# More precise process.
+func _physics_process(delta):
+	if player.in_animation:
+		return	
+	delta_sum += delta
+	total_sum -= delta
+	if delta_sum >= 1.0:
+		delta_sum = 0.0
+		battle_ui.update_timer_label(int(round(total_sum)))
+	if total_sum <= 0.0:
+		total_sum = 0.0
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	delta_sum += delta
-	if delta_sum >= 1.0:
-		delta_sum = 0.0
-		battle_ui.update_timer_label(ceil(turn_timer.time_left))
-	
 	battle_state.update()
 	animation_state.update(delta)
 
@@ -90,7 +93,6 @@ func to_player_spell_state(spell : Spell) -> void:
 	if player.in_animation:
 		print("Tried spell state, but player in animation...\n")
 		return
-	
 	battle_state.exit()
 	player_spell_state.set_spell(spell)
 	battle_state = player_spell_state
@@ -173,34 +175,27 @@ func decrease_spells_cooldowns() -> void:
 		spell.spell_current_cooldown = max(spell.spell_current_cooldown - 1, 0)
 	for spell in enemy.get_spells():
 		spell.spell_current_cooldown = max(spell.spell_current_cooldown - 1, 0)
+	battle_ui.update_spells_layout()
 	
 # Tries to cast a spell.
 func try_to_cast_spell(area_cells, spell) -> void:
 	if player.get_action_points() < spell.spell_action_points:
-		print("Not enough AP!")
+		player.call_no_ap_message()
 		return
 	
 	if spell.spell_current_cooldown > 0:
-		print("Spell is in cooldown!")
+		print("-> Spell is in cooldown!\n")
 		return
 	
 	player.cast_spell(spell, area_cells, board)
 		
 # Ends the game when the player wins.
 func end_game_won() -> void:
-	if the_heart.current_state == the_heart.TheHeartStates.HAPPY:
+	if battle_ui.current_state == battle_ui.TheHeartStates.HAPPY:
 		get_tree().change_scene_to(true_won_game_scene)
-	elif the_heart.current_state == the_heart.TheHeartStates.HAPPY_BEATEN or \
-	the_heart.current_state == the_heart.TheHeartStates.SAD_BEATEN:
-		get_tree().change_scene_to(won_game_scene)
 	else:
 		get_tree().change_scene_to(bad_won_game_scene)
 
 # Ends the game when the player losses.
 func end_game_lost() -> void:
-	if the_heart.current_state == the_heart.TheHeartStates.HAPPY or \
-	the_heart.current_state == the_heart.TheHeartStates.HAPPY_BEATEN or \
-	the_heart.current_state == the_heart.TheHeartStates.SAD_BEATEN:
-		get_tree().change_scene_to(lost_game_scene)
-	else:
-		get_tree().change_scene_to(bad_lost_game_scene)
+	get_tree().change_scene_to(lost_game_scene)

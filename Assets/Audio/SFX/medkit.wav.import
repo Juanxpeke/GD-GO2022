@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/medkit.wav-639beb8c61375d588cfc88fa612696bc.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/medkit.wav"
+dest_files=[ "res://.import/medkit.wav-639beb8c61375d588cfc88fa612696bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

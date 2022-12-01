@@ -11,7 +11,7 @@ func _ready():
 func make_best_action(battle, board) -> void:
 	var can_do_something := true
 	
-	print("Calculating best action with player position: " + str(board.get_cell_coord(battle.get_player_position())) + ", enemy position: " + str(board.get_cell_coord(global_position)) + "\n")
+	print("-> Calculating best action with player position: " + str(board.get_cell_coord(battle.get_player_position())) + ", enemy position: " + str(board.get_cell_coord(global_position)) + "\n")
 	
 	while can_do_something: 
 		var best_score : int = -INF
@@ -29,10 +29,6 @@ func make_best_action(battle, board) -> void:
 				current_score -= distance_path.size() - 1
 			else:
 				current_score += distance_path.size() - 1 + board.get_raw_distance(cell_position, battle.get_player_position())
-			
-			# print("Cell position: " + str(board.get_cell_coord(cell_position)))
-			# print("Distance path:  " + str(distance_path) + ", this is from " + str(cell_position) + " to " + str(battle.get_player_position()))
-			# print("Current score: " + str(current_score) + ", best score: " + str(best_score) + "\n")
 			
 			if current_score > best_score:
 				# print("Best score was: " + str(best_score) + ", now it is: " + str(current_score))
@@ -61,15 +57,15 @@ func make_best_action(battle, board) -> void:
 						best_cell_position = cell_position
 						best_spell = spell
 
-		print("Best movement: " + str(board.get_cell_coord(best_cell_position)))
+		print("-> Best movement: " + str(board.get_cell_coord(best_cell_position)))
 				
 		make_movement(board.get_cells_path(global_position, best_cell_position))
 		
-		print("Best spell: " + str(best_spell))
+		print("-> Best spell: " + str(best_spell))
 
 		cast_spell(best_spell, [board.get_cell_coord(battle.get_player_position())], board)
 
-		print("Movement points: " + str(movement_points) + ", can cast spell: " + str(can_cast_spell) + "\n")
+		print("-> Movement points: " + str(movement_points) + ", can cast spell: " + str(can_cast_spell) + "\n")
 		
 		can_do_something = false
 		

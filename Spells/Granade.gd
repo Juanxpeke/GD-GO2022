@@ -6,6 +6,8 @@ func _init():
 	spell_range = 6
 	spell_action_points = 5
 	spell_cooldown = 2
+	spell_sound = load("res://Assets/Audio/SFX/granade.wav")
+	spell_cursor_image = load("res://Assets/Cursors/granade_spell_cursor.png")
 
 # Gets the range cells of the spell in a given range index.
 func get_index_range_cells(range_index : int) -> Array:
@@ -44,7 +46,7 @@ func get_area_cells(origin_coord := Vector2(0, 0)) -> Array:
 	
 # Gets the related action.
 func get_action() -> String:
-	return "cast_fourth_spell"
+	return "cast_third_spell"
 	
 # Applies its effect to the given entity
 func apply_effect(entity) -> void:
