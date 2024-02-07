@@ -17,9 +17,9 @@ var astar := AStar2D.new()
 var obstacles := []
 var units := []
 
-onready var movement_board : TileMap = $MovementBoard
-onready var spells_range_board : TileMap = $SpellsRangeBoard
-onready var spells_area_board : TileMap = $SpellsAreaBoard
+@onready var movement_board : TileMap = $MovementBoard
+@onready var spells_range_board : TileMap = $SpellsRangeBoard
+@onready var spells_area_board : TileMap = $SpellsAreaBoard
 
 # Called when the node is added to the scene tree.
 func _ready() -> void:
@@ -43,7 +43,7 @@ func refill_astar_points() -> void:
 func connect_astar_point(point_position : Vector2) -> void:
 	var point_id := get_cell_id(point_position)
 	for direction in DIRECTIONS:
-		var cardinal_point_id := get_cell_id(point_position + map_to_world(direction))
+		var cardinal_point_id := get_cell_id(point_position + map_to_local(direction))
 		if cardinal_point_id != point_id and astar.has_point(cardinal_point_id):
 			astar.connect_points(point_id, cardinal_point_id, true)
 
@@ -71,24 +71,24 @@ func get_cell_id(cell_origin : Vector2) -> int:
 	return c
 		
 # Given a cell origin, it returns the equivalent cartesian coordinate.
-func get_cell_coord(cell_origin : Vector2) -> Vector2:
-	return world_to_map(to_local(cell_origin))
+func get_cell_coord(cell_origin : Vector2i) -> Vector2i:
+	return local_to_map(to_local(cell_origin))
 
 # Given a position in the board, it returns the origin position of the cell that
 # covers that position.
 func get_cell_origin(position : Vector2) -> Vector2:
-	return global_position + map_to_world(world_to_map(to_local(position)))
+	return global_position + map_to_local(local_to_map(to_local(position)))
 	
 # Given a coordinate in the board, it returns the origin position of the cell.
 func get_cell_originc(cell_coord : Vector2) -> Vector2:
-	return global_position + map_to_world(cell_coord)
+	return global_position + map_to_local(cell_coord)
 
 # Returns an array with the origin positions of all the cells used in the tilemap.
 func get_used_cells_origins() -> Array:
-	var cells_coordinates = get_used_cells()
+	var cells_coordinates = get_used_cells(0)
 	var cell_origins := []
 	for cell_coordinate in cells_coordinates:
-		var cell_origin := global_position + map_to_world(cell_coordinate)
+		var cell_origin := global_position + map_to_local(cell_coordinate)
 		cell_origins.append(cell_origin)
 	return cell_origins
 
@@ -114,63 +114,63 @@ func get_cells_floodfill(origin : Vector2, distance : int) -> Array:
 	var cells_floodfill := []
 	
 	for i in range(1, distance + 1):
-		var cell_origin := get_cell_originc(origin_coord + Vector2(0, i))
+		var cell_origin := get_cell_originc(origin_coord + Vector2i(0, i))
 		var cell_distance := get_cells_path(origin, cell_origin).size() - 1
-		if get_unit_at_cell(origin_coord + Vector2(0, i)) == null and \
-		get_obstacle_at_cell(origin_coord + Vector2(0, i)) == null and \
+		if get_unit_at_cell(origin_coord + Vector2i(0, i)) == null and \
+		get_obstacle_at_cell(origin_coord + Vector2i(0, i)) == null and \
 		cell_distance <= distance and cell_distance > -1:
 			cells_floodfill.append(cell_origin)
 		
-		cell_origin = get_cell_originc(origin_coord + Vector2(i, 0))
+		cell_origin = get_cell_originc(origin_coord + Vector2i(i, 0))
 		cell_distance = get_cells_path(origin, cell_origin).size() - 1
-		if get_unit_at_cell(origin_coord + Vector2(i, 0)) == null and \
-		get_obstacle_at_cell(origin_coord + Vector2(i, 0)) == null and \
+		if get_unit_at_cell(origin_coord + Vector2i(i, 0)) == null and \
+		get_obstacle_at_cell(origin_coord + Vector2i(i, 0)) == null and \
 		cell_distance <= distance and cell_distance > -1:
 			cells_floodfill.append(cell_origin)
 		
-		cell_origin = get_cell_originc(origin_coord + Vector2(0, -i))
+		cell_origin = get_cell_originc(origin_coord + Vector2i(0, -i))
 		cell_distance = get_cells_path(origin, cell_origin).size() - 1
-		if get_unit_at_cell(origin_coord + Vector2(0, -i)) == null and \
-		get_obstacle_at_cell(origin_coord + Vector2(0, -i)) == null and \
+		if get_unit_at_cell(origin_coord + Vector2i(0, -i)) == null and \
+		get_obstacle_at_cell(origin_coord + Vector2i(0, -i)) == null and \
 		cell_distance <= distance and cell_distance > -1:
 			cells_floodfill.append(cell_origin)
 		
-		cell_origin = get_cell_originc(origin_coord + Vector2(-i, 0))
+		cell_origin = get_cell_originc(origin_coord + Vector2i(-i, 0))
 		cell_distance = get_cells_path(origin, cell_origin).size() - 1
-		if get_unit_at_cell(origin_coord + Vector2(-i, 0)) == null and \
-		get_obstacle_at_cell(origin_coord + Vector2(-i, 0)) == null and \
+		if get_unit_at_cell(origin_coord + Vector2i(-i, 0)) == null and \
+		get_obstacle_at_cell(origin_coord + Vector2i(-i, 0)) == null and \
 		cell_distance <= distance and cell_distance > -1:
 			cells_floodfill.append(cell_origin)
 		
 		for j in range(1, i):
-			cell_origin = get_cell_originc(origin_coord + Vector2(j, i - j))
+			cell_origin = get_cell_originc(origin_coord + Vector2i(j, i - j))
 			cell_distance = get_cells_path(origin, cell_origin).size() - 1
-			if get_unit_at_cell(origin_coord + Vector2(j, i - j)) == null and \
-			get_obstacle_at_cell(origin_coord + Vector2(j, i - j)) == null and \
+			if get_unit_at_cell(origin_coord + Vector2i(j, i - j)) == null and \
+			get_obstacle_at_cell(origin_coord + Vector2i(j, i - j)) == null and \
 			cell_distance <= distance and cell_distance > -1:
 				cells_floodfill.append(cell_origin)
 		
 		for j in range(1, i):
-			cell_origin = get_cell_originc(origin_coord + Vector2(i - j, -j))
+			cell_origin = get_cell_originc(origin_coord + Vector2i(i - j, -j))
 			cell_distance = get_cells_path(origin, cell_origin).size() - 1
-			if get_unit_at_cell(origin_coord + Vector2(i - j, -j)) == null and \
-			get_obstacle_at_cell(origin_coord + Vector2(i - j, -j)) == null and \
+			if get_unit_at_cell(origin_coord + Vector2i(i - j, -j)) == null and \
+			get_obstacle_at_cell(origin_coord + Vector2i(i - j, -j)) == null and \
 			cell_distance <= distance and cell_distance > -1:
 				cells_floodfill.append(cell_origin)
 		
 		for j in range(1, i):
-			cell_origin = get_cell_originc(origin_coord + Vector2(-j, j - i))
+			cell_origin = get_cell_originc(origin_coord + Vector2i(-j, j - i))
 			cell_distance = get_cells_path(origin, cell_origin).size() - 1
-			if get_unit_at_cell(origin_coord + Vector2(-j, j - i)) == null and \
-			get_obstacle_at_cell(origin_coord + Vector2(-j, j - i)) == null and \
+			if get_unit_at_cell(origin_coord + Vector2i(-j, j - i)) == null and \
+			get_obstacle_at_cell(origin_coord + Vector2i(-j, j - i)) == null and \
 			cell_distance <= distance and cell_distance > -1:
 				cells_floodfill.append(cell_origin)
 		
 		for j in range(1, i):
-			cell_origin = get_cell_originc(origin_coord + Vector2(j - i, j))
+			cell_origin = get_cell_originc(origin_coord + Vector2i(j - i, j))
 			cell_distance = get_cells_path(origin, cell_origin).size() - 1
-			if get_unit_at_cell(origin_coord + Vector2(j - i, j)) == null and \
-			get_obstacle_at_cell(origin_coord + Vector2(j - i, j)) == null and \
+			if get_unit_at_cell(origin_coord + Vector2i(j - i, j)) == null and \
+			get_obstacle_at_cell(origin_coord + Vector2i(j - i, j)) == null and \
 			cell_distance <= distance and cell_distance > -1:
 				cells_floodfill.append(cell_origin)
 		
@@ -236,7 +236,7 @@ func get_cells_line_high(x0 : int, y0 : int, x1 : int, y1 : int) -> Array:
 
 # Returns an array with the coordinates of cells in the discrete line from 
 # start_coord to end_coord, it uses a modified version of the Bresenham's line 
-# algorithm divided in different cases, trying to replicate the Dofus' behaviour.
+# algorithm divided in different cases, trying to replicate Dofus' behaviour.
 func get_cells_line(start_coord : Vector2, end_coord : Vector2) -> Array:
 	var x0 : int = start_coord[0]
 	var y0 : int = start_coord[1]
@@ -256,10 +256,10 @@ func get_cells_line(start_coord : Vector2, end_coord : Vector2) -> Array:
 	
 # Returns an array with two arrays. The arrays tells if their cells are reachable or not by a cell
 # line, respectively. It uses a modified version of the Bresenham's line algorithm, divided in 
-# different cases, trying to replicate the Dofus' behaviour.
-func get_cells_sight_areas(cells_area : Array, origin : Vector2) -> Array:
+# different cases, trying to replicate Dofus' behaviour.
+func get_cells_sight_areas(cells_area : Array[Vector2i], origin : Vector2) -> Array:
 	var origin_coord := get_cell_coord(origin)
-	var used_cells := get_used_cells()
+	var used_cells := get_used_cells(0)
 	var free_cells := []
 	var blocked_cells := []
 	
@@ -331,7 +331,7 @@ func show_spell_area_cells(spell : Spell, origin : Vector2) -> void:
 	if spells_range_board.get_cellv(origin_coord) != Tiles.SPELL_RANGE_TILE:
 		return
 	
-	var used_cells := get_used_cells()
+	var used_cells := get_used_cells(0)
 	var spell_area_cells := spell.get_area_cells(origin_coord)
 	
 	for spell_cell_coord in spell_area_cells:
@@ -357,8 +357,8 @@ func hide_spell_area_cells() -> void:
 # Adds an obstacle to the obstacle list.
 func add_obstacle(obstacle: Object) -> void:
 	obstacles.append(obstacle)
-	if not obstacle.is_connected("tree_exiting", self, "remove_obstacle"):
-		obstacle.connect("tree_exiting", self, "remove_obstacle", [obstacle])
+	if not obstacle.is_connected("tree_exiting", Callable(self, "remove_obstacle")):
+		obstacle.connect("tree_exiting", Callable(self, "remove_obstacle").bind(obstacle))
 
 # Removes an obstacle from the obstacle list.
 func remove_obstacle(obstacle: Object) -> void:
@@ -367,8 +367,8 @@ func remove_obstacle(obstacle: Object) -> void:
 # Adds a unitto the unit list.
 func add_unit(unit: Object) -> void:
 	units.append(unit)
-	if not unit.is_connected("tree_exiting", self, "remove_unit"):
-		unit.connect("tree_exiting", self, "remove_unit", [unit])
+	if not unit.is_connected("tree_exiting", Callable(self, "remove_unit")):
+		unit.connect("tree_exiting", Callable(self, "remove_unit").bind(unit))
 
 # Removes a unit from the unit list.
 func remove_unit(unit: Object) -> void:
@@ -393,14 +393,14 @@ func set_obstacles_points_disabled(value: bool) -> void:
 
 # Returns the obstacle located in a certain cell coordinate. If there is no obstacle in the given cell,
 # returns null.
-func get_obstacle_at_cell(cell_coord : Vector2) -> Object:
+func get_obstacle_at_cell(cell_coord : Vector2i) -> Object:
 	for obstacle in obstacles:
 		if get_cell_coord(obstacle.global_position) == cell_coord: return obstacle
 	return null
 
 # Returns the unit located in a certain cell coordinate. If there is no unit in the given cell,
 # returns null.
-func get_unit_at_cell(cell_coord : Vector2) -> Entity:
+func get_unit_at_cell(cell_coord : Vector2i) -> Entity:
 	for unit in units:
 		if get_cell_coord(unit.global_position) == cell_coord: return unit as Entity
 	return null

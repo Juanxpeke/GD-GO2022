@@ -1,0 +1,10 @@
+res://default_env.tres
+res://Core/UI/MainMenu/main_menu.tscn
+res://Core/Maps/Board/basic_tileset.tres
+res://Assets/Themes/default_theme.tres
+res://Core/Maps/map.tscn
+res://Core/Maps/Board/board.tscn
+res://Core/Entities/entity.tscn
+res://Core/Entities/Player/player.tscn
+res://Core/UI/HUD/hud.tscn
+res://GUI/Battle/BattleUI.tscn

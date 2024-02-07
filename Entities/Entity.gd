@@ -1,4 +1,4 @@
-extends Position2D
+extends Marker2D
 class_name Entity
 
 signal entity_has_dead
@@ -25,12 +25,12 @@ var in_animation := false
 
 var floating_text_scene := preload("res://Misc/FloatingText.tscn")
 
-onready var sprite : AnimatedSprite = $Sprite
-onready var walking_player : AudioStreamPlayer = $AudioStreamPlayer
+@onready var sprite : AnimatedSprite2D = $Sprite2D
+@onready var walking_player : AudioStreamPlayer = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	sprite.connect("animation_finished", self, "when_anim_finished")
+	sprite.connect("animation_finished", Callable(self, "when_anim_finished"))
 
 func when_anim_finished():
 	print("-> Animation finished!\n")
@@ -63,7 +63,7 @@ func get_health_points() -> int:
 	
 # Heals a certain amount of healing.
 func heal(amount : int) -> void:
-	var floating_text := floating_text_scene.instance()
+	var floating_text := floating_text_scene.instantiate()
 	floating_text.amount = amount
 	floating_text.text_type = FloatingText.TextType.HEALING
 	add_child(floating_text)
@@ -72,7 +72,7 @@ func heal(amount : int) -> void:
 
 # Takes damages.
 func take_damage(amount : int) -> void:
-	var floating_text := floating_text_scene.instance()
+	var floating_text := floating_text_scene.instantiate()
 	floating_text.amount = amount
 	floating_text.text_type = FloatingText.TextType.DAMAGE
 	add_child(floating_text)
@@ -90,7 +90,7 @@ func set_action_points(amount : int) -> void:
 
 # Adds a certain amount to the current player action points.
 func add_action_points(amount : int) -> void:
-	var floating_text := floating_text_scene.instance()
+	var floating_text := floating_text_scene.instantiate()
 	floating_text.prefix = "+"
 	floating_text.amount = amount
 	floating_text.text_type = FloatingText.TextType.AP
@@ -104,7 +104,7 @@ func substract_action_points(amount : int) -> void:
 	
 # Substracts a certain amount to the current player action points.
 func substract_action_points_and_show(amount : int) -> void:
-	var floating_text := floating_text_scene.instance()
+	var floating_text := floating_text_scene.instantiate()
 	floating_text.prefix = "-"
 	floating_text.amount = amount
 	floating_text.text_type = FloatingText.TextType.AP
@@ -131,7 +131,7 @@ func set_movement_points(amount : int) -> void:
 
 # Adds a certain amount to the current player movement points.
 func add_movement_points(amount : int) -> void:
-	var floating_text := floating_text_scene.instance()
+	var floating_text := floating_text_scene.instantiate()
 	floating_text.prefix = "+"
 	floating_text.amount = amount
 	floating_text.text_type = FloatingText.TextType.MP
@@ -145,7 +145,7 @@ func substract_movement_points(amount : int) -> void:
 
 # Substracts a certain amount to the current player movement points.
 func substract_movement_points_and_show(amount : int) -> void:
-	var floating_text := floating_text_scene.instance()
+	var floating_text := floating_text_scene.instantiate()
 	floating_text.prefix = "-"
 	floating_text.amount = amount
 	floating_text.text_type = FloatingText.TextType.MP
@@ -165,7 +165,7 @@ func get_movement_points() -> int:
 # ================
 
 func call_no_ap_message() -> void:
-	var floating_text := floating_text_scene.instance()
+	var floating_text := floating_text_scene.instantiate()
 	floating_text.prefix = "No enough AP!"
 	floating_text.text_type = FloatingText.TextType.MESSAGE
 	add_child(floating_text)
@@ -191,6 +191,8 @@ func make_movement(walking_path : Array) -> void:
 		in_animation = true
 	
 func cast_spell(spell, area_cells, board) -> void:
+	pass
+	
 	if area_cells.size() == 0:
 		return
 	
@@ -200,7 +202,7 @@ func cast_spell(spell, area_cells, board) -> void:
 	GameManager.play(spell.spell_sound)
 	
 	var player_cell = get_parent().get_parent().board.get_cell_coord(global_position)
-	var target_cell = Vector2(0, 0)
+	var target_cell = Vector2i(0, 0)
 	for cell in area_cells:
 		target_cell += cell
 	target_cell /= area_cells.size()
@@ -217,7 +219,7 @@ func cast_spell(spell, area_cells, board) -> void:
 	elif y_diff > 0 and abs(y_diff) >= abs(x_diff):
 		orientation_index = 3
 	
-	if sprite.frames.has_animation(str(spell).to_lower() + "_" + str(orientation_index)):
+	if false: # sprite.frames.has_animation(str(spell).to_lower() + "_" + str(orientation_index)):
 		print("-> In animation " + str(spell).to_lower() + "_" + str(orientation_index) +"\n")
 		in_animation = true
 		sprite.animation = str(spell).to_lower() + "_" + str(orientation_index)
@@ -226,7 +228,7 @@ func cast_spell(spell, area_cells, board) -> void:
 		print("-> Animation " + str(spell).to_lower() + "_" + str(orientation_index) + " not found\n")
 		return
 
-	yield(sprite, "animation_finished")
+	await sprite.animation_finished
 
 	for cell in area_cells:
 		var affected_unit = board.get_unit_at_cell(cell)
@@ -264,7 +266,7 @@ func _process(delta : float) -> void:
 	
 	if closest_point.distance_to(global_position) < 5:
 		global_position = closest_point
-		walking_path.remove(0)
+		walking_path.remove_at(0)
 	
 	if walking_path.size() == 0:
 		sprite.animation = "idle_" + str(orientation_index)

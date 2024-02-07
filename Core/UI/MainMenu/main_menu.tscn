@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0n7wo5o3ok0m"]
+
+[ext_resource type="Script" path="res://Core/UI/MainMenu/main_menu.gd" id="1_5j0v7"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5j0v7")
+
+[node name="StartGameButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Game"

@@ -1,9 +1,9 @@
 extends Node
 class_name Battle
 
-export var true_won_game_scene : PackedScene = preload("res://Game/Screens/TrueWonGameScreen.tscn")
-export var bad_won_game_scene : PackedScene = preload("res://Game/Screens/BadWonGameScreen.tscn")
-export var lost_game_scene : PackedScene = preload("res://Game/Screens/LostGameScreen.tscn")
+@export var true_won_game_scene : PackedScene = preload("res://Game/Screens/TrueWonGameScreen.tscn")
+@export var bad_won_game_scene : PackedScene = preload("res://Game/Screens/BadWonGameScreen.tscn")
+@export var lost_game_scene : PackedScene = preload("res://Game/Screens/LostGameScreen.tscn")
 
 var battle_state : BattleState
 var animation_state : AnimationState
@@ -15,26 +15,26 @@ var delta_sum : float = 0.0
 var total_sum : float = turn_time
 
 # Important nodes
-onready var board : AStarTileMap = $Board
-onready var player : Player = $"%Player"
-onready var enemy : Enemy = $"%Enemy"
-onready var battle_ui : Control = $BattleUI
+@onready var board : AStarTileMap = $Board
+@onready var player : Player = $"%Player"
+@onready var enemy : Enemy = $"%Enemy"
+@onready var battle_ui : Control = $BattleUI
 # Battle states
-onready var player_start_state := PlayerStartState.new(self, board)
-onready var player_idle_state := PlayerIdleState.new(self, board)
-onready var player_spell_state := PlayerSpellState.new(self, board)
-onready var enemy_state := EnemyState.new(self, board)
+@onready var player_start_state := PlayerStartState.new(self, board)
+@onready var player_idle_state := PlayerIdleState.new(self, board)
+@onready var player_spell_state := PlayerSpellState.new(self, board)
+@onready var enemy_state := EnemyState.new(self, board)
 # Animation states
-onready var void_state := PlayerVoidState.new(self, board)
-onready var walking_state := PlayerWalkingState.new(self, board)
+@onready var void_state := PlayerVoidState.new(self, board)
+@onready var walking_state := PlayerWalkingState.new(self, board)
 
 
 var current_spell
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player.connect("entity_has_dead", self, "end_game_lost")
-	enemy.connect("entity_has_dead", self, "end_game_won")
+	player.connect("entity_has_dead", Callable(self, "end_game_lost"))
+	enemy.connect("entity_has_dead", Callable(self, "end_game_won"))
 	
 	board.add_unit(player)
 	board.add_unit(enemy)
@@ -193,10 +193,10 @@ func try_to_cast_spell(area_cells, spell) -> void:
 # Ends the game when the player wins.
 func end_game_won() -> void:
 	if battle_ui.current_state == battle_ui.TheHeartStates.HAPPY:
-		get_tree().change_scene_to(true_won_game_scene)
+		get_tree().change_scene_to_packed(true_won_game_scene)
 	else:
-		get_tree().change_scene_to(bad_won_game_scene)
+		get_tree().change_scene_to_packed(bad_won_game_scene)
 
 # Ends the game when the player losses.
 func end_game_lost() -> void:
-	get_tree().change_scene_to(lost_game_scene)
+	get_tree().change_scene_to_packed(lost_game_scene)

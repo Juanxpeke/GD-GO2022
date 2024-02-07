@@ -4,7 +4,8 @@ class_name PlayerWalkingState
 var walking_path := []
 
 # Inherited parent constructor.
-func _init(battle, board).(battle, board):
+func _init(battle, board):
+	super(battle, board)
 	pass
 
 # Called every frame.
@@ -18,7 +19,7 @@ func update(_delta : float) -> void:
 	
 	if closest_point.distance_to(battle.get_player_position()) < 5:
 		battle.set_player_position(closest_point)
-		walking_path.remove(0)
+		walking_path.remove_at(0)
 
 
 func set_walking_path(walking_path) -> void:

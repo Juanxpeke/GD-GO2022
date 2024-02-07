@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/enemy_scary.wav-f022285c13debed2122f21df538de67e.sample"
+type="AudioStreamWAV"
+uid="uid://vu1uo8nxrml2"
+path="res://.godot/imported/enemy_scary.wav-f022285c13debed2122f21df538de67e.sample"
 
 [deps]
 
 source_file="res://Assets/Audio/SFX/enemy_scary.wav"
-dest_files=[ "res://.import/enemy_scary.wav-f022285c13debed2122f21df538de67e.sample" ]
+dest_files=["res://.godot/imported/enemy_scary.wav-f022285c13debed2122f21df538de67e.sample"]
 
 [params]
 

@@ -69,7 +69,7 @@ func make_best_action(battle, board) -> void:
 	
 	print("-> Best spell: " + str(best_spell))
 	
-	yield(self, "walking_animation_ended")
+	await self.walking_animation_ended
 	
 	if best_spell == spells[1]:
 		cast_spell(best_spell, [board.get_cell_coord(global_position)], board)

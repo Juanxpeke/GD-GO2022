@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjovgjjtle11o"]
+
+[ext_resource type="TileSet" uid="uid://b680p1e7apor2" path="res://Core/Maps/Board/basic_tileset.tres" id="1_0e5dk"]
+[ext_resource type="Script" path="res://Core/Maps/Board/board.gd" id="1_nmymt"]
+
+[node name="Board" type="TileMap"]
+y_sort_enabled = true
+tile_set = ExtResource("1_0e5dk")
+format = 2
+layer_0/name = "Base Layer"
+layer_0/y_sort_enabled = true
+layer_1/name = "Movement Layer"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Spell Range Layer"
+layer_2/y_sort_enabled = true
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Spell Area Layer"
+layer_3/y_sort_enabled = true
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Obstacle Layer"
+layer_4/y_sort_enabled = true
+layer_4/tile_data = PackedInt32Array()
+script = ExtResource("1_nmymt")

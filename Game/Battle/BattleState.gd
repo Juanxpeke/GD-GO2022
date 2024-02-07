@@ -2,7 +2,7 @@ extends Object
 class_name BattleState
 
 var battle
-var board : AStarTileMap
+var board : Board
 
 # Battle state constructor, it needs an AStarTileMap for doing board operations.
 func _init(battle, board):

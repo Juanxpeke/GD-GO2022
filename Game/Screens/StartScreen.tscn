@@ -1,50 +1,60 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://ej16csxam13u"]
 
-[ext_resource path="res://Assets/Fonts/kaph_regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Fonts/kaph_regular.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Game/Screens/StartScreen.gd" type="Script" id=3]
+[ext_resource type="FontFile" uid="uid://b1b3sdbyvxnks" path="res://Assets/Fonts/kaph_regular.ttf" id="1"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/kaph_regular.tres" id="2"]
+[ext_resource type="Script" path="res://Game/Screens/StartScreen.gd" id="3"]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0300767, 0.0287, 0.07, 1 )
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.0300767, 0.0287, 0.07, 1)
 
-[sub_resource type="DynamicFont" id=2]
-size = 48
-use_filter = true
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource("1")
 
 [node name="Title" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -320.0
-margin_top = -60.0
-margin_right = 320.0
-custom_fonts/font = SubResource( 2 )
+offset_left = -320.0
+offset_top = -60.0
+offset_right = 320.0
+theme_override_fonts/font = SubResource("2")
 text = "Time Waits no One"
-align = 1
-valign = 1
 
 [node name="Subtitle" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -270.0
-margin_top = 20.0
-margin_right = 270.0
-margin_bottom = 40.0
-custom_fonts/font = ExtResource( 2 )
+offset_left = -270.0
+offset_top = 20.0
+offset_right = 270.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2")
 text = "Press any key to start"
-align = 1
-valign = 1

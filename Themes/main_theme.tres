@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c11kq8xv0y8xu"]
+
+[ext_resource type="FontFile" path="res://Assets/Fonts/kaph_big.tres" id="1_w8k8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpu73"]
+
+[resource]
+default_font = ExtResource("1_w8k8d")
+default_font_size = 22
+Button/styles/normal = SubResource("StyleBoxFlat_fpu73")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+Label/constants/outline_size = 10

@@ -8,7 +8,8 @@ var area_effect_cells := []
 var normal_mouse_cursor_image = load("res://Assets/Cursors/normal_cursor.png")
 
 # Inherited parent constructor.
-func _init(battle, board).(battle, board):
+func _init(battle, board):
+	super(battle, board)
 	pass
 		
 # Called when being selected as the new state.
@@ -41,15 +42,15 @@ func update() -> void:
 		last_cell = target_cell
 		board.hide_spell_area_cells()
 		board.show_spell_area_cells(spell, target_cell)
-		area_effect_cells = board.spells_area_board.get_used_cells()
+		area_effect_cells = board.spells_area_board.get_used_cells(0)
 				
 # Called when an input occurs.
 func handle_input(event) -> void:
 	
 	if event.is_action_pressed("mouse_left"):
 		var target_cell = board.get_cell_coord(board.get_cell_origin(battle.get_viewport().get_mouse_position()))
-		if target_cell in board.get_used_cells():
-			battle.try_to_cast_spell(board.spells_area_board.get_used_cells(), spell)
+		if target_cell in board.get_used_cells(0):
+			battle.try_to_cast_spell(board.spells_area_board.get_used_cells(0), spell)
 			battle.to_player_idle_state()
 
 # Sets the related spell.

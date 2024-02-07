@@ -10,9 +10,9 @@ func _init():
 	spell_cursor_image = load("res://Assets/Cursors/medkit_spell_cursor.png")
 
 # Gets the range cells of the spell in a given range index.
-func get_index_range_cells(range_index : int) -> Array:
-	assert(range_index >= 0, "Error: Spell range index must be equal or greater than 0.")
-	return [Vector2(0, 0)]
+func get_index_range_cells(range_index : int) -> Array[Vector2i]:
+	assert(range_index >= 0) #,"Error: Spell range index must be equal or greater than 0.")
+	return [Vector2i(0, 0)]
 	
 # Gets the related action.
 func get_action() -> String:

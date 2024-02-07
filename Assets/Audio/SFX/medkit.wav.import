@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/medkit.wav-639beb8c61375d588cfc88fa612696bc.sample"
+type="AudioStreamWAV"
+uid="uid://dbdu0cipi3uej"
+path="res://.godot/imported/medkit.wav-639beb8c61375d588cfc88fa612696bc.sample"
 
 [deps]
 
 source_file="res://Assets/Audio/SFX/medkit.wav"
-dest_files=[ "res://.import/medkit.wav-639beb8c61375d588cfc88fa612696bc.sample" ]
+dest_files=["res://.godot/imported/medkit.wav-639beb8c61375d588cfc88fa612696bc.sample"]
 
 [params]
 

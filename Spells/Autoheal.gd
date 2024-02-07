@@ -10,9 +10,9 @@ func _init():
 	spell_sound = load("res://Assets/Audio/SFX/autoheal.wav")
 
 # Gets the range cells of the spell in a given range index.
-func get_index_range_cells(range_index : int) -> Array:
-	assert(range_index >= 0, "Error: Spell range index must be equal or greater than 0.")
-	return [Vector2(0, 0)]
+func get_index_range_cells(range_index : int) -> Array[Vector2i]:
+	assert(range_index >= 0) #,"Error: Spell range index must be equal or greater than 0.")
+	return [Vector2i(0, 0)]
 
 # Applies its effect to the given entity
 func apply_effect(entity) -> void:

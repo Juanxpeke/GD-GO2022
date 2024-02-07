@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/knife.wav-c15b9bc9893a9a5355d6518a28d30e9f.sample"
+type="AudioStreamWAV"
+uid="uid://c6vvkfhqwl6ax"
+path="res://.godot/imported/knife.wav-c15b9bc9893a9a5355d6518a28d30e9f.sample"
 
 [deps]
 
 source_file="res://Assets/Audio/SFX/knife.wav"
-dest_files=[ "res://.import/knife.wav-c15b9bc9893a9a5355d6518a28d30e9f.sample" ]
+dest_files=["res://.godot/imported/knife.wav-c15b9bc9893a9a5355d6518a28d30e9f.sample"]
 
 [params]
 

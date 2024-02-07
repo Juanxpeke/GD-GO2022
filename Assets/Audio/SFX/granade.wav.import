@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/granade.wav-820c3e7c84b79ee853e1222f332d95a1.sample"
+type="AudioStreamWAV"
+uid="uid://btcss7ncpxh2h"
+path="res://.godot/imported/granade.wav-820c3e7c84b79ee853e1222f332d95a1.sample"
 
 [deps]
 
 source_file="res://Assets/Audio/SFX/granade.wav"
-dest_files=[ "res://.import/granade.wav-820c3e7c84b79ee853e1222f332d95a1.sample" ]
+dest_files=["res://.godot/imported/granade.wav-820c3e7c84b79ee853e1222f332d95a1.sample"]
 
 [params]
 

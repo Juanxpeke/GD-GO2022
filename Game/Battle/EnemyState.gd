@@ -4,7 +4,8 @@ class_name EnemyState
 var best_action_calculated := false
 
 # Inherited parent constructor.
-func _init(battle, board).(battle, board):
+func _init(battle, board):
+	super(battle, board)
 	pass
 	
 func update() -> void:

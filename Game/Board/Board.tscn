@@ -1,29 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://1uvvk2vtl6xa"]
 
-[ext_resource path="res://Game/Board/AStarTileMap.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Tilesets/DrawnTileset/DrawnTileset.tres" type="TileSet" id=2]
+[ext_resource type="Script" path="res://Game/Board/AStarTileMap.gd" id="1"]
+[ext_resource type="TileSet" uid="uid://5wuo6va1nom8" path="res://Assets/Tilesets/DrawnTileset/DrawnTileset.tres" id="2"]
 
 [node name="Board" type="TileMap"]
-mode = 1
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 128, 64 )
-format = 1
-script = ExtResource( 1 )
+tile_set = ExtResource("2")
+format = 2
+script = ExtResource("1")
 
 [node name="MovementBoard" type="TileMap" parent="."]
-mode = 1
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 128, 64 )
-format = 1
+tile_set = ExtResource("2")
+format = 2
 
 [node name="SpellsRangeBoard" type="TileMap" parent="."]
-mode = 1
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 128, 64 )
-format = 1
+tile_set = ExtResource("2")
+format = 2
 
 [node name="SpellsAreaBoard" type="TileMap" parent="."]
-mode = 1
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 128, 64 )
-format = 1
+tile_set = ExtResource("2")
+format = 2

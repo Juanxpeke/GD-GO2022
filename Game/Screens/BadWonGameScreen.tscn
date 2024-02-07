@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Art/bad_end.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Fonts/kaph_big.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Art/bad_end.png" type="Texture2D" id=1]
+[ext_resource path="res://Assets/Fonts/kaph_big.tres" type="FontFile" id=2]
 [ext_resource path="res://Game/Screens/EndGameScreen.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Themes/default_theme.tres" type="Theme" id=4]
 
@@ -17,17 +17,17 @@ script = ExtResource( 3 )
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.33
 anchor_right = 0.5
 anchor_bottom = 0.33
-margin_left = -200.0
-margin_top = -200.0
-margin_right = 200.0
-margin_bottom = 200.0
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
@@ -37,12 +37,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -120.0
-margin_top = -140.0
-margin_right = 120.0
-margin_bottom = -100.0
-rect_pivot_offset = Vector2( 120, 20 )
-custom_fonts/font = ExtResource( 2 )
+offset_left = -120.0
+offset_top = -140.0
+offset_right = 120.0
+offset_bottom = -100.0
+pivot_offset = Vector2( 120, 20 )
+theme_override_fonts/font = ExtResource( 2 )
 text = "Try Again"
 
 [node name="EndLabel" type="Label" parent="."]
@@ -50,10 +50,10 @@ anchor_left = 0.5
 anchor_top = 0.58
 anchor_right = 0.5
 anchor_bottom = 0.58
-margin_left = -160.0
-margin_top = 30.0
-margin_right = 160.0
-margin_bottom = 50.0
+offset_left = -160.0
+offset_top = 30.0
+offset_right = 160.0
+offset_bottom = 50.0
 text = "You have won! Haven't you?"
 align = 1
 valign = 1

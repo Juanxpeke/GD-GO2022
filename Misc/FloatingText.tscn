@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Themes/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Misc/FloatingText.gd" type="Script" id=2]
 
-[node name="FloatingText" type="Position2D"]
+[node name="FloatingText" type="Marker2D"]
 position = Vector2( 0, -80 )
 script = ExtResource( 2 )
 
@@ -12,10 +12,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -12.5
-margin_right = 50.0
-margin_bottom = 12.5
+offset_left = -50.0
+offset_top = -12.5
+offset_right = 50.0
+offset_bottom = 12.5
 theme = ExtResource( 1 )
 text = "0"
 align = 1

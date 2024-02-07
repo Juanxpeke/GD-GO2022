@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PistolX" load_steps=2 format=3 uid="uid://bw5v85o4ncotl"]
+
+[ext_resource type="Script" path="res://Global/Skills/Pistol/pistol.gd" id="1_ftj72"]
+
+[resource]
+script = ExtResource("1_ftj72")
+name = "Pistol"
+action_points = 3
+range = 1
+area = 0
+cooldown = 0
+animation_action = ""

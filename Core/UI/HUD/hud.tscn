@@ -1,0 +1,198 @@
+[gd_scene load_steps=19 format=3 uid="uid://75x11rsjn556"]
+
+[ext_resource type="Script" path="res://Core/UI/HUD/hud.gd" id="1_71ldf"]
+[ext_resource type="Texture2D" uid="uid://bsk8ig6qjb7oq" path="res://Core/UI/HUD/action_points_icon.png" id="1_v78xe"]
+[ext_resource type="Texture2D" uid="uid://c00tjhm8c3yc5" path="res://Core/UI/HUD/movement_points_icon.png" id="2_runp7"]
+[ext_resource type="Texture2D" uid="uid://b121kq8hp6nof" path="res://Core/UI/HUD/player_profile.png" id="3_24j7s"]
+[ext_resource type="Texture2D" uid="uid://bd84xmypdmn5" path="res://Core/UI/HUD/knife_skill_button.png" id="5_rgyxy"]
+[ext_resource type="Texture2D" uid="uid://eaux33xbt7i8" path="res://Core/UI/HUD/knife_skill_button_hover.png" id="6_tpslh"]
+[ext_resource type="Texture2D" uid="uid://b4uoatd7qyv33" path="res://Core/UI/HUD/knife_skill_button_disabled.png" id="7_dfl4t"]
+[ext_resource type="Texture2D" uid="uid://b6i0816tg2y0t" path="res://Core/UI/HUD/pistol_skill_button.png" id="8_pbvd8"]
+[ext_resource type="Texture2D" uid="uid://ddtljfvwscjv3" path="res://Core/UI/HUD/pistol_skill_button_hover.png" id="9_qodjf"]
+[ext_resource type="Texture2D" uid="uid://c64mcxw0foyhd" path="res://Core/UI/HUD/pistol_skill_button_disabled.png" id="10_ce02t"]
+[ext_resource type="Texture2D" uid="uid://bifmflk0wkscm" path="res://Core/UI/HUD/grenade_skill_button.png" id="11_yg5bq"]
+[ext_resource type="Texture2D" uid="uid://bfqtshl8kh76e" path="res://Core/UI/HUD/grenade_skill_button_hover.png" id="12_vwowq"]
+[ext_resource type="Texture2D" uid="uid://03aslw8v3dj7" path="res://Core/UI/HUD/grenade_skill_button_disabled.png" id="13_6vrct"]
+[ext_resource type="Texture2D" uid="uid://dj4r6ceyuddoc" path="res://Core/UI/HUD/medkit_skill_button.png" id="14_gqumc"]
+[ext_resource type="Texture2D" uid="uid://dbd33a4b4f82h" path="res://Core/UI/HUD/medkit_skill_button_hover.png" id="15_mbpw8"]
+[ext_resource type="Texture2D" uid="uid://dg2ihoqlgmdl1" path="res://Core/UI/HUD/medkit_skill_button_disabled.png" id="16_4xi8i"]
+[ext_resource type="Texture2D" uid="uid://t0ehweq0codo" path="res://Core/UI/HUD/Heart/heart_happy.png" id="17_nhs6k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5t6n"]
+bg_color = Color(0.0470588, 0.0470588, 0.0470588, 0.941176)
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_71ldf")
+metadata/_edit_horizontal_guides_ = [680.0]
+
+[node name="HUDContainer" type="Control" parent="."]
+texture_filter = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatsContainer" type="Control" parent="HUDContainer"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -256.0
+offset_right = 357.0
+grow_vertical = 0
+
+[node name="StatsPanel" type="Panel" parent="HUDContainer/StatsContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -175.0
+offset_right = 292.0
+offset_bottom = -40.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u5t6n")
+
+[node name="StatsList" type="VBoxContainer" parent="HUDContainer/StatsContainer/StatsPanel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="APContainer" type="HBoxContainer" parent="HUDContainer/StatsContainer/StatsPanel/StatsList"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="APIcon" type="TextureRect" parent="HUDContainer/StatsContainer/StatsPanel/StatsList/APContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("1_v78xe")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="APLabel" type="Label" parent="HUDContainer/StatsContainer/StatsPanel/StatsList/APContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "0
+"
+vertical_alignment = 2
+
+[node name="MPContainer" type="HBoxContainer" parent="HUDContainer/StatsContainer/StatsPanel/StatsList"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MPIcon" type="TextureRect" parent="HUDContainer/StatsContainer/StatsPanel/StatsList/MPContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("2_runp7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MPLabel" type="Label" parent="HUDContainer/StatsContainer/StatsPanel/StatsList/MPContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "0
+"
+vertical_alignment = 2
+
+[node name="PlayerSprite" type="TextureRect" parent="HUDContainer/StatsContainer"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -288.0
+offset_right = 196.0
+offset_bottom = 72.0
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_24j7s")
+
+[node name="SpellsContainer" type="HBoxContainer" parent="HUDContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -120.0
+offset_right = 166.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="KnifeSkillButton" type="TextureButton" parent="HUDContainer/SpellsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("5_rgyxy")
+texture_hover = ExtResource("6_tpslh")
+texture_disabled = ExtResource("7_dfl4t")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PistolSkillButton" type="TextureButton" parent="HUDContainer/SpellsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("8_pbvd8")
+texture_hover = ExtResource("9_qodjf")
+texture_disabled = ExtResource("10_ce02t")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="GrenadeSkillButton" type="TextureButton" parent="HUDContainer/SpellsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("11_yg5bq")
+texture_hover = ExtResource("12_vwowq")
+texture_disabled = ExtResource("13_6vrct")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MedkitSkillButton" type="TextureButton" parent="HUDContainer/SpellsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("14_gqumc")
+texture_hover = ExtResource("15_mbpw8")
+texture_disabled = ExtResource("16_4xi8i")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HeartContainer" type="VBoxContainer" parent="HUDContainer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TurnTimeLabel" type="Label" parent="HUDContainer/HeartContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="HeartSprite" type="TextureRect" parent="HUDContainer/HeartContainer"]
+layout_mode = 2
+texture = ExtResource("17_nhs6k")

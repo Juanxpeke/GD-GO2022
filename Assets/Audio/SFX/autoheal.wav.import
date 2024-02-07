@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/autoheal.wav-1a7d21335ea33a146aa89328c3d96022.sample"
+type="AudioStreamWAV"
+uid="uid://cgjh2bbxcmwah"
+path="res://.godot/imported/autoheal.wav-1a7d21335ea33a146aa89328c3d96022.sample"
 
 [deps]
 
 source_file="res://Assets/Audio/SFX/autoheal.wav"
-dest_files=[ "res://.import/autoheal.wav-1a7d21335ea33a146aa89328c3d96022.sample" ]
+dest_files=["res://.godot/imported/autoheal.wav-1a7d21335ea33a146aa89328c3d96022.sample"]
 
 [params]
 

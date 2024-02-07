@@ -1,209 +1,221 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=22 format=3 uid="uid://civu54shsxri7"]
 
-[ext_resource path="res://Assets/GUI/TheHeart/heart_happy.png" type="Texture" id=1]
-[ext_resource path="res://GUI/Battle/BattleUI.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Themes/default_theme.tres" type="Theme" id=3]
-[ext_resource path="res://Assets/Fonts/kaph_big.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Assets/GUI/movement_points_icon.png" type="Texture" id=5]
-[ext_resource path="res://Assets/GUI/action_points_icon.png" type="Texture" id=6]
-[ext_resource path="res://Assets/GUI/Buttons/knife_spell_button.png" type="Texture" id=7]
-[ext_resource path="res://Assets/GUI/Buttons/knife_spell_button_hover.png" type="Texture" id=8]
-[ext_resource path="res://Assets/GUI/Buttons/pistol_spell_button.png" type="Texture" id=9]
-[ext_resource path="res://Assets/GUI/Buttons/pistol_spell_button_hover.png" type="Texture" id=10]
-[ext_resource path="res://Assets/GUI/Buttons/granade_spell_button.png" type="Texture" id=11]
-[ext_resource path="res://Assets/GUI/Buttons/granade_spell_button_hover.png" type="Texture" id=12]
-[ext_resource path="res://Assets/GUI/Buttons/medkit_spell_button.png" type="Texture" id=13]
-[ext_resource path="res://Assets/GUI/Buttons/medkit_spell_button_hover.png" type="Texture" id=14]
-[ext_resource path="res://Assets/GUI/player_profile.png" type="Texture" id=15]
-[ext_resource path="res://Assets/GUI/Buttons/medkit_spell_button_disabled.png" type="Texture" id=16]
-[ext_resource path="res://Assets/GUI/Buttons/pistol_spell_button_disabled.png" type="Texture" id=17]
-[ext_resource path="res://Assets/GUI/Buttons/granade_spell_button_disabled.png" type="Texture" id=18]
-[ext_resource path="res://Assets/GUI/Buttons/knife_spell_button_disabled.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Fonts/kaph_regular.tres" type="DynamicFont" id=20]
+[ext_resource type="Texture2D" uid="uid://cn8m3qk4ifre3" path="res://Assets/GUI/TheHeart/heart_happy.png" id="1"]
+[ext_resource type="Script" path="res://GUI/Battle/BattleUI.gd" id="2"]
+[ext_resource type="Theme" uid="uid://cn8ikh55qdnvq" path="res://Assets/Themes/default_theme.tres" id="3"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/kaph_big.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://kjsw1e7empo4" path="res://Assets/GUI/movement_points_icon.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://xbbq1w31ge2n" path="res://Assets/GUI/action_points_icon.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://d24eh6awbdtlg" path="res://Assets/GUI/Buttons/knife_spell_button.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://diyji45hbnkvb" path="res://Assets/GUI/Buttons/knife_spell_button_hover.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://qfbipj84xwm4" path="res://Assets/GUI/Buttons/pistol_spell_button.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://bi4a5gbxsuubg" path="res://Assets/GUI/Buttons/pistol_spell_button_hover.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://c2nbhhvk8oa7m" path="res://Assets/GUI/Buttons/granade_spell_button.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://cp7fd8mgbj87k" path="res://Assets/GUI/Buttons/granade_spell_button_hover.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://dw3kpgt0x4ips" path="res://Assets/GUI/Buttons/medkit_spell_button.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://co5xfl4cevryk" path="res://Assets/GUI/Buttons/medkit_spell_button_hover.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://degiuyu8gjokj" path="res://Assets/GUI/player_profile.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://b7siukny2p5nu" path="res://Assets/GUI/Buttons/medkit_spell_button_disabled.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://bu8lalbwtldb2" path="res://Assets/GUI/Buttons/pistol_spell_button_disabled.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://dl6gkyp4v1w40" path="res://Assets/GUI/Buttons/granade_spell_button_disabled.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://3v5yqrk0f07t" path="res://Assets/GUI/Buttons/knife_spell_button_disabled.png" id="19"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/kaph_regular.tres" id="20"]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 0.941176 )
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.941176)
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 
 [node name="BattleUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 3 )
-script = ExtResource( 2 )
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3")
+script = ExtResource("2")
 
 [node name="PlayerLayout" type="Panel" parent="."]
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -160.0
-margin_right = 300.0
-margin_bottom = -35.0
-custom_styles/panel = SubResource( 1 )
+offset_top = -160.0
+offset_right = 300.0
+offset_bottom = -35.0
+theme_override_styles/panel = SubResource("1")
 
 [node name="PlayerSprite" type="TextureRect" parent="PlayerLayout"]
+layout_mode = 0
 anchor_right = 0.55
 anchor_bottom = 1.0
-margin_left = -115.0
-margin_top = -135.0
-margin_right = 55.0
-margin_bottom = 60.0
-texture = ExtResource( 15 )
-expand = true
+offset_left = -115.0
+offset_top = -135.0
+offset_right = 55.0
+offset_bottom = 60.0
+texture = ExtResource("15")
+expand_mode = 1
 stretch_mode = 6
 
 [node name="HPLabel" type="Label" parent="PlayerLayout"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_top = -40.0
-margin_right = 120.0
-custom_fonts/font = ExtResource( 20 )
+offset_top = -40.0
+offset_right = 120.0
+theme_override_fonts/font = ExtResource("20")
 text = "0 / 0"
-valign = 1
 
 [node name="APMPLayout" type="Control" parent="PlayerLayout"]
+anchors_preset = 0
 anchor_left = 0.55
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="APIcon" type="TextureRect" parent="PlayerLayout/APMPLayout"]
+layout_mode = 0
 anchor_right = 0.4
 anchor_bottom = 0.5
-margin_top = 12.0
-margin_bottom = -8.0
-texture = ExtResource( 6 )
-expand = true
+offset_top = 12.0
+offset_bottom = -8.0
+texture = ExtResource("6")
+expand_mode = 1
 stretch_mode = 6
 
 [node name="APLabel" type="Label" parent="PlayerLayout/APMPLayout"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.4
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = 14.0
-margin_bottom = -8.0
+offset_top = 14.0
+offset_bottom = -8.0
 text = "0"
-valign = 1
 
 [node name="MPIcon" type="TextureRect" parent="PlayerLayout/APMPLayout"]
+layout_mode = 0
 anchor_top = 0.5
 anchor_right = 0.4
 anchor_bottom = 1.0
-margin_top = 8.0
-margin_bottom = -12.0
-texture = ExtResource( 5 )
-expand = true
+offset_top = 8.0
+offset_bottom = -12.0
+texture = ExtResource("5")
+expand_mode = 1
 stretch_mode = 6
 
 [node name="MPLabel" type="Label" parent="PlayerLayout/APMPLayout"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.4
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 8.0
-margin_bottom = -14.0
+offset_top = 8.0
+offset_bottom = -14.0
 text = "0"
-valign = 1
 
 [node name="SpellsLayout" type="Control" parent="."]
+anchors_preset = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 320.0
-margin_top = -120.0
-margin_right = 720.0
-margin_bottom = -35.0
+offset_left = 320.0
+offset_top = -120.0
+offset_right = 720.0
+offset_bottom = -35.0
 
 [node name="KnifeSpellButton" type="TextureButton" parent="SpellsLayout"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_right = 0.25
 anchor_bottom = 1.0
-texture_normal = ExtResource( 7 )
-texture_hover = ExtResource( 8 )
-texture_disabled = ExtResource( 19 )
-expand = true
+texture_normal = ExtResource("7")
+texture_hover = ExtResource("8")
+texture_disabled = ExtResource("19")
 stretch_mode = 5
 
 [node name="PistolSpellButton" type="TextureButton" parent="SpellsLayout"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.25
 anchor_right = 0.5
 anchor_bottom = 1.0
-texture_normal = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
-texture_disabled = ExtResource( 17 )
-expand = true
+texture_normal = ExtResource("9")
+texture_hover = ExtResource("10")
+texture_disabled = ExtResource("17")
 stretch_mode = 5
 
 [node name="GranadeSpellButton" type="TextureButton" parent="SpellsLayout"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.75
 anchor_bottom = 1.0
-texture_normal = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
-texture_disabled = ExtResource( 18 )
-expand = true
+texture_normal = ExtResource("11")
+texture_hover = ExtResource("12")
+texture_disabled = ExtResource("18")
 stretch_mode = 5
 
 [node name="MedkitSpellButton" type="TextureButton" parent="SpellsLayout"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture_normal = ExtResource( 13 )
-texture_hover = ExtResource( 14 )
-texture_disabled = ExtResource( 16 )
-expand = true
+texture_normal = ExtResource("13")
+texture_hover = ExtResource("14")
+texture_disabled = ExtResource("16")
 stretch_mode = 5
 
 [node name="HeartIcon" type="TextureRect" parent="."]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -280.0
-margin_top = -220.0
-margin_right = -20.0
-margin_bottom = -20.0
-texture = ExtResource( 1 )
-expand = true
+offset_left = -280.0
+offset_top = -220.0
+offset_right = -20.0
+offset_bottom = -20.0
+texture = ExtResource("1")
+expand_mode = 1
 stretch_mode = 6
 
 [node name="TimerLabel" type="Label" parent="HeartIcon"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.6
 anchor_top = 0.1
 anchor_right = 0.6
 anchor_bottom = 0.1
-margin_left = -60.0
-margin_top = -40.0
-margin_right = 60.0
-custom_fonts/font = ExtResource( 4 )
+offset_left = -60.0
+offset_top = -40.0
+offset_right = 60.0
+theme_override_fonts/font = ExtResource("4")
 text = "0"
-align = 1
-valign = 2
 
 [node name="TimerCenter" type="Control" parent="HeartIcon/TimerLabel"]
 unique_name_in_owner = true
+anchors_preset = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_top = 56.0
-margin_bottom = 56.0
+offset_top = 56.0
+offset_bottom = 56.0
 
 [node name="HeartArea" type="Control" parent="HeartIcon"]
 unique_name_in_owner = true
+anchors_preset = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -64.0
-margin_top = -62.0
-margin_right = 112.0
-margin_bottom = 73.0
+offset_left = -64.0
+offset_top = -62.0
+offset_right = 112.0
+offset_bottom = 73.0
 
 [node name="HeartTimer" type="Timer" parent="HeartIcon"]
 unique_name_in_owner = true

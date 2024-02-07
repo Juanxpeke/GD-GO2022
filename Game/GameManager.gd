@@ -6,5 +6,5 @@ static func play(audio : AudioStream) -> void:
 	GameManager.add_child(audio_player)
 	audio_player.bus = "SFX"
 	audio_player.stream = audio
-	audio_player.connect("finished", audio_player, "queue_free")
+	audio_player.connect("finished", Callable(audio_player, "queue_free"))
 	audio_player.play()
