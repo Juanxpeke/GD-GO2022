@@ -1,0 +1,26 @@
+- Entity class
+- Battle scene
+- Working movement cells
+- Working spell range cells
+- Working spell area cells
+- Spells as resources
+- Review comments
+- Better main menu scene
+- See if there is better options for:
+  - 2D ID algorithm
+  - AStar
+  - Cell filling
+  - Rasterization
+- Repository documentation, with reference to the 2D ID algorithm and rasterization algorithm
+- Improve animation logic (without a lot of anim_spell_orientationID)
+
+REQUIREMENTS FOR TURN SYSTEM
+
+- TURN ACCUMULATOR REGENERATES AFTER EACH TURN
+- THE MORE SPEED THE MORE FAST THE ACCUMULATOR REGENERATES
+- WHEN THE ACCUMULATOR REACH A CERTAIN TRESHOLD, IT SHOULD BE YOUR TURN
+
+- AN ENTITY WITH MORE SPEED SHOULD HAVE "MORE" TURNS
+- ON A TURN OF X, IF IT INCREASES THE SPEED OF Y, AND C WAS BEFORE Y, IT COULD BE POSSIBLE THAT Y NOW IS BEFORE C, SO ITS THE TURN OF Y INSTEAD OF C
+
+
